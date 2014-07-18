@@ -1,0 +1,24 @@
+{
+    "VisControl_A": [
+        "L_browMain_Tctl_0", 
+        "R_browMain_Tctl_0"
+    ], 
+    "VisControl_B": [
+        "L_eyeUpperOuterLid_Tctl_0", 
+        "R_eyeUpperOuterLid_Tctl_0",
+        "L_eyeUpperInnerLid_Tctl_0", 
+        "R_eyeUpperInnerLid_Tctl_0", 
+        "L_eyeLowerOuterLid_Tctl_0",
+        "R_eyeLowerOuterLid_Tctl_0",  
+        "L_eyeLowerInnerLid_Tctl_0", 
+        "R_eyeLowerInnerLid_Tctl_0",
+        "L_squint_Tctl_0", 
+        "R_squint_Tctl_0"
+    ], 
+    "VisControl_C": [
+        "C_lipUpperMain_Tctl_0", 
+        "C_lipLowerMain_Tctl_0", 
+        "L_mouthCorner_Tctl_0", 
+        "R_mouthCorner_Tctl_0"
+    ]
+}

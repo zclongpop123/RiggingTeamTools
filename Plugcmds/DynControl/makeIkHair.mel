@@ -1,0 +1,694 @@
+/* This file downloaded from Highend3d.com
+''  
+''  Highend3d.com File Information:
+''  
+''    Script Name: makeIkHair
+''    Author: xtoof 
+''    Last Updated: Apr 05, 2007
+''    Update/Change this file at:
+''    http://Highend3d.com/maya/downloads/mel_scripts/animation/1299.html
+''  
+''  Please do not alter any information above this line
+''  it is generated dynamically by Highend3d.com and will
+''  be changed automatically on any updates.
+*/
+//
+//	Mel script written by Christophe Petit
+//	email : xxtof@free.fr
+//
+// MODIFY THIS AT YOUR OWN RISK
+//
+// Creation Date:  3 May 2004
+//
+//
+//
+//  Procedure Name:
+//      makeIkHair
+//
+//  Description:
+//		create a splineIkHandle driven by hair system with realtime controls and blend between dynamics and keyframes on joints chains
+//
+//	Usage:
+//		select first and last joint and type : makeIkHair
+//
+//  Input Arguments:
+//      none.
+//
+//  Return Value:
+// 	none.
+
+global proc string[] ccoc_buildListOfJoint(string $child,string $father){
+
+
+	string $joint = $child;
+	string $Array[];
+	
+	$Array[0] = $joint;
+	
+	while ($joint != $father){
+	
+		string $nextJoint[] = `listRelatives -p -f -typ joint $joint`;
+		$Array[size($Array)] = $nextJoint[0];
+		$joint = $nextJoint[0];	
+	}
+	return $Array;
+}
+proc string[] ccoc_stringArrayReverseOrder (string $array[]){
+
+	string $reversed[];
+	int $last = size($array) -1 ;
+	for ($i=$last ;$i>=0 ;$i--){
+	
+		$reversed[size($reversed)] = $array[$i];
+	}
+	return $reversed;
+}
+
+
+
+
+global proc string createCurveOnChain(){
+	string $curveName;
+	string $sel[] = `ls -sl -l -typ joint`;
+	if(size($sel)==2){
+			
+		string $listJoints[] = ccoc_buildListOfJoint($sel[1],$sel[0]);
+		$listJoints = ccoc_stringArrayReverseOrder ($listJoints);
+		string $positions[];
+		for($i = 0;$i<size($listJoints);$i++){
+			float $tmp[3] = `xform -q -ws -t $listJoints[$i]`;
+			$positions[$i] =$tmp[0] + " " +  $tmp[1] + " " + $tmp[2];
+		}
+		string $cmd = "curve -d 1";
+		for($pos in $positions){
+			$cmd += " -p " + $pos;
+		}
+		for($i = 0;$i<size($positions);$i++){
+			$cmd += " -k " + $i;
+		}		
+		print $cmd;print "\n";
+		$curveName = `eval $cmd`;
+		return $curveName; 
+	}else{
+		error "createCurveOChain :  select start and end joint\n"; 
+	}
+
+}
+
+
+
+proc string polyLineCmd( int $numCvs, float $curveLength )
+{
+	if( $numCvs < 2 ){
+		return "";
+	}	
+
+	string $cmd = "curve -d 1";
+	int $i;
+	float $fac = $curveLength/(float)($numCvs-1);
+	for( $i = 0; $i < $numCvs; $i++ ){
+		$cmd += (" -p 0 0 " + ((float)$i * $fac));
+	}
+	for( $i = 0; $i < $numCvs; $i++ ){
+		$cmd += (" -k " + $i);
+	}
+	return $cmd;
+}
+
+proc int getNextFreeMultiIndex( string $attr, int $start )
+{
+	// We find the next unconnected multi index starting at
+	// the passed in index.
+	int $i;
+	// assume a max of 10 million follicles
+	for( $i = $start; $i < 10000000; $i++ ){
+		string $con = `connectionInfo -sfd ($attr + "["+$i+"]")`;
+		if( size( $con ) == 0){
+			return( $i );
+		}
+	}
+	return(0);
+}
+
+proc string[] makeIkHair_createHairCurveNode( 
+	string $hsys, 
+	string $surface, 
+	float $u, float $v, 
+	int $numCvs, 
+	int $doOut, 
+	int $doStart,
+	int $doRest,
+	int $isPassive,
+	string $startCurve,
+	float $length,
+	int $endHairSystemIndex[],
+	string $hsysGroup,
+	string $hsysOutHairGroup
+)
+{
+	int $doStartCurve = false;
+	int $COS = false;
+	string $cmd = "";
+// TODO use "exists" here
+	if( $hsys == "" ){
+		return {""}; 
+	}
+	string $hair = `createNode follicle`;
+	setAttr ($hair + ".parameterU" ) $u;
+	setAttr ($hair + ".parameterV" ) $v;
+	string $tforms[] = `listTransforms $hair`;
+	string $hairDag[];
+	$hairDag[0]= $tforms[0];
+	int $attachedToSurface = false;
+	if( $surface != "" && objExists( $surface ) ){
+		string $nType = `nodeType $surface`;
+		connectAttr ($surface + ".worldMatrix[0]") ($hair + ".inputWorldMatrix");
+		if( "nurbsSurface" == $nType ){ 
+			connectAttr ($surface + ".local") ($hair + ".inputSurface");
+		} else if( "mesh" == $nType ){
+			connectAttr ($surface + ".outMesh") ($hair + ".inputMesh");
+			string $currentUVSet[] = `polyUVSet -q -currentUVSet $surface`;
+			setAttr ($hair + ".mapSetName") -type "string" $currentUVSet[0];
+			int $isValidUv = getAttr( $hair + ".validUv" );
+			if( !$isValidUv ){
+				delete $hair;
+				return {""};
+			}
+		} 
+
+		connectAttr ($hair + ".outTranslate") ($hairDag[0] + ".translate");
+		connectAttr ($hair + ".outRotate") ($hairDag[0] + ".rotate");
+		setAttr -lock true  ($hairDag[0] + ".translate");
+		setAttr -lock true  ($hairDag[0] + ".rotate");
+	} else {
+		setAttr ($hair + ".startDirection" ) 1;
+	}
+
+	if( $doStart ){ 	
+		if( $startCurve != "" ){
+			if( `objExists $startCurve` ){
+				string $type = `nodeType $startCurve`;
+				if( $type == "nurbsCurve" ){
+					$doStartCurve = true;			
+				} else if( $type == "curveFromSurfaceCoS" ){
+					$doStartCurve = true;			
+					$COS = true;
+				}
+				if( $doStartCurve ){
+					int $curveCvs = `getAttr -size ($startCurve + ".cp")`;
+					if( $curveCvs < 3 ){
+						setAttr ($hair + ".degree" ) 1;
+					}
+				}
+			}
+			if( !$doStartCurve ){
+				warning ( "createHairCurveNode: invalid startCurve " + $startCurve);
+			}
+		}
+		if( !$doStartCurve ){
+			$cmd = polyLineCmd( $numCvs, $length );
+			if( $cmd == "" ){
+				delete $hair;
+				return {""};
+			}
+			if( $numCvs < 3 ){
+				setAttr ($hair + ".degree" ) 1;
+			}
+		}
+	} else if( $doRest ){
+		$cmd = polyLineCmd( $numCvs, $length );
+		if( $cmd == "" ){
+			delete $hair;
+			return {""} ;
+		}
+	}
+
+	if( $isPassive && !$doStart && $numCvs < 3){
+		setAttr ($hair + ".degree" ) 1;
+	}
+
+
+	if( $hsysGroup != "" ){
+		// Group the follicles into the passed in parent node.
+		// -relative here is simply in the hope that
+		// this might be slightly more efficient
+		parent -relative $hairDag[0] $hsysGroup; 
+	}
+	string $curve;
+	if( $doStart ){
+		if( $doStartCurve ){
+			if( $COS ){
+				$curve = $startCurve;
+			} else {
+				$tforms = `listTransforms $startCurve`;
+				$curve = $tforms[0];
+				$tforms = `listTransforms $curve`;
+				if( size( $tforms ) > 0 ){
+					string $curveParent = $tforms[0];
+					parent -relative $hairDag[0] $curveParent;
+				}
+			}
+		} else {
+			$curve = eval( $cmd );
+			if( $isPassive ){
+				initHairCurveDisplay( $curve, "passive" );
+			} else {
+				initHairCurveDisplay( $curve, "start" );
+			}
+		}
+		if( $COS ){
+			connectAttr ($curve + ".oc") ($hair + ".startPosition");
+		} else {
+			parent -relative $curve $hairDag[0];
+			connectAttr ($curve + ".worldSpace[0]") ($hair + ".startPosition");
+		}
+	
+	} 
+	if( $doRest ){
+		string $rest;
+		if( $doStartCurve ){	
+			$rest = `duplicate -rr $curve`;
+		} else {
+			$rest = eval( $cmd );
+		}
+		initHairCurveDisplay( $rest, "rest" );
+		parent -relative $rest $hairDag[0];
+		connectAttr ($rest + ".worldSpace[0]") ($hair + ".restPosition");
+		// setAttr ($rest + ".intermediateObject") 1;
+		setAttr ($hair + ".restPose" ) 3;
+	}
+	if( $isPassive ){
+		setAttr ($hair + ".simulationMethod") 1;
+	}
+	// connect hair to end of hsys array
+	// We use the following array so that the last index used can
+	// be passed back to the calling routine, so that we
+	// minimize searching. The calling routine should set 
+	// endHairSystemIndex to zero on the first call and then  
+	// and then allow it to track the last free slot. 
+	// The input hair is a sparce multi and holes can be created
+	// when some hairs are deleted. We always try to fill in the holes
+	// when creating new hairs.
+	$endHairSystemIndex[0] = getNextFreeMultiIndex( ($hsys + ".inputHair"), 
+								$endHairSystemIndex[0] );	
+	int $hairIndex = $endHairSystemIndex[0];
+	$endHairSystemIndex[0] += 1; // avoid checking this index twice
+	connectAttr ($hair + ".outHair") ($hsys + ".inputHair["+$hairIndex+"]");
+	if( $doOut ){
+		connectAttr ($hsys + ".outputHair["+$hairIndex+"]") ($hair + ".currentPosition");
+		string $crv = `createNode nurbsCurve`;
+		$hairDag[size($hairDag)] = $crv;
+		connectAttr ($hair + ".outCurve")  ($crv + ".create");
+		if( $isPassive ){
+			initHairCurveDisplay( $crv, "passive" );
+		} else {
+			initHairCurveDisplay( $crv, "current" );
+		}
+		if( $hsysOutHairGroup != "" ){
+			$tforms = `listTransforms $crv`;
+			parent -relative $tforms[0] $hsysOutHairGroup; 
+		}
+	}
+
+	return( $hairDag );
+}
+
+proc string[] makeIkHair_makeCurvesDynamicHairs()
+{
+	string $created[];
+	string $hsystems[] = `getSelectedHairSystems`;	
+	string $hsys = "" ;
+	if( size( $hsystems ) > 0 ){
+		$hsys = $hsystems[0];
+	} 
+	int $i, $j, $k, $l;
+	string $curves[] = `ls -sl -dag -type nurbsCurve`;
+
+	if( size( $curves ) < 1 ){
+		warning( "No curves selected\n" );
+		return $created;
+	}
+	string $parent = "";
+	int   $lastIndex[] = {0};
+	int $madeHairCurve = false;
+	string $hsysGroup = "";
+	string $hsysOutputHairGroup = "";
+	for( $i = 0; $i < size( $curves ); $i++ ){
+		string $curve = $curves[$i];
+		string $con[] = `listConnections -sh 1 ($curve + ".worldSpace[0]")`;
+		int $j;
+		int $attachedToHairCurve = false;
+		for( $j = 0; $j < size( $con ); $j++ ){
+			string $type = nodeType( $con[ $j ] );
+			if( $type == "follicle" ){
+				$attachedToHairCurve = true;
+				continue;
+			}
+		}
+		if( $attachedToHairCurve ){
+			continue;
+		}
+		int $intermediateObject = `getAttr ($curve + ".io")`;
+		if( 0 != $intermediateObject ){
+			continue;
+		}
+		
+
+
+		$madeHairCurve = true;
+		if( $hsys == "" ){
+			// create the first time we hit a valid curve
+			$hsys	 = `createNode hairSystem`;
+			$created[size($created)] = $hsys;
+			//-------------------------
+			if (!objExists("nucleus1")){
+                createNode -n "nucleus1" "nucleus";
+                connectAttr -f "time1.outTime" "nucleus1.currentTime";
+            }
+            $hairsystemCount = size(`ls -type "hairSystem"`) - 1;
+            connectAttr -f ("nucleus1.startFrame")                              ($hsys + ".startFrame");
+            connectAttr -f ("nucleus1.outputObjects[" + $hairsystemCount + "]") ($hsys + ".nextState");
+
+
+            connectAttr -f ($hsys + ".startState")   ("nucleus1.inputActiveStart[" + $hairsystemCount +"]");
+            connectAttr -f ($hsys + ".currentState") ("nucleus1.inputActive[" + $hairsystemCount + "]");
+            
+			
+			//-------------------------
+			// we want uniform stiffness because the curves
+			// are initially point locked to both ends 
+			removeMultiInstance -break true ($hsys + ".stiffnessScale[1]");
+			setAttr ($hsys + ".clumpWidth") 0.0;
+			connectAttr time1.outTime ($hsys + ".currentTime");
+		}
+		string $hsysParent[] = `listTransforms $hsys`;
+		/*
+		if( size($hsysParent) > 0  ){
+			if( $hsysGroup == "" ){
+				$hsysGroup = ($hsysParent[0] + "Follicles");
+				if( !objExists($hsysGroup ) ){
+					$hsysGroup = `group -em -name $hsysGroup`;
+				}
+				
+			}
+			if( $hsysOutputHairGroup == "" ){
+				$hsysOutputHairGroup = ($hsysParent[0] + "OutputCurves");
+				if( !objExists($hsysOutputHairGroup ) ){
+					$hsysOutputHairGroup = `group -em -name $hsysOutputHairGroup`;
+				}
+			}
+		}
+		*/
+		// Determine if the curve is a COS or just a regular curve.
+		// This is cloned from "convertCurvesToStrokes.mel"
+		int $COS = 0;
+		string $relatives[] = `listRelatives -ap -p $curve`;
+		for ($j = 0; $j < size( $relatives ); $j++) {
+			string $testMe = $relatives[$j];
+			if (`nodeType $testMe` == "transform") {
+				string $testList[] = `listRelatives -ap -p $testMe`;
+				for ($k = 0; $k < size( $testList ); $k++) {
+					string $subTest = $testList[$k];
+					if (`nodeType $subTest` == "curveVarGroup") {
+						string $testList2[] = `listRelatives -ap -p $subTest`;
+						for ($l = 0; $l < size( $testList2 ); $l++) {
+							if (`nodeType $testList2[$l]` == "nurbsSurface") {
+								$COS = 1;
+								$parent = $testList2[$l];
+								$j = size( $relatives );
+								$k = size( $testList  );
+								$l = size( $testList2 );
+							}
+						}
+					}
+					else {
+						if (`nodeType $testList[$k]` == "nurbsSurface") {
+							$COS = 1;
+							$parent = $testList[$k];
+							$j = size( $relatives);
+							$k = size( $testList );
+						}
+					}
+				}
+			}
+			else if (`nodeType $testMe` == "nurbsSurface") {
+				$parent = $testMe;
+				$COS = 1;
+				$j = size( $relatives);
+			}
+		}
+		if ( $COS == 1 ) {
+			// the name in $curves is something like nurbsPlane->curve1: this
+			// has illegal characters for a name so we use the default naming
+			// string $cFS = `createNode "curveFromSurfaceCoS" -name ($curves[$i] + "cFS")`;
+			string $cFS = `createNode "curveFromSurfaceCoS"`;
+			$created[size($created)] = $cFS;
+			// Do we need to check the index of the WS connections?
+			connectAttr ($curve + ".ws[0]") ($cFS + ".curveOnSurface");
+			connectAttr ($parent + ".ws[0]") ($cFS + ".inputSurface");
+			$curve = $cFS;
+		}
+
+
+		string $surf = ""; // no surface to attach to
+		int $doRest = false;
+		string $tmp[] = makeIkHair_createHairCurveNode($hsys, $surf,
+							0.0, 0.0, 0, true, true, 
+							$doRest, false, $curve, 1.0, $lastIndex,
+							$hsysGroup, $hsysOutputHairGroup);
+		string $hname = $tmp[0];
+		$created[size($created)] = $tmp[0];
+		$created[size($created)] = $tmp[1];
+		if( size( $hname ) > 0 ){
+			setAttr ( $hname + ".pointLock" ) 3;
+			setAttr ( $hname + ".restPose" ) 1;
+		}
+	}
+	// delete the follicle groups if we did not add any hairs to them
+	if( objExists($hsysGroup ) ){
+		string $shapes[] = `ls -s -dag $hsysGroup`;
+		if( 0 == size($shapes) ){
+			delete $hsysGroup;
+		}
+	}
+	if( objExists($hsysOutputHairGroup ) ){
+		string $shapes[] = `ls -s -dag $hsysOutputHairGroup`;
+		if( 0 == size($shapes) ){
+			delete $hsysOutputHairGroup;
+		}
+	}
+	if( $madeHairCurve ){
+		select $hsys;
+	} else {
+		warning( "Selected curves already are dynamic hair curves\n" );
+	}
+	return $created;
+}
+proc string[] makeIkHair_duplicateSkeletonAndConnect(string $prefix)
+{
+
+    string $startJoint1, $joints[] = `ls -sl -type joint`;
+
+    for ($startJoint1 in $joints)
+    {
+	// duplicate the joint chain
+
+	string $nodes[] = `duplicate -rr -rc $startJoint1`;
+	string $startJoint2 = $nodes[0];
+
+	string $joints1[] = `listRelatives -ad $startJoint1`;
+	string $joints2[] = `listRelatives -ad $startJoint2`;
+
+	// delete anything that was copied and that is not a joint (note that
+	// descendants are ordered from the bottom of the hierarchy up),
+	// rename new joints and connect their attributes to the original
+	// joints'
+
+	int $i;
+	for ($i = 0; $i < size($joints1); $i++)
+	{
+	    if (`objectType -isType joint $joints2[$i]`)
+	    {
+		rename $joints2[$i] ($prefix + $joints1[$i]);
+		connectAttr -f ($prefix + $joints1[$i] + ".r") ($joints1[$i] + ".r") ;
+connectAttr -f ($prefix + $joints1[$i] + ".t") ($joints1[$i] + ".t") ;
+	    }
+	    else
+		delete $joints2[$i];
+	}
+
+	// start joints are not included in output of listRelatives...
+
+	connectAttr -f ($startJoint2 + ".t") ($startJoint1 + ".t");
+	connectAttr -f ($startJoint2 + ".r") ($startJoint1 + ".r");
+	connectAttr -f ($startJoint2 + ".s") ($startJoint1 + ".s");
+	$startJoint2 = `rename $startJoint2 ($prefix + $startJoint1)`;
+	catch (`parent -w $startJoint2`);
+	string $list[];
+	select -r $startJoint2;
+	select -hi;
+	$list = `ls -sl -l`;
+	return $list;
+    }
+}
+global proc makeIkHair (){
+
+	string $sel[] = `ls -sl -l -typ joint`;
+	if(size($sel)==2){
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		create Curve on joints
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		string $curve = `createCurveOnChain`;
+		string $tmp[];
+		
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		create Hair system duplicateCurve follicle
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		select -r $curve;
+		string $created[] = `makeIkHair_makeCurvesDynamicHairs`;
+		print $created;
+		string $FollicleShape[] = `listRelatives -s $created[1]`;
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		create SplineHandle for selected chain and 
+//		the duplicated curve
+//		we assume that the original is driven by hair
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		$tmp = `ikHandle -sol ikSplineSolver -ccv false -pcv false -snc true -sj $sel[0] -ee $sel[1] -c $created[2]`;
+		string $ik = $tmp[0];	
+		
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		create duplicate the chain for animation
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		select -r $sel[0];
+		string $duplSkel[] = `makeIkHair_duplicateSkeletonAndConnect ("ANIM_")`;
+		
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		create SkinCluster between duplicateCurve and 
+//		animation chain
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		select -r $curve;
+		select -add $duplSkel;
+		$tmp = `newSkinCluster "-toSelectedBones -mi 3 -dr 4"`;
+		string $skinCluster = $tmp[0];
+		
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		add and connect attributes on root annimation
+//		Chain controling stiffness damping and gravity
+//		iteration startFrame collisions
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		string $controller = `curve -d 1 -p 0 0 0 -p 0 2 -2 -p 0 1 -2 -p 0 1 -4 -p 0 -1 -4 -p 0 -1 -2 -p 0 -2 -2 -p 0 0 0 -p -2 0 -2 -p -1 0 -2 -p -1 0 -4 -p 1 0 -4 -p 1 0 -2 -p 2 0 -2 -p 0 0 0 -k 0 -k 1 -k 2 -k 3 -k 4 -k 5 -k 6 -k 7 -k 8 -k 9 -k 10 -k 11 -k 12 -k 13 -k 14 `;
+		string $shapes[] = `listRelatives -s $controller`;
+		string $shape = `rename $shapes[0] ($duplSkel[0]+"Shape")`;
+		parent -s -r $shape $duplSkel[0];
+		delete $controller;
+		addAttr -ln "___DYNAMICS___" -at double  $duplSkel[0];
+		setAttr -e -keyable true -l 1 ($duplSkel[0] + ".___DYNAMICS___");
+		addAttr -ln "chainAttach" -at "enum" -en "No Attach:Base:Tip:Both End"  -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainAttach");
+		addAttr -ln "chainStartEnveloppe" -at double -min 0 -max 1 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainStartEnveloppe");
+		addAttr -ln "chainStartFrame" -at double  -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainStartFrame");
+		addAttr -ln "___BEHAVIOR___" -at double  $duplSkel[0];
+		setAttr -e -keyable true -l 1 ($duplSkel[0] + ".___BEHAVIOR___");
+		addAttr -ln "chainStiffness" -at double  -min 0 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainStiffness");
+		addAttr -ln "chainDamping" -at double  -min 0 -dv .2 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainDamping");
+		addAttr -ln "chainGravity" -at double  -min 0 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainGravity");
+		addAttr -ln "chainIteration" -at long  -min 0 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainIteration");
+		addAttr -ln "___COLLISIONS___" -at double  $duplSkel[0];
+		setAttr -e -keyable true -l 1 ($duplSkel[0] + ".___COLLISIONS___");
+		addAttr -ln "chainCollide" -at bool  -dv 0 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainCollide");
+		addAttr -ln "chainWidthBase" -at double  -min 0 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainWidthBase");
+		addAttr -ln "chainWidthExtremity" -at double  -min 0 -dv 1 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainWidthExtremity");
+		addAttr -ln "chainCollideGround" -at bool  -dv 0 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainCollideGround");
+		addAttr -ln "chainCollideGroundHeight" -at double  -dv 0 $duplSkel[0];
+		setAttr -e -keyable true ($duplSkel[0] + ".chainCollideGroundHeight");
+
+					
+		connectAttr -f ($duplSkel[0] + ".chainStartEnveloppe") ($ik + ".ikBlend");
+		connectAttr -f ($duplSkel[0] + ".chainAttach") ($FollicleShape[0] + ".pointLock");
+		connectAttr -f ($duplSkel[0] + ".chainStartFrame") ($created[0] + ".startFrame");
+		connectAttr -f ($duplSkel[0] + ".chainStiffness") ($created[0] + ".stiffness");
+		connectAttr -f ($duplSkel[0] + ".chainDamping") ($created[0] + ".damp");
+		connectAttr -f ($duplSkel[0] + ".chainGravity") ($created[0] + ".gravity");
+		connectAttr -f ($duplSkel[0] + ".chainIteration") ($created[0] + ".iterations");
+		connectAttr -f ($duplSkel[0] + ".chainCollide") ($created[0] + ".collide");
+		connectAttr -f ($duplSkel[0] + ".chainWidthBase") ($created[0] + ".clumpWidth");
+		connectAttr -f ($duplSkel[0] + ".chainWidthExtremity")($created[0] + ".clumpWidthScale[1].clumpWidthScale_FloatValue");
+		connectAttr -f ($duplSkel[0] + ".chainCollideGround") ($created[0] + ".collideGround");
+		connectAttr -f ($duplSkel[0] + ".chainCollideGroundHeight") ($created[0] + ".groundHeight");
+		
+
+
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+//		set default presets for dynHairChain
+//
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+		setAttr ($created[0] + ".drawCollideWidth") 1;
+		setAttr ($created[0] + ".widthDrawSkip") 0;
+		setAttr ($FollicleShape[0]
+ + ".degree") 1;
+		string $parent[] = `listRelatives -p $sel[0]`;
+		if(size($parent))
+			parent $duplSkel[0] $parent[0];
+			
+		if(!`objExists "dynHairChain"`)
+			group -em -name "dynHairChain";
+		
+		string $group;
+		if(!`objExists ($sel[0] + "_HairControls")`){
+			$group = `group -name ($sel[0] + "_HairControls") $created $ik `;
+		}else{
+			parent $created $ik ($sel[0] + "_HairControls");
+		}
+		parent $group "dynHairChain";
+	}else{
+		error "createCurveOChain :  select start and end joint\n"; 
+	}
+}
+
+
+
+
+
+
+makeIkHair;

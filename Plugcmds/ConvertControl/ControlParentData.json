@@ -1,0 +1,29 @@
+{
+    "C_jawUpper_jnt_1": [
+        "A", 
+        "B", 
+        "C"
+    ], 
+    "C_jawLower_jnt_1": [
+        "x", 
+        "y", 
+        "z"
+    ], 
+    "C_mouth_jnt_0": [
+        "a", 
+        "b", 
+        "c"
+    ],
+    "C_head_jnt_0": [
+        "L_browMain_Tcth_0",
+        "R_browMain_Tcth_0",
+        "L_eyeUpperLid_Tcth_0",
+        "L_eyeLowerLid_Tcth_0",
+        "R_eyeUpperLid_Tcth_0",
+        "R_eyeLowerLid_Tcth_0",
+        "R_eyeCornerOuter_Tcth_0",
+        "R_eyeCornerInner_Tcth_0",
+        "L_eyeCornerOuter_Tcth_0",
+        "L_eyeCornerInner_Tcth_0"
+    ]
+}

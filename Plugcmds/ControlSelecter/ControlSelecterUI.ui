@@ -1,0 +1,5050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ControlSelecterWindow</class>
+ <widget class="QMainWindow" name="ControlSelecterWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>487</width>
+    <height>747</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Control Selecter</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(68, 68, 68);
+}
+QPushButton, QComboBox{
+background-color: rgb(98, 98, 98);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,2">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QComboBox" name="cbx_CharacterList">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_loadCharacters">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> QTabBar::tab:selected{
+	
+	color: rgb(255, 170, 0);
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Human</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <property name="margin">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="minimumSize">
+           <size>
+            <width>457</width>
+            <height>575</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>457</width>
+            <height>575</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox{
+	
+	background-image: url(:/image/icon/background_a.png);
+}
+
+QPushButton{
+	border: 2px solid gray;
+	border-radius:3px;	
+	background-color: rgba(98, 98, 98, 60);
+}
+
+QPushButton:hover{
+	border: 2px solid rgb(170, 255, 127);
+}
+
+
+QPushButton:checked{
+	border: 4px solid rgb(225,225,0);
+}
+</string>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QPushButton" name="btn_Head">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>25</y>
+             <width>61</width>
+             <height>81</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_headFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Neck">
+           <property name="geometry">
+            <rect>
+             <x>222</x>
+             <y>110</y>
+             <width>16</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LClavicle">
+           <property name="geometry">
+            <rect>
+             <x>243</x>
+             <y>130</y>
+             <width>21</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armClavicleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RClavicle">
+           <property name="geometry">
+            <rect>
+             <x>197</x>
+             <y>130</y>
+             <width>21</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armClavicleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmFK">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>150</y>
+             <width>56</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armShoulderFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LElbowFK">
+           <property name="geometry">
+            <rect>
+             <x>330</x>
+             <y>153</y>
+             <width>51</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armElbowFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmFK">
+           <property name="geometry">
+            <rect>
+             <x>136</x>
+             <y>150</y>
+             <width>56</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armShoulderFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RElbowFK">
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>153</y>
+             <width>51</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armElbowFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_chestFk">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>170</y>
+             <width>61</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_chestFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_backBFk">
+           <property name="geometry">
+            <rect>
+             <x>205</x>
+             <y>210</y>
+             <width>51</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_backAFk">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>250</y>
+             <width>61</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_centerA">
+           <property name="geometry">
+            <rect>
+             <x>174</x>
+             <y>280</y>
+             <width>111</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_centerA_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegFK">
+           <property name="geometry">
+            <rect>
+             <x>175</x>
+             <y>330</y>
+             <width>41</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legHipFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegFK">
+           <property name="geometry">
+            <rect>
+             <x>245</x>
+             <y>330</y>
+             <width>41</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legHipFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RKneeFK">
+           <property name="geometry">
+            <rect>
+             <x>170</x>
+             <y>440</y>
+             <width>31</width>
+             <height>91</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legKneeFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LKneeFK">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>440</y>
+             <width>31</width>
+             <height>91</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legKneeFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RAnkleFK">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>540</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legAnkleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LAnkleFK">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>540</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legAnkleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LtoeFK">
+           <property name="geometry">
+            <rect>
+             <x>314</x>
+             <y>550</y>
+             <width>31</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legMidfootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RtoeFK">
+           <property name="geometry">
+            <rect>
+             <x>116</x>
+             <y>550</y>
+             <width>31</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legMidfootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LHandFK">
+           <property name="geometry">
+            <rect>
+             <x>390</x>
+             <y>140</y>
+             <width>41</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armWristFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RHandFK">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>140</y>
+             <width>41</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armWristFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Mail">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Main</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_mainA_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmIK">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>105</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmIK">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>105</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmBendC">
+           <property name="geometry">
+            <rect>
+             <x>350</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bendarmElbow_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmBendB">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bend0armElbow_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmBendA">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bendarmShoulder_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmBendB">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bend0armElbow_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmBendA">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bendarmShoulder_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmBendC">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>130</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bendarmElbow_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_All">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>10</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>All</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backAFk_ctl_0</string>
+             <string>C_backBFk_ctl_0</string>
+             <string>C_button_ctl_0_grp</string>
+             <string>C_centerA_ctl_0</string>
+             <string>C_centerB_ctl_0</string>
+             <string>C_centerC_ctl_0</string>
+             <string>C_chestFk_ctl_0</string>
+             <string>C_eyeFacial_ctl_0</string>
+             <string>C_eye_ctl_0</string>
+             <string>C_freeJaw_ctl_0</string>
+             <string>C_headFkIk_ctl_0</string>
+             <string>C_headFk_ctl_0</string>
+             <string>C_headSquash_ctl_0</string>
+             <string>C_hipSwingerroot_ctl_0</string>
+             <string>C_mainA_ctl_0</string>
+             <string>C_mainB_ctl_0</string>
+             <string>C_neckExtra_ctl_0</string>
+             <string>C_neckFk_ctl_0</string>
+             <string>C_spine0Ik_ctl_0</string>
+             <string>C_spine2Ik_ctl_0</string>
+             <string>C_spine4Ik_ctl_0</string>
+             <string>C_strapA_ctl_0</string>
+             <string>C_strapB_ctl_0</string>
+             <string>C_strapC_ctl_0</string>
+             <string>C_strapD_ctl_0</string>
+             <string>C_strapE_ctl_0</string>
+             <string>C_strapF_ctl_0</string>
+             <string>C_strapG_ctl_0</string>
+             <string>C_strapH_ctl_0</string>
+             <string>C_strapI_ctl_0</string>
+             <string>C_strapJ_ctl_0</string>
+             <string>C_strapK_ctl_0</string>
+             <string>C_tailAFk_ctl_0</string>
+             <string>C_tailBFk_ctl_0</string>
+             <string>C_tailBIk_ctl_0</string>
+             <string>C_tailCFk_ctl_0</string>
+             <string>C_tailCIk_ctl_0</string>
+             <string>C_tailDFk_ctl_0</string>
+             <string>C_tailDIk_ctl_0</string>
+             <string>C_tailEFk_ctl_0</string>
+             <string>C_tailEIk_ctl_0</string>
+             <string>C_tailFFk_ctl_0</string>
+             <string>C_tailFIk_ctl_0</string>
+             <string>C_tailGFk_ctl_0</string>
+             <string>C_tailGIk_ctl_0</string>
+             <string>C_tailHFk_ctl_0</string>
+             <string>C_tailHIk_ctl_0</string>
+             <string>C_tailIFk_ctl_0</string>
+             <string>C_tailIIk_ctl_0</string>
+             <string>C_tailJFk_ctl_0</string>
+             <string>C_tailJIk_ctl_0</string>
+             <string>C_tailKFk_ctl_0</string>
+             <string>C_tailKIk_ctl_0</string>
+             <string>C_tongueAFk_ctl_0</string>
+             <string>C_tongueAFk_ctl_0_grp</string>
+             <string>C_tongueBFk_ctl_0</string>
+             <string>C_tongueBFk_ctl_0_grp</string>
+             <string>C_tongueCFk_ctl_0</string>
+             <string>C_tongueCFk_ctl_0_grp</string>
+             <string>C_tongueDFk_ctl_0</string>
+             <string>C_tongueDFk_ctl_0_grp</string>
+             <string>C_tongueEFk_ctl_0</string>
+             <string>C_tongueEFk_ctl_0_grp</string>
+             <string>C_tongueFFk_ctl_0</string>
+             <string>C_tongueFFk_ctl_0_grp</string>
+             <string>C_tongueGFk_ctl_0</string>
+             <string>C_tongueGFk_ctl_0_grp</string>
+             <string>C_tongueHFk_ctl_0</string>
+             <string>C_tongueHFk_ctl_0_grp</string>
+             <string>C_tongueIFk_ctl_0</string>
+             <string>C_tongueIFk_ctl_0_grp</string>
+             <string>C_tongueIKA_ctl_0</string>
+             <string>C_tongueIKB_ctl_0</string>
+             <string>C_tongueIKC_ctl_0</string>
+             <string>C_tongueJFk_ctl_0</string>
+             <string>C_tongueJFk_ctl_0_grp</string>
+             <string>C_tongueKFk_ctl_0</string>
+             <string>C_tongueKFk_ctl_0_grp</string>
+             <string>L_armClavicleFk_ctl_0</string>
+             <string>L_armCupFk_ctl_0</string>
+             <string>L_armElbowFk_ctl_0</string>
+             <string>L_armFkIk_ctl_0</string>
+             <string>L_armIk_ctl_0</string>
+             <string>L_armIndexAFk_ctl_0</string>
+             <string>L_armIndexBFk_ctl_0</string>
+             <string>L_armIndexCFk_ctl_0</string>
+             <string>L_armMiddleAFk_ctl_0</string>
+             <string>L_armMiddleBFk_ctl_0</string>
+             <string>L_armMiddleCFk_ctl_0</string>
+             <string>L_armPinkyAFk_ctl_0</string>
+             <string>L_armPinkyBFk_ctl_0</string>
+             <string>L_armPinkyCFk_ctl_0</string>
+             <string>L_armShoulderFk_ctl_0</string>
+             <string>L_armThumbAFk_ctl_0</string>
+             <string>L_armThumbBFk_ctl_0</string>
+             <string>L_armThumbCFk_ctl_0</string>
+             <string>L_armWristFk_ctl_0</string>
+             <string>L_arrow_ctl_0</string>
+             <string>L_bend0armElbow_ctl_0</string>
+             <string>L_bend0legKnee_ctl_0</string>
+             <string>L_bendarmElbow_ctl_0</string>
+             <string>L_bendarmShoulder_ctl_0</string>
+             <string>L_bendlegHip_ctl_0</string>
+             <string>L_bendlegKnee_ctl_0</string>
+             <string>L_browInOffsetOm_ctl_0</string>
+             <string>L_browMidOffsetOm_ctl_0</string>
+             <string>L_browOutOffsetOm_ctl_0</string>
+             <string>L_cheekBackOffsetOm_ctl_0</string>
+             <string>L_cheekOffsetOm_ctl_0</string>
+             <string>L_cheekOutOffsetOm_ctl_0</string>
+             <string>L_cheekTopOffsetOm_ctl_0</string>
+             <string>L_eyeFacial_ctl_0</string>
+             <string>L_eyeFK_cth_0|L_eye_ctl_0</string>
+             <string>L_eyelidBottomInnerOm_ctl_0</string>
+             <string>L_eyelidBottomMidOm_ctl_0</string>
+             <string>L_eyelidBottomOuterOm_ctl_0</string>
+             <string>L_eyelidTopInnerOm_ctl_0</string>
+             <string>L_eyelidTopMidOm_ctl_0</string>
+             <string>L_eyelidTopOuterOm_ctl_0</string>
+             <string>L_furrowOffsetOm_ctl_0</string>
+             <string>L_hemBack_ctl_0</string>
+             <string>L_hemFront_ctl_0</string>
+             <string>L_hemInner_ctl_0</string>
+             <string>L_hemOuter_ctl_0</string>
+             <string>L_hem_ctl_0</string>
+             <string>L_innerToeAFk_ctl_0</string>
+             <string>L_innerToeBFk_ctl_0</string>
+             <string>L_jawlineInOffsetOm_ctl_0</string>
+             <string>L_jawlineOffsetOm_ctl_0</string>
+             <string>L_legAnkleFk_ctl_0</string>
+             <string>L_legFkIk_ctl_0</string>
+             <string>L_legHipFk_ctl_0</string>
+             <string>L_legHipIk_ctl_0</string>
+             <string>L_legIk_ctl_0</string>
+             <string>L_legKneeFk_ctl_0</string>
+             <string>L_legMidfootFk_ctl_0</string>
+             <string>L_legMidfootIk_ctl_0</string>
+             <string>L_legToesFk_ctl_0</string>
+             <string>L_legToesIk_ctl_0</string>
+             <string>L_middleToeAFk_ctl_0</string>
+             <string>L_middleToeBFk_ctl_0</string>
+             <string>L_noseOffsetOm_ctl_0</string>
+             <string>L_outerToeAFk_ctl_0</string>
+             <string>L_outerToeBFk_ctl_0</string>
+             <string>L_poleArm_ctl_0</string>
+             <string>L_poleLeg_ctl_0</string>
+             <string>R_armClavicleFk_ctl_0</string>
+             <string>R_armCupFk_ctl_0</string>
+             <string>R_armElbowFk_ctl_0</string>
+             <string>R_armFkIk_ctl_0</string>
+             <string>R_armIk_ctl_0</string>
+             <string>R_armIndexAFk_ctl_0</string>
+             <string>R_armIndexBFk_ctl_0</string>
+             <string>R_armIndexCFk_ctl_0</string>
+             <string>R_armMiddleAFk_ctl_0</string>
+             <string>R_armMiddleBFk_ctl_0</string>
+             <string>R_armMiddleCFk_ctl_0</string>
+             <string>R_armPinkyAFk_ctl_0</string>
+             <string>R_armPinkyBFk_ctl_0</string>
+             <string>R_armPinkyCFk_ctl_0</string>
+             <string>R_armShoulderFk_ctl_0</string>
+             <string>R_armThumbAFk_ctl_0</string>
+             <string>R_armThumbBFk_ctl_0</string>
+             <string>R_armThumbCFk_ctl_0</string>
+             <string>R_armWristFk_ctl_0</string>
+             <string>R_arrow_ctl_0</string>
+             <string>R_bend0armElbow_ctl_0</string>
+             <string>R_bend0legKnee_ctl_0</string>
+             <string>R_bendarmElbow_ctl_0</string>
+             <string>R_bendarmShoulder_ctl_0</string>
+             <string>R_bendlegHip_ctl_0</string>
+             <string>R_bendlegKnee_ctl_0</string>
+             <string>R_browInOffsetOm_ctl_0</string>
+             <string>R_browMidOffsetOm_ctl_0</string>
+             <string>R_browOutOffsetOm_ctl_0</string>
+             <string>R_cheekBackOffsetOm_ctl_0</string>
+             <string>R_cheekOffsetOm_ctl_0</string>
+             <string>R_cheekOutOffsetOm_ctl_0</string>
+             <string>R_cheekTopOffsetOm_ctl_0</string>
+             <string>R_eyeFacial_ctl_0</string>
+             <string>R_eyeFK_cth_0|R_eye_ctl_0</string>
+             <string>R_eyelidBottomInnerOm_ctl_0</string>
+             <string>R_eyelidBottomMidOm_ctl_0</string>
+             <string>R_eyelidBottomOuterOm_ctl_0</string>
+             <string>R_eyelidTopInnerOm_ctl_0</string>
+             <string>R_eyelidTopMidOm_ctl_0</string>
+             <string>R_eyelidTopOuterOm_ctl_0</string>
+             <string>R_furrowOffsetOm_ctl_0</string>
+             <string>R_hemBack_ctl_0</string>
+             <string>R_hemFront_ctl_0</string>
+             <string>R_hemInner_ctl_0</string>
+             <string>R_hemOuter_ctl_0</string>
+             <string>R_hem_ctl_0</string>
+             <string>R_innerToeAFk_ctl_0</string>
+             <string>R_innerToeBFk_ctl_0</string>
+             <string>R_jawlineInOffsetOm_ctl_0</string>
+             <string>R_jawlineOffsetOm_ctl_0</string>
+             <string>R_legAnkleFk_ctl_0</string>
+             <string>R_legFkIk_ctl_0</string>
+             <string>R_legHipFk_ctl_0</string>
+             <string>R_legHipIk_ctl_0</string>
+             <string>R_legIk_ctl_0</string>
+             <string>R_legKneeFk_ctl_0</string>
+             <string>R_legMidfootFk_ctl_0</string>
+             <string>R_legMidfootIk_ctl_0</string>
+             <string>R_legToesFk_ctl_0</string>
+             <string>R_legToesIk_ctl_0</string>
+             <string>R_middleToeAFk_ctl_0</string>
+             <string>R_middleToeBFk_ctl_0</string>
+             <string>R_noseOffsetOm_ctl_0</string>
+             <string>R_outerToeAFk_ctl_0</string>
+             <string>R_outerToeBFk_ctl_0</string>
+             <string>R_poleArm_ctl_0</string>
+             <string>R_poleLeg_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmPov">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>180</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_poleArm_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmIKFK">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>180</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LArmPov">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>180</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_poleArm_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RArmIKFK">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>180</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_SpineIKC">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>180</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine4Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_SpineIKB">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>215</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine2Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_SpineIKA">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>250</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine0Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LInnerToe">
+           <property name="geometry">
+            <rect>
+             <x>361</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_innerToeAFk_ctl_0</string>
+             <string>L_innerToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LMiddleToe">
+           <property name="geometry">
+            <rect>
+             <x>390</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_middleToeAFk_ctl_0</string>
+             <string>L_middleToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LOuterToe">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_outerToeAFk_ctl_0</string>
+             <string>L_outerToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_ROuterToe">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_outerToeAFk_ctl_0</string>
+             <string>R_outerToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RInnerToe">
+           <property name="geometry">
+            <rect>
+             <x>79</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_innerToeAFk_ctl_0</string>
+             <string>R_innerToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RMiddleToe">
+           <property name="geometry">
+            <rect>
+             <x>49</x>
+             <y>550</y>
+             <width>20</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_middleToeAFk_ctl_0</string>
+             <string>R_middleToeBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegIK">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>500</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegPov">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>420</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_poleLeg_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegIKFK">
+           <property name="geometry">
+            <rect>
+             <x>360</x>
+             <y>525</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegBend">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>370</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bendlegHip_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegBend">
+           <property name="geometry">
+            <rect>
+             <x>155</x>
+             <y>370</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bendlegHip_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegIKFK">
+           <property name="geometry">
+            <rect>
+             <x>78</x>
+             <y>525</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegPov">
+           <property name="geometry">
+            <rect>
+             <x>130</x>
+             <y>420</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_poleLeg_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegIK">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>500</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Lhand">
+           <property name="geometry">
+            <rect>
+             <x>350</x>
+             <y>350</y>
+             <width>51</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armCupFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Rhand">
+           <property name="geometry">
+            <rect>
+             <x>55</x>
+             <y>350</y>
+             <width>51</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armCupFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LThumbBase">
+           <property name="geometry">
+            <rect>
+             <x>330</x>
+             <y>365</y>
+             <width>16</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armThumbAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LThumbTip">
+           <property name="geometry">
+            <rect>
+             <x>312</x>
+             <y>357</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armThumbBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LThumbEnd">
+           <property name="geometry">
+            <rect>
+             <x>294</x>
+             <y>340</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armThumbCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RThumbEnd">
+           <property name="geometry">
+            <rect>
+             <x>145</x>
+             <y>340</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armThumbCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RThumbTip">
+           <property name="geometry">
+            <rect>
+             <x>128</x>
+             <y>355</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armThumbBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RThumbBase">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>370</y>
+             <width>16</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armThumbAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LIndexBase">
+           <property name="geometry">
+            <rect>
+             <x>340</x>
+             <y>320</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armIndexAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LIndexTip">
+           <property name="geometry">
+            <rect>
+             <x>334</x>
+             <y>298</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armIndexBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LIndexEnd">
+           <property name="geometry">
+            <rect>
+             <x>330</x>
+             <y>275</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armIndexCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LMiddleEnd">
+           <property name="geometry">
+            <rect>
+             <x>363</x>
+             <y>264</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armMiddleCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LMiddleTip">
+           <property name="geometry">
+            <rect>
+             <x>362</x>
+             <y>286</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armMiddleBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LMiddleBase">
+           <property name="geometry">
+            <rect>
+             <x>363</x>
+             <y>310</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armMiddleAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LRingEnd">
+           <property name="geometry">
+            <rect>
+             <x>397</x>
+             <y>275</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LRingTip">
+           <property name="geometry">
+            <rect>
+             <x>393</x>
+             <y>297</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LRingBase">
+           <property name="geometry">
+            <rect>
+             <x>385</x>
+             <y>320</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LPinkyBase">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>340</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armPinkyAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LPinkyTip">
+           <property name="geometry">
+            <rect>
+             <x>410</x>
+             <y>320</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armPinkyBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LPinkyEnd">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>300</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armPinkyCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RPinkyEnd">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>296</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armPinkyCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RPinkyTip">
+           <property name="geometry">
+            <rect>
+             <x>27</x>
+             <y>317</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armPinkyBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RPinkyBase">
+           <property name="geometry">
+            <rect>
+             <x>38</x>
+             <y>340</y>
+             <width>16</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armPinkyAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RRingBase">
+           <property name="geometry">
+            <rect>
+             <x>57</x>
+             <y>320</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RRingTip">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>296</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RRingEnd">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>273</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RMiddleEnd">
+           <property name="geometry">
+            <rect>
+             <x>77</x>
+             <y>260</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armMiddleCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RMiddleTip">
+           <property name="geometry">
+            <rect>
+             <x>77</x>
+             <y>285</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armMiddleBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RMiddleBase">
+           <property name="geometry">
+            <rect>
+             <x>77</x>
+             <y>310</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armMiddleAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RIndexEnd">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>270</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armIndexCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RIndexTip">
+           <property name="geometry">
+            <rect>
+             <x>108</x>
+             <y>295</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armIndexBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RIndexBase">
+           <property name="geometry">
+            <rect>
+             <x>103</x>
+             <y>320</y>
+             <width>16</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armIndexAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RFingers">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>420</y>
+             <width>61</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Fingers</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_armCupFk_ctl_0</string>
+             <string>R_armThumbAFk_ctl_0</string>
+             <string>R_armThumbBFk_ctl_0</string>
+             <string>R_armThumbCFk_ctl_0</string>
+             <string>R_armIndexAFk_ctl_0</string>
+             <string>R_armIndexBFk_ctl_0</string>
+             <string>R_armIndexCFk_ctl_0</string>
+             <string>R_armMiddleAFk_ctl_0</string>
+             <string>R_armMiddleBFk_ctl_0</string>
+             <string>R_armMiddleCFk_ctl_0</string>
+             <string>R_armPinkyAFk_ctl_0</string>
+             <string>R_armPinkyBFk_ctl_0</string>
+             <string>R_armPinkyCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LFingers">
+           <property name="geometry">
+            <rect>
+             <x>350</x>
+             <y>420</y>
+             <width>61</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Fingers</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_armCupFk_ctl_0</string>
+             <string>L_armThumbAFk_ctl_0</string>
+             <string>L_armThumbBFk_ctl_0</string>
+             <string>L_armThumbCFk_ctl_0</string>
+             <string>L_armIndexAFk_ctl_0</string>
+             <string>L_armIndexBFk_ctl_0</string>
+             <string>L_armIndexCFk_ctl_0</string>
+             <string>L_armMiddleAFk_ctl_0</string>
+             <string>L_armMiddleBFk_ctl_0</string>
+             <string>L_armMiddleCFk_ctl_0</string>
+             <string>L_armPinkyAFk_ctl_0</string>
+             <string>L_armPinkyBFk_ctl_0</string>
+             <string>L_armPinkyCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Spine">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>210</y>
+             <width>41</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Spine</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backAFk_ctl_0</string>
+             <string>C_backBFk_ctl_0</string>
+             <string>C_chestFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Hip">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>280</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/hip.png</normaloff>:/image/icon/hip.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_hipSwingerroot_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>40</y>
+             <width>71</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="btn_Aim">
+              <property name="text">
+               <string>Aim</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="control" stdset="0">
+               <stringlist>
+                <string>C_eye_ctl_0</string>
+               </stringlist>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btn_AimR">
+                <property name="text">
+                 <string>R</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="control" stdset="0">
+                 <stringlist>
+                  <string>R_eye_ctl_0</string>
+                 </stringlist>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_AimL">
+                <property name="text">
+                 <string>L</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="control" stdset="0">
+                 <stringlist>
+                  <string>L_eye_ctl_0</string>
+                 </stringlist>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegBend_2">
+           <property name="geometry">
+            <rect>
+             <x>155</x>
+             <y>420</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bend0legKnee_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_RLegBend_3">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>470</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_bendlegKnee_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegBend_2">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>420</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bend0legKnee_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_LLegBend_3">
+           <property name="geometry">
+            <rect>
+             <x>295</x>
+             <y>470</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/SDP.png</normaloff>:/image/icon/SDP.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_bendlegKnee_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Quad</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <property name="margin">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="minimumSize">
+           <size>
+            <width>457</width>
+            <height>575</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>457</width>
+            <height>575</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox{
+	background-image: url(:/image/icon/background_b.png);
+}
+
+QPushButton{
+	border: 2px solid gray;
+	border-radius:3px;	
+	background-color: rgba(98, 98, 98, 60);
+}
+
+QPushButton:hover{
+	border: 2px solid rgb(170, 255, 127);
+}
+
+QPushButton:checked{
+	border: 4px solid rgb(255, 255, 0);
+}</string>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QPushButton" name="QPushButton_36">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>60</y>
+             <width>21</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_chestFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton">
+           <property name="geometry">
+            <rect>
+             <x>247</x>
+             <y>60</y>
+             <width>21</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_37">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>60</y>
+             <width>21</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>50</y>
+             <width>31</width>
+             <height>121</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_centerA_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="geometry">
+            <rect>
+             <x>130</x>
+             <y>85</y>
+             <width>16</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="geometry">
+            <rect>
+             <x>95</x>
+             <y>85</y>
+             <width>16</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckBFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>85</y>
+             <width>16</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_headFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_31">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>165</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine4Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_33">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>165</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine2Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_32">
+           <property name="geometry">
+            <rect>
+             <x>340</x>
+             <y>165</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_spine0Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_9">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>175</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/hip.png</normaloff>:/image/icon/hip.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_hipSwingerroot_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>260</y>
+             <width>31</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_foreLegScapulaFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="geometry">
+            <rect>
+             <x>153</x>
+             <y>370</y>
+             <width>21</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_foreLegElbowFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="geometry">
+            <rect>
+             <x>153</x>
+             <y>430</y>
+             <width>21</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_foreLegFootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="geometry">
+            <rect>
+             <x>155</x>
+             <y>490</y>
+             <width>21</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_foreLegMidfootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_17">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>260</y>
+             <width>31</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_foreLegScapulaFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_18">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>370</y>
+             <width>21</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_foreLegElbowFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_19">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>430</y>
+             <width>21</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_foreLegFootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_34">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>520</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legFrontIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_35">
+           <property name="geometry">
+            <rect>
+             <x>29</x>
+             <y>520</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legFrontIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_3">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>280</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legFrontFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_4">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>280</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legFrontFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_21">
+           <property name="geometry">
+            <rect>
+             <x>360</x>
+             <y>260</y>
+             <width>31</width>
+             <height>141</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindLegHipFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_22">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>260</y>
+             <width>31</width>
+             <height>141</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindLegHipFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_23">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>410</y>
+             <width>26</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindLegKneeFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_24">
+           <property name="geometry">
+            <rect>
+             <x>375</x>
+             <y>460</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindLegHockFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_26">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>410</y>
+             <width>26</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindLegKneeFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_27">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>460</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindLegHockFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_28">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>505</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindLegAnkleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_5">
+           <property name="geometry">
+            <rect>
+             <x>265</x>
+             <y>280</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_6">
+           <property name="geometry">
+            <rect>
+             <x>395</x>
+             <y>280</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_27">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>520</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_legIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_28">
+           <property name="geometry">
+            <rect>
+             <x>419</x>
+             <y>520</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_legIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_11">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>410</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_poleLegFront_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_12">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>410</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_poleLegFront_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_13">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>410</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_poleLeg_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_14">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>410</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/Vector.png</normaloff>:/image/icon/Vector.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_poleLeg_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_10">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Main</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_mainA_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>10</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>All</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_backAFk_ctl_0</string>
+             <string>C_backBFk_ctl_0</string>
+             <string>C_centerA_ctl_0</string>
+             <string>C_centerB_ctl_0</string>
+             <string>C_centerC_ctl_0</string>
+             <string>C_chestFk_ctl_0</string>
+             <string>C_eye_ctl_0</string>
+             <string>C_headFkIk_ctl_0</string>
+             <string>C_headFk_ctl_0</string>
+             <string>C_headSquash_ctl_0</string>
+             <string>C_hipMove_ctl_0</string>
+             <string>C_hipSwingerroot_ctl_0</string>
+             <string>C_mainA_ctl_0</string>
+             <string>C_mainB_ctl_0</string>
+             <string>C_neckAFk_ctl_0</string>
+             <string>C_neckBFk_ctl_0</string>
+             <string>C_neckquad0Ik_ctl_0</string>
+             <string>C_neckquad1Ik_ctl_0</string>
+             <string>C_neckquad2Ik_ctl_0</string>
+             <string>C_neckquadFkIk_ctl_0</string>
+             <string>C_spine0Ik_ctl_0</string>
+             <string>C_spine2Ik_ctl_0</string>
+             <string>C_spine4Ik_ctl_0</string>
+             <string>C_tail1Ik_ctl_0</string>
+             <string>C_tail2Ik_ctl_0</string>
+             <string>C_tail3Ik_ctl_0</string>
+             <string>C_tailAFk_ctl_0</string>
+             <string>C_tailBFk_ctl_0</string>
+             <string>C_tailCFk_ctl_0</string>
+             <string>C_tailFkIk_ctl_0</string>
+             <string>L_eye_ctl_0</string>
+             <string>L_fforeLegScapula_ctl_1</string>
+             <string>L_foreLegElbowFk_ctl_0</string>
+             <string>L_foreLegFootFk_ctl_0</string>
+             <string>L_foreLegMidfootFk_ctl_0</string>
+             <string>L_foreLegMidfootIk_ctl_0</string>
+             <string>L_foreLegScapulaFk_ctl_0</string>
+             <string>L_foreLegShoulderFk_ctl_0</string>
+             <string>L_foreLegToesFk_ctl_0</string>
+             <string>L_foreLegToesIk_ctl_0</string>
+             <string>L_foreLegWristIk_ctl_0</string>
+             <string>L_hindLegAnkleFk_ctl_0</string>
+             <string>L_hindLegHipFk_ctl_0</string>
+             <string>L_hindLegHipIk_ctl_0</string>
+             <string>L_hindLegHockFk_ctl_0</string>
+             <string>L_hindLegKneeFk_ctl_0</string>
+             <string>L_hindLegMidfootFk_ctl_0</string>
+             <string>L_hindLegMidfootIk_ctl_0</string>
+             <string>L_hindLegToesFk_ctl_0</string>
+             <string>L_hindLegToesIk_ctl_0</string>
+             <string>L_hindtoeAFk_ctl_0</string>
+             <string>L_hindtoeAFk_ctl_1</string>
+             <string>L_hindtoeAFk_ctl_2</string>
+             <string>L_hindtoeBFk_ctl_0</string>
+             <string>L_hindtoeCFk_ctl_1</string>
+             <string>L_hindtoeBFk_ctl_1</string>
+             <string>L_hindtoeBFk_ctl_2</string>
+             <string>L_hindtoeCFk_ctl_0</string>
+             <string>L_hindtoeCFk_ctl_2</string>
+             <string>L_legFkIk_ctl_0</string>
+             <string>L_legFrontFkIk_ctl_0</string>
+             <string>L_legFrontIkExtra_ctl_0</string>
+             <string>L_legFrontIk_ctl_0</string>
+             <string>L_legIkExtra_ctl_0</string>
+             <string>L_legIk_ctl_0</string>
+             <string>L_poleLegFront_ctl_0</string>
+             <string>L_poleLeg_ctl_0</string>
+             <string>L_toeAFk_ctl_0</string>
+             <string>L_toeAFk_ctl_1</string>
+             <string>L_toeAFk_ctl_2</string>
+             <string>L_toeBFk_ctl_0</string>
+             <string>L_toeBFk_ctl_1</string>
+             <string>L_toeBFk_ctl_2</string>
+             <string>L_toeCFk_ctl_0</string>
+             <string>L_toeCFk_ctl_1</string>
+             <string>L_toeCFk_ctl_2</string>
+             <string>R_eye_ctl_0</string>
+             <string>R_fforeLegScapula_ctl_1</string>
+             <string>R_foreLegElbowFk_ctl_0</string>
+             <string>R_foreLegFootFk_ctl_0</string>
+             <string>R_foreLegMidfootFk_ctl_0</string>
+             <string>R_foreLegMidfootIk_ctl_0</string>
+             <string>R_foreLegScapulaFk_ctl_0</string>
+             <string>R_foreLegShoulderFk_ctl_0</string>
+             <string>R_foreLegToesFk_ctl_0</string>
+             <string>R_foreLegToesIk_ctl_0</string>
+             <string>R_foreLegWristIk_ctl_0</string>
+             <string>R_hindLegAnkleFk_ctl_0</string>
+             <string>R_hindLegHipFk_ctl_0</string>
+             <string>R_hindLegHipIk_ctl_0</string>
+             <string>R_hindLegHockFk_ctl_0</string>
+             <string>R_hindLegKneeFk_ctl_0</string>
+             <string>R_hindLegMidfootFk_ctl_0</string>
+             <string>R_hindLegMidfootIk_ctl_0</string>
+             <string>R_hindLegToesFk_ctl_0</string>
+             <string>R_hindLegToesIk_ctl_0</string>
+             <string>R_hindtoeAFk_ctl_0</string>
+             <string>R_hindtoeAFk_ctl_1</string>
+             <string>R_hindtoeAFk_ctl_2</string>
+             <string>R_hindtoeBFk_ctl_0</string>
+             <string>R_hindtoeBFk_ctl_1</string>
+             <string>R_hindtoeBFk_ctl_2</string>
+             <string>R_hindtoeCFk_ctl_0</string>
+             <string>R_hindtoeCFk_ctl_1</string>
+             <string>R_hindtoeCFk_ctl_2</string>
+             <string>R_legFkIk_ctl_0</string>
+             <string>R_legFrontFkIk_ctl_0</string>
+             <string>R_legFrontIkExtra_ctl_0</string>
+             <string>R_legFrontIk_ctl_0</string>
+             <string>R_legIkExtra_ctl_0</string>
+             <string>R_legIk_ctl_0</string>
+             <string>R_poleLegFront_ctl_0</string>
+             <string>R_poleLeg_ctl_0</string>
+             <string>R_toeAFk_ctl_0</string>
+             <string>R_toeAFk_ctl_1</string>
+             <string>R_toeAFk_ctl_2</string>
+             <string>R_toeBFk_ctl_0</string>
+             <string>R_toeBFk_ctl_1</string>
+             <string>R_toeBFk_ctl_2</string>
+             <string>R_toeCFk_ctl_0</string>
+             <string>R_toeCFk_ctl_1</string>
+             <string>R_toeCFk_ctl_2</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QWidget" name="layoutWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>40</y>
+             <width>71</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="btn_Aim_2">
+              <property name="text">
+               <string>Aim</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="control" stdset="0">
+               <stringlist>
+                <string>C_eye_ctl_0</string>
+               </stringlist>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btn_AimR_2">
+                <property name="text">
+                 <string>R</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="control" stdset="0">
+                 <stringlist>
+                  <string>R_eye_ctl_0</string>
+                 </stringlist>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_AimL_2">
+                <property name="text">
+                 <string>L</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="control" stdset="0">
+                 <stringlist>
+                  <string>L_eye_ctl_0</string>
+                 </stringlist>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="pushButton_29">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>125</y>
+             <width>16</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_fforeLegScapula_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_30">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>65</y>
+             <width>16</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_fforeLegScapula_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_29">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>140</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckquad2Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_30">
+           <property name="geometry">
+            <rect>
+             <x>115</x>
+             <y>140</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKControl.png</normaloff>:/image/icon/IKControl.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckquad1Ik_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_7">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>165</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_neckquadFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_31">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>90</y>
+             <width>20</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_tailAFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_32">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>530</y>
+             <width>41</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_foreLegToesFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_20">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>490</y>
+             <width>21</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_foreLegMidfootFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_33">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>530</y>
+             <width>41</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_foreLegToesFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_34">
+           <property name="geometry">
+            <rect>
+             <x>380</x>
+             <y>505</y>
+             <width>21</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindLegAnkleFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_35">
+           <property name="geometry">
+            <rect>
+             <x>380</x>
+             <y>530</y>
+             <width>41</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindLegToesFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_36">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>530</y>
+             <width>41</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindLegToesFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_20">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_toeAFk_ctl_2</string>
+             <string>R_toeBFk_ctl_2</string>
+             <string>R_toeCFk_ctl_2</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_21">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_toeAFk_ctl_1</string>
+             <string>R_toeBFk_ctl_1</string>
+             <string>R_toeCFk_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_22">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_toeAFk_ctl_0</string>
+             <string>L_toeBFk_ctl_0</string>
+             <string>L_toeCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_23">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_toeAFk_ctl_1</string>
+             <string>L_toeBFk_ctl_1</string>
+             <string>L_toeCFk_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_24">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_toeAFk_ctl_2</string>
+             <string>L_toeBFk_ctl_2</string>
+             <string>L_toeCFk_ctl_2</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_25">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindtoeAFk_ctl_2</string>
+             <string>L_hindtoeBFk_ctl_2</string>
+             <string>L_hindtoeCFk_ctl_2</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_26">
+           <property name="geometry">
+            <rect>
+             <x>300</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindtoeAFk_ctl_0</string>
+             <string>L_hindtoeBFk_ctl_0</string>
+             <string>L_hindtoeCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_15">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>L_hindtoeAFk_ctl_1</string>
+             <string>L_hindtoeBFk_ctl_1</string>
+             <string>L_hindtoeCFk_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_16">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindtoeAFk_ctl_1</string>
+             <string>R_hindtoeBFk_ctl_1</string>
+             <string>R_hindtoeCFk_ctl_1</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_17">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindtoeAFk_ctl_2</string>
+             <string>R_hindtoeBFk_ctl_2</string>
+             <string>R_hindtoeCFk_ctl_2</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_18">
+           <property name="geometry">
+            <rect>
+             <x>380</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_hindtoeAFk_ctl_0</string>
+             <string>R_hindtoeBFk_ctl_0</string>
+             <string>R_hindtoeCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_8">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>135</y>
+             <width>20</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/IKFK.png</normaloff>:/image/icon/IKFK.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>C_tailFkIk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="QPushButton_19">
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>555</y>
+             <width>16</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="ControlSelecterUIASSERT.qrc">
+             <normaloff>:/image/icon/toe.png</normaloff>:/image/icon/toe.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="control" stdset="0">
+            <stringlist>
+             <string>R_toeAFk_ctl_0</string>
+             <string>R_toeBFk_ctl_0</string>
+             <string>R_toeCFk_ctl_0</string>
+            </stringlist>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>说明</string>
+       </attribute>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>451</width>
+          <height>290</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QPushButton" name="pushButton_11">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	border: 2px solid gray;
+	border-radius:3px;	
+	background-color: rgba(98, 98, 98, 60);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="control" stdset="0">
+                <stringlist>
+                 <string>C_centerA_ctl_0</string>
+                </stringlist>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>普通控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QPushButton" name="pushButton_12">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	background-color: rgba(170, 255, 127,160);
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="control" stdset="0">
+                <stringlist>
+                 <string>C_centerA_ctl_0</string>
+                </stringlist>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>身体控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="ControlSelecterUIASSERT.qrc">:/image/icon/IKFK.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>IKFK 切换控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="ControlSelecterUIASSERT.qrc">:/image/icon/IKControl.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>IK 控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="ControlSelecterUIASSERT.qrc">:/image/icon/Vector.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>IK 极向量控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QPushButton" name="pushButton_9">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="ControlSelecterUIASSERT.qrc">
+                 <normaloff>:/image/icon/toe.png</normaloff>
+                 <disabledoff>:/image/icon/toe.png</disabledoff>
+                 <disabledon>:/image/icon/toe.png</disabledon>:/image/icon/toe.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>脚趾 控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QPushButton" name="pushButton_10">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="ControlSelecterUIASSERT.qrc">
+                 <normaloff>:/image/icon/SDP.png</normaloff>
+                 <disabledoff>:/image/icon/SDP.png</disabledoff>:/image/icon/SDP.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>次级控制器</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="textEdit">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1. 默认只包含了通用控制器&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2. 按钮上右键点击可添加、移除控制器&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3.添加可随意添加，如果其他角色不包含此控制器也无所谓；&lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;移除要谨慎&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;。（&lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffff7f;&quot;&gt;对其他使用人员同时有效&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4.目前用户尚不能自己添加按钮，如有需要，请联系&lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ffaa7f;&quot;&gt;臧长龙。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="SetsButtonBox" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_SelectAll">
+           <property name="text">
+            <string>#   All   #</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_SelectBodyAll">
+           <property name="text">
+            <string>#   Body   #</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_SelectFaceAll">
+           <property name="text">
+            <string>#   Facel   #</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="0,0,0">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_TposeAllNew">
+           <property name="text">
+            <string>#   T pose( All )   #</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_TposeBodyNew">
+           <property name="text">
+            <string>#   T pose( Body )   #</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_TposeFaceNew">
+           <property name="text">
+            <string>#   T pose( Face )   #</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_TposeAll">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>T pose (all Control)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_TposeSelected">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>T pose (Selected Control)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>btn_LElbowFK</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>btn_Head</tabstop>
+  <tabstop>btn_Neck</tabstop>
+  <tabstop>btn_LClavicle</tabstop>
+  <tabstop>btn_RClavicle</tabstop>
+  <tabstop>btn_LArmFK</tabstop>
+  <tabstop>btn_RArmFK</tabstop>
+  <tabstop>btn_RMiddleBase</tabstop>
+  <tabstop>btn_RElbowFK</tabstop>
+  <tabstop>btn_chestFk</tabstop>
+  <tabstop>btn_backBFk</tabstop>
+  <tabstop>btn_backAFk</tabstop>
+  <tabstop>btn_centerA</tabstop>
+  <tabstop>btn_RLegFK</tabstop>
+  <tabstop>btn_LLegFK</tabstop>
+  <tabstop>btn_RKneeFK</tabstop>
+  <tabstop>btn_LKneeFK</tabstop>
+  <tabstop>btn_RAnkleFK</tabstop>
+  <tabstop>btn_LAnkleFK</tabstop>
+  <tabstop>btn_LtoeFK</tabstop>
+  <tabstop>btn_RtoeFK</tabstop>
+  <tabstop>btn_LHandFK</tabstop>
+  <tabstop>btn_RHandFK</tabstop>
+  <tabstop>btn_Mail</tabstop>
+  <tabstop>btn_RArmIK</tabstop>
+  <tabstop>btn_LArmIK</tabstop>
+  <tabstop>btn_LArmBendC</tabstop>
+  <tabstop>btn_LArmBendB</tabstop>
+  <tabstop>btn_LArmBendA</tabstop>
+  <tabstop>btn_RArmBendB</tabstop>
+  <tabstop>btn_RArmBendA</tabstop>
+  <tabstop>btn_RArmBendC</tabstop>
+  <tabstop>btn_All</tabstop>
+  <tabstop>btn_RArmPov</tabstop>
+  <tabstop>btn_LArmIKFK</tabstop>
+  <tabstop>btn_LArmPov</tabstop>
+  <tabstop>btn_RArmIKFK</tabstop>
+  <tabstop>btn_SpineIKC</tabstop>
+  <tabstop>btn_SpineIKB</tabstop>
+  <tabstop>btn_SpineIKA</tabstop>
+  <tabstop>btn_LInnerToe</tabstop>
+  <tabstop>btn_LMiddleToe</tabstop>
+  <tabstop>btn_LOuterToe</tabstop>
+  <tabstop>btn_ROuterToe</tabstop>
+  <tabstop>btn_RInnerToe</tabstop>
+  <tabstop>btn_RMiddleToe</tabstop>
+  <tabstop>btn_LLegIK</tabstop>
+  <tabstop>btn_LLegPov</tabstop>
+  <tabstop>btn_LLegIKFK</tabstop>
+  <tabstop>btn_LLegBend</tabstop>
+  <tabstop>btn_RLegBend</tabstop>
+  <tabstop>btn_RLegIKFK</tabstop>
+  <tabstop>btn_RLegPov</tabstop>
+  <tabstop>btn_RLegIK</tabstop>
+  <tabstop>btn_Lhand</tabstop>
+  <tabstop>btn_Rhand</tabstop>
+  <tabstop>btn_LThumbBase</tabstop>
+  <tabstop>btn_LThumbTip</tabstop>
+  <tabstop>btn_LThumbEnd</tabstop>
+  <tabstop>btn_RThumbEnd</tabstop>
+  <tabstop>btn_RThumbTip</tabstop>
+  <tabstop>btn_RThumbBase</tabstop>
+  <tabstop>btn_LIndexBase</tabstop>
+  <tabstop>btn_LIndexTip</tabstop>
+  <tabstop>btn_LIndexEnd</tabstop>
+  <tabstop>btn_LMiddleEnd</tabstop>
+  <tabstop>btn_LMiddleTip</tabstop>
+  <tabstop>btn_LMiddleBase</tabstop>
+  <tabstop>btn_LRingEnd</tabstop>
+  <tabstop>btn_LRingTip</tabstop>
+  <tabstop>btn_LRingBase</tabstop>
+  <tabstop>btn_LPinkyBase</tabstop>
+  <tabstop>btn_LPinkyTip</tabstop>
+  <tabstop>btn_LPinkyEnd</tabstop>
+  <tabstop>btn_RPinkyEnd</tabstop>
+  <tabstop>btn_RPinkyTip</tabstop>
+  <tabstop>btn_RPinkyBase</tabstop>
+  <tabstop>btn_RRingBase</tabstop>
+  <tabstop>btn_RRingTip</tabstop>
+  <tabstop>btn_RRingEnd</tabstop>
+  <tabstop>btn_RMiddleEnd</tabstop>
+  <tabstop>btn_RMiddleTip</tabstop>
+  <tabstop>cbx_CharacterList</tabstop>
+  <tabstop>btn_RIndexEnd</tabstop>
+  <tabstop>btn_RIndexTip</tabstop>
+  <tabstop>btn_RIndexBase</tabstop>
+  <tabstop>btn_RFingers</tabstop>
+  <tabstop>btn_LFingers</tabstop>
+  <tabstop>btn_Spine</tabstop>
+  <tabstop>btn_Hip</tabstop>
+  <tabstop>btn_Aim</tabstop>
+  <tabstop>btn_AimR</tabstop>
+  <tabstop>btn_AimL</tabstop>
+  <tabstop>btn_RLegBend_2</tabstop>
+  <tabstop>btn_RLegBend_3</tabstop>
+  <tabstop>btn_LLegBend_2</tabstop>
+  <tabstop>btn_LLegBend_3</tabstop>
+  <tabstop>QPushButton_36</tabstop>
+  <tabstop>QPushButton</tabstop>
+  <tabstop>QPushButton_37</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>QPushButton_31</tabstop>
+  <tabstop>QPushButton_33</tabstop>
+  <tabstop>QPushButton_32</tabstop>
+  <tabstop>QPushButton_9</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButton_8</tabstop>
+  <tabstop>pushButton_17</tabstop>
+  <tabstop>pushButton_18</tabstop>
+  <tabstop>pushButton_19</tabstop>
+  <tabstop>QPushButton_34</tabstop>
+  <tabstop>QPushButton_35</tabstop>
+  <tabstop>QPushButton_3</tabstop>
+  <tabstop>QPushButton_4</tabstop>
+  <tabstop>pushButton_21</tabstop>
+  <tabstop>pushButton_22</tabstop>
+  <tabstop>pushButton_23</tabstop>
+  <tabstop>pushButton_24</tabstop>
+  <tabstop>pushButton_26</tabstop>
+  <tabstop>pushButton_27</tabstop>
+  <tabstop>pushButton_28</tabstop>
+  <tabstop>QPushButton_5</tabstop>
+  <tabstop>QPushButton_6</tabstop>
+  <tabstop>QPushButton_27</tabstop>
+  <tabstop>QPushButton_28</tabstop>
+  <tabstop>QPushButton_11</tabstop>
+  <tabstop>QPushButton_12</tabstop>
+  <tabstop>QPushButton_13</tabstop>
+  <tabstop>QPushButton_14</tabstop>
+  <tabstop>QPushButton_10</tabstop>
+  <tabstop>QPushButton_2</tabstop>
+  <tabstop>btn_Aim_2</tabstop>
+  <tabstop>btn_AimR_2</tabstop>
+  <tabstop>btn_AimL_2</tabstop>
+  <tabstop>pushButton_29</tabstop>
+  <tabstop>pushButton_30</tabstop>
+  <tabstop>QPushButton_29</tabstop>
+  <tabstop>QPushButton_30</tabstop>
+  <tabstop>QPushButton_7</tabstop>
+  <tabstop>pushButton_31</tabstop>
+  <tabstop>pushButton_32</tabstop>
+  <tabstop>pushButton_20</tabstop>
+  <tabstop>pushButton_33</tabstop>
+  <tabstop>pushButton_34</tabstop>
+  <tabstop>pushButton_35</tabstop>
+  <tabstop>pushButton_36</tabstop>
+  <tabstop>QPushButton_20</tabstop>
+  <tabstop>QPushButton_21</tabstop>
+  <tabstop>QPushButton_22</tabstop>
+  <tabstop>QPushButton_23</tabstop>
+  <tabstop>QPushButton_24</tabstop>
+  <tabstop>QPushButton_25</tabstop>
+  <tabstop>QPushButton_26</tabstop>
+  <tabstop>QPushButton_15</tabstop>
+  <tabstop>QPushButton_16</tabstop>
+  <tabstop>QPushButton_17</tabstop>
+  <tabstop>QPushButton_18</tabstop>
+  <tabstop>QPushButton_8</tabstop>
+  <tabstop>QPushButton_19</tabstop>
+ </tabstops>
+ <resources>
+  <include location="ControlSelecterUIASSERT.qrc"/>
+ </resources>
+ <connections/>
+</ui>

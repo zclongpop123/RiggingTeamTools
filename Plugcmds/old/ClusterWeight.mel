@@ -1,0 +1,26 @@
+{
+    if(`window -ex "ClusterWeightWnd"`){deleteUI -wnd "ClusterWeightWnd";}
+    if(`windowPref -ex "ClusterWeightWnd"`){windowPref -r "ClusterWeightWnd";}
+    window -t "Cluster to Joint Weight" -w 300 -h 120 "ClusterWeightWnd";
+    
+    columnLayout;
+    rowColumnLayout -nc 3 -cw 1 220 -cw 2 50 -cw 3 30;
+    textField "ClusterModelFLD";
+    button -l " < < <" -c "python(\"LoadOBJ('ClusterModelFLD')\")";
+    button -l "Sel.."  -c "python(\"SelectOBJ('ClusterModelFLD')\")";
+    textField "SkinModelFLD";
+    button -l " < < <" -c "python(\"LoadOBJ('SkinModelFLD')\")";
+    button -l "Sel.."  -c "python(\"SelectOBJ('SkinModelFLD')\")";
+    textField "ClusterNameFLD";
+    button -l " < < <" -c "python(\"LoadOBJ('ClusterNameFLD')\")";
+    button -l "Sel.."  -c "python(\"SelectOBJ('ClusterNameFLD')\")";
+    textField "JointNameFLD";
+    button -l " < < <" -c "python(\"LoadOBJ('JointNameFLD')\")";
+    button -l "Sel.."  -c "python(\"SelectOBJ(''JointNameFLD')\")";
+    setParent..;
+    rowColumnLayout -nc 2 -cw 1 150 -cw 2 150;
+    button -l "<-   Joint to cluster     ->" -c "python(\"TransWeightToCluster()\")";
+
+    button -l "<-   cluster to Joint   ->" -c "python(\"TransWeightToJoint()\")";
+    showWindow "ClusterWeightWnd";
+}

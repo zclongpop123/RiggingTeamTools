@@ -1,0 +1,60 @@
+string $name="sz";
+
+
+file -import -type "mayaAscii" -ra true -rpr $name -options "v=0;p=17"  -pr -loadReferenceDepth "all" "C:/Users/renjunlu/Desktop/jiesuankaiguan.ma";
+
+string $hairName=$name+"_hair_ctrl";
+string $hairAttracion=$name+"_attractionScale";
+
+
+
+string $sel[]=`ls -sl` ;
+
+connectAttr  -f   ($sel[0]+".message") ($hairAttracion+".hairSystem");
+
+
+int $hairsize=`size($sel)`;
+int $m;
+
+for ($m=1; $m< $hairsize; $m++)
+
+{
+ 
+
+
+ 
+connectAttr -f ($sel[0]+".attractionScale[0]") ($sel[$m]+".attractionScale[0]");
+connectAttr -f ($sel[0]+".attractionScale[1]") ($sel[$m]+".attractionScale[1]");
+
+
+}
+
+
+
+for ($i in $sel)
+{
+    
+    
+    connectAttr -f ($hairName+".chainStartFrame") ($i+".startFrame");
+    connectAttr -f ($hairName+".chainStiffness") ($i+".stiffness");
+    connectAttr -f ($hairName+".chainDamping") ($i+".damp");
+    connectAttr -f ($hairName+".chainGravity") ($i+".gravity");
+    connectAttr -f ($hairName+".chainCollide") ($i+".collide");
+    connectAttr -f ($hairName+".StarCurveAttract") ($i+".startCurveAttract");
+
+      
+    
+}
+
+
+scriptNode  -beforeScript  "global proc hairAttract_panel_out() \n{ \nglobal string $v_hair_panel; \nstring $selName[] = `ls -sl`; \nif(`objExists(($selName[0]+\".hairAttract_button\"))`) \n{ \n\n\n\nstring $CF[] = `listConnections ($selName[0]+\".hairSystem\")`;\nstring $CFS[]=`listRelatives -s $CF[0]`;\n\nstring $notes = `getAttr ($selName[0]+\".notes\")`; \nif(size($notes)) \n{ \nstring $theobj = ($selName[0]+\".notes\"); \nstring $expObj=`getAttr $theobj`;\nstring $exp=($expObj+\" \"+ $CFS[0]+\".attractionScale\");\neval($exp); \n\n\n} \nelse \n{ \nerror \"please select the correctly facial CTRL ...\"; \n} \nselect -cl; \n} \n \n} \nint $facialPanel = `scriptJob -kws -e \"SelectionChanged\"    hairAttract_panel_out`;" -n hairExp;
+
+
+setAttr "hairExp.scriptType" 1;
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="image">
+    <file>icon/background_b.png</file>
+    <file>icon/hip.png</file>
+    <file>icon/toe.png</file>
+    <file>icon/IKControl.png</file>
+    <file>icon/IKFK.png</file>
+    <file>icon/SDP.png</file>
+    <file>icon/Vector.png</file>
+    <file>icon/background_a.png</file>
+  </qresource>
+</RCC>

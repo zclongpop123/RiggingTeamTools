@@ -1,0 +1,873 @@
+{
+    "btn_LRingBase": [], 
+    "pushButton_19": [
+        "R_foreLegFootFk_ctl_0"
+    ], 
+    "pushButton_18": [
+        "R_foreLegElbowFk_ctl_0"
+    ], 
+    "btn_Spine": [
+        "C_backAFk_ctl_0", 
+        "C_backBFk_ctl_0", 
+        "C_chestFk_ctl_0"
+    ], 
+    "pushButton_5": [
+        "L_foreLegScapulaFk_ctl_0"
+    ], 
+    "pushButton_17": [
+        "R_foreLegScapulaFk_ctl_0"
+    ], 
+    "pushButton_4": [
+        "C_headFk_ctl_0"
+    ], 
+    "QPushButton_15": [
+        "L_hindtoeAFk_ctl_1", 
+        "L_hindtoeBFk_ctl_1", 
+        "L_hindtoeCFk_ctl_1"
+    ], 
+    "btn_RMiddleEnd": [
+        "R_armMiddleCFk_ctl_0"
+    ], 
+    "btn_RHandFK": [
+        "R_armWristFk_ctl_0"
+    ], 
+    "QPushButton_16": [
+        "R_hindtoeAFk_ctl_1", 
+        "R_hindtoeBFk_ctl_1", 
+        "R_hindtoeCFk_ctl_1"
+    ], 
+    "QPushButton_11": [
+        "L_poleLegFront_ctl_0"
+    ], 
+    "QPushButton_10": [
+        "C_mainA_ctl_0"
+    ], 
+    "QPushButton_13": [
+        "L_poleLeg_ctl_0"
+    ], 
+    "QPushButton_12": [
+        "L_poleLegFront_ctl_0"
+    ], 
+    "QPushButton_19": [
+        "R_toeAFk_ctl_0", 
+        "R_toeBFk_ctl_0", 
+        "R_toeCFk_ctl_0"
+    ], 
+    "QPushButton_18": [
+        "R_hindtoeAFk_ctl_0", 
+        "R_hindtoeBFk_ctl_0", 
+        "R_hindtoeCFk_ctl_0"
+    ], 
+    "btn_Aim_2": [
+        "C_eye_ctl_0"
+    ], 
+    "btn_RLegFK": [
+        "R_legHipFk_ctl_0"
+    ], 
+    "btn_RThumbBase": [
+        "R_armThumbAFk_ctl_0"
+    ], 
+    "btn_LElbowFK": [
+        "L_armElbowFk_ctl_0"
+    ], 
+    "btn_LArmPov": [
+        "R_poleArm_ctl_0"
+    ], 
+    "btn_Mail": [
+        "C_mainA_ctl_0"
+    ], 
+    "btn_backBFk": [
+        "C_backBFk_ctl_0"
+    ], 
+    "btn_LMiddleTip": [
+        "L_armMiddleBFk_ctl_0"
+    ], 
+    "btn_RKneeFK": [
+        "R_legKneeFk_ctl_0"
+    ], 
+    "btn_RThumbTip": [
+        "R_armThumbBFk_ctl_0"
+    ], 
+    "btn_centerA": [
+        "C_centerA_ctl_0"
+    ], 
+    "QPushButton_20": [
+        "R_toeAFk_ctl_2", 
+        "R_toeBFk_ctl_2", 
+        "R_toeCFk_ctl_2"
+    ], 
+    "QPushButton_21": [
+        "R_toeAFk_ctl_1", 
+        "R_toeBFk_ctl_1", 
+        "R_toeCFk_ctl_1"
+    ], 
+    "QPushButton_22": [
+        "L_toeAFk_ctl_0", 
+        "L_toeBFk_ctl_0", 
+        "L_toeCFk_ctl_0"
+    ], 
+    "QPushButton_23": [
+        "L_toeAFk_ctl_1", 
+        "L_toeBFk_ctl_1", 
+        "L_toeCFk_ctl_1"
+    ], 
+    "QPushButton_24": [
+        "L_toeAFk_ctl_2", 
+        "L_toeBFk_ctl_2", 
+        "L_toeCFk_ctl_2"
+    ], 
+    "QPushButton_25": [
+        "L_hindtoeAFk_ctl_2", 
+        "L_hindtoeBFk_ctl_2", 
+        "L_hindtoeCFk_ctl_2"
+    ], 
+    "QPushButton_26": [
+        "L_hindtoeAFk_ctl_0", 
+        "L_hindtoeBFk_ctl_0", 
+        "L_hindtoeCFk_ctl_0"
+    ], 
+    "QPushButton_27": [
+        "L_legIk_ctl_0"
+    ], 
+    "QPushButton_28": [
+        "R_legIk_ctl_0"
+    ], 
+    "QPushButton_29": [
+        "C_neckquad2Ik_ctl_0"
+    ], 
+    "btn_LKneeFK": [
+        "L_legKneeFk_ctl_0"
+    ], 
+    "btn_LtoeFK": [
+        "L_legMidfootFk_ctl_0"
+    ], 
+    "btn_LFingers": [
+        "L_armCupFk_ctl_0", 
+        "L_armThumbAFk_ctl_0", 
+        "L_armThumbBFk_ctl_0", 
+        "L_armThumbCFk_ctl_0", 
+        "L_armIndexAFk_ctl_0", 
+        "L_armIndexBFk_ctl_0", 
+        "L_armIndexCFk_ctl_0", 
+        "L_armMiddleAFk_ctl_0", 
+        "L_armMiddleBFk_ctl_0", 
+        "L_armMiddleCFk_ctl_0", 
+        "L_armPinkyAFk_ctl_0", 
+        "L_armPinkyBFk_ctl_0", 
+        "L_armPinkyCFk_ctl_0"
+    ], 
+    "btn_Lhand": [
+        "L_armCupFk_ctl_0"
+    ], 
+    "btn_chestFk": [
+        "C_chestFk_ctl_0"
+    ], 
+    "btn_AimL": [
+        "L_eye_ctl_0"
+    ], 
+    "btn_RLegBend": [
+        "R_bendlegHip_ctl_0"
+    ], 
+    "pushButton_36": [
+        "L_hindLegToesFk_ctl_0"
+    ], 
+    "pushButton_35": [
+        "R_hindLegToesFk_ctl_0"
+    ], 
+    "pushButton_34": [
+        "R_hindLegAnkleFk_ctl_0"
+    ], 
+    "pushButton_33": [
+        "R_foreLegToesFk_ctl_0"
+    ], 
+    "pushButton_32": [
+        "L_foreLegToesFk_ctl_0"
+    ], 
+    "pushButton_31": [
+        "C_tailAFk_ctl_0"
+    ], 
+    "pushButton_30": [
+        "R_fforeLegScapula_ctl_1"
+    ], 
+    "QPushButton_37": [
+        "C_backAFk_ctl_0"
+    ], 
+    "QPushButton_36": [
+        "C_chestFk_ctl_0"
+    ], 
+    "QPushButton_35": [
+        "R_legFrontIk_ctl_0"
+    ], 
+    "QPushButton_34": [
+        "L_legFrontIk_ctl_0"
+    ], 
+    "QPushButton_33": [
+        "C_spine2Ik_ctl_0"
+    ], 
+    "btn_Hip": [
+        "C_hipSwingerroot_ctl_0"
+    ], 
+    "QPushButton_31": [
+        "C_spine4Ik_ctl_0"
+    ], 
+    "QPushButton_30": [
+        "C_neckquad1Ik_ctl_0"
+    ], 
+    "btn_RIndexTip": [
+        "R_armIndexBFk_ctl_0"
+    ], 
+    "btn_LLegBend_3": [
+        "L_bendlegKnee_ctl_0"
+    ], 
+    "btn_LLegBend_2": [
+        "L_bend0legKnee_ctl_0"
+    ], 
+    "btn_RIndexEnd": [
+        "R_armIndexCFk_ctl_0"
+    ], 
+    "btn_RMiddleToe": [
+        "R_middleToeAFk_ctl_0", 
+        "R_middleToeBFk_ctl_0"
+    ], 
+    "btn_RClavicle": [
+        "R_armClavicleFk_ctl_0"
+    ], 
+    "QPushButton": [
+        "C_backBFk_ctl_0"
+    ], 
+    "btn_LRingTip": [], 
+    "btn_RIndexBase": [
+        "R_armIndexAFk_ctl_0"
+    ], 
+    "btn_RThumbEnd": [
+        "R_armThumbCFk_ctl_0"
+    ], 
+    "btn_LThumbTip": [
+        "L_armThumbBFk_ctl_0"
+    ], 
+    "btn_Aim": [
+        "C_eye_ctl_0"
+    ], 
+    "QPushButton_14": [
+        "R_poleLeg_ctl_0"
+    ], 
+    "QPushButton_17": [
+        "R_hindtoeAFk_ctl_2", 
+        "R_hindtoeBFk_ctl_2", 
+        "R_hindtoeCFk_ctl_2"
+    ], 
+    "btn_LIndexTip": [
+        "L_armIndexBFk_ctl_0"
+    ], 
+    "pushButton_20": [
+        "R_foreLegMidfootFk_ctl_0"
+    ], 
+    "pushButton_21": [
+        "R_hindLegHipFk_ctl_0"
+    ], 
+    "pushButton_22": [
+        "L_hindLegHipFk_ctl_0"
+    ], 
+    "pushButton_23": [
+        "R_hindLegKneeFk_ctl_0"
+    ], 
+    "pushButton_24": [
+        "R_hindLegHockFk_ctl_0"
+    ], 
+    "pushButton_26": [
+        "L_hindLegKneeFk_ctl_0"
+    ], 
+    "pushButton_27": [
+        "L_hindLegHockFk_ctl_0"
+    ], 
+    "pushButton_28": [
+        "L_hindLegAnkleFk_ctl_0"
+    ], 
+    "pushButton_29": [
+        "L_fforeLegScapula_ctl_1"
+    ], 
+    "btn_LIndexBase": [
+        "L_armIndexAFk_ctl_0"
+    ], 
+    "btn_LThumbEnd": [
+        "L_armThumbCFk_ctl_0"
+    ], 
+    "btn_RtoeFK": [
+        "R_legMidfootFk_ctl_0"
+    ], 
+    "btn_RFingers": [
+        "R_armCupFk_ctl_0", 
+        "R_armThumbAFk_ctl_0", 
+        "R_armThumbBFk_ctl_0", 
+        "R_armThumbCFk_ctl_0", 
+        "R_armIndexAFk_ctl_0", 
+        "R_armIndexBFk_ctl_0", 
+        "R_armIndexCFk_ctl_0", 
+        "R_armMiddleAFk_ctl_0", 
+        "R_armMiddleBFk_ctl_0", 
+        "R_armMiddleCFk_ctl_0", 
+        "R_armPinkyAFk_ctl_0", 
+        "R_armPinkyBFk_ctl_0", 
+        "R_armPinkyCFk_ctl_0"
+    ], 
+    "btn_LArmFK": [
+        "L_armShoulderFk_ctl_0"
+    ], 
+    "btn_LClavicle": [
+        "L_armClavicleFk_ctl_0"
+    ], 
+    "btn_LRingEnd": [], 
+    "pushButton_3": [
+        "C_neckBFk_ctl_0"
+    ], 
+    "pushButton_2": [
+        "C_neckAFk_ctl_0"
+    ], 
+    "btn_RLegBend_3": [
+        "R_bendlegKnee_ctl_0"
+    ], 
+    "btn_RLegBend_2": [
+        "R_bend0legKnee_ctl_0"
+    ], 
+    "pushButton_7": [
+        "L_foreLegFootFk_ctl_0"
+    ], 
+    "pushButton_6": [
+        "L_foreLegElbowFk_ctl_0"
+    ], 
+    "pushButton_8": [
+        "L_foreLegMidfootFk_ctl_0"
+    ], 
+    "btn_LThumbBase": [
+        "L_armThumbAFk_ctl_0"
+    ], 
+    "btn_All": [
+        "C_backAFk_ctl_0", 
+        "C_backBFk_ctl_0", 
+        "C_button_ctl_0_grp", 
+        "C_centerA_ctl_0", 
+        "C_centerB_ctl_0", 
+        "C_centerC_ctl_0", 
+        "C_chestFk_ctl_0", 
+        "C_eyeFacial_ctl_0", 
+        "C_eye_ctl_0", 
+        "C_freeJaw_ctl_0", 
+        "C_headFkIk_ctl_0", 
+        "C_headFk_ctl_0", 
+        "C_headSquash_ctl_0", 
+        "C_hipSwingerroot_ctl_0", 
+        "C_mainA_ctl_0", 
+        "C_mainB_ctl_0", 
+        "C_neckExtra_ctl_0", 
+        "C_neckFk_ctl_0", 
+        "C_spine0Ik_ctl_0", 
+        "C_spine2Ik_ctl_0", 
+        "C_spine4Ik_ctl_0", 
+        "C_strapA_ctl_0", 
+        "C_strapB_ctl_0", 
+        "C_strapC_ctl_0", 
+        "C_strapD_ctl_0", 
+        "C_strapE_ctl_0", 
+        "C_strapF_ctl_0", 
+        "C_strapG_ctl_0", 
+        "C_strapH_ctl_0", 
+        "C_strapI_ctl_0", 
+        "C_strapJ_ctl_0", 
+        "C_strapK_ctl_0", 
+        "C_tailAFk_ctl_0", 
+        "C_tailBFk_ctl_0", 
+        "C_tailBIk_ctl_0", 
+        "C_tailCFk_ctl_0", 
+        "C_tailCIk_ctl_0", 
+        "C_tailDFk_ctl_0", 
+        "C_tailDIk_ctl_0", 
+        "C_tailEFk_ctl_0", 
+        "C_tailEIk_ctl_0", 
+        "C_tailFFk_ctl_0", 
+        "C_tailFIk_ctl_0", 
+        "C_tailGFk_ctl_0", 
+        "C_tailGIk_ctl_0", 
+        "C_tailHFk_ctl_0", 
+        "C_tailHIk_ctl_0", 
+        "C_tailIFk_ctl_0", 
+        "C_tailIIk_ctl_0", 
+        "C_tailJFk_ctl_0", 
+        "C_tailJIk_ctl_0", 
+        "C_tailKFk_ctl_0", 
+        "C_tailKIk_ctl_0", 
+        "C_tongueAFk_ctl_0", 
+        "C_tongueAFk_ctl_0_grp", 
+        "C_tongueBFk_ctl_0", 
+        "C_tongueBFk_ctl_0_grp", 
+        "C_tongueCFk_ctl_0", 
+        "C_tongueCFk_ctl_0_grp", 
+        "C_tongueDFk_ctl_0", 
+        "C_tongueDFk_ctl_0_grp", 
+        "C_tongueEFk_ctl_0", 
+        "C_tongueEFk_ctl_0_grp", 
+        "C_tongueFFk_ctl_0", 
+        "C_tongueFFk_ctl_0_grp", 
+        "C_tongueGFk_ctl_0", 
+        "C_tongueGFk_ctl_0_grp", 
+        "C_tongueHFk_ctl_0", 
+        "C_tongueHFk_ctl_0_grp", 
+        "C_tongueIFk_ctl_0", 
+        "C_tongueIFk_ctl_0_grp", 
+        "C_tongueIKA_ctl_0", 
+        "C_tongueIKB_ctl_0", 
+        "C_tongueIKC_ctl_0", 
+        "C_tongueJFk_ctl_0", 
+        "C_tongueJFk_ctl_0_grp", 
+        "C_tongueKFk_ctl_0", 
+        "C_tongueKFk_ctl_0_grp", 
+        "L_armClavicleFk_ctl_0", 
+        "L_armCupFk_ctl_0", 
+        "L_armElbowFk_ctl_0", 
+        "L_armFkIk_ctl_0", 
+        "L_armIk_ctl_0", 
+        "L_armIndexAFk_ctl_0", 
+        "L_armIndexBFk_ctl_0", 
+        "L_armIndexCFk_ctl_0", 
+        "L_armMiddleAFk_ctl_0", 
+        "L_armMiddleBFk_ctl_0", 
+        "L_armMiddleCFk_ctl_0", 
+        "L_armPinkyAFk_ctl_0", 
+        "L_armPinkyBFk_ctl_0", 
+        "L_armPinkyCFk_ctl_0", 
+        "L_armShoulderFk_ctl_0", 
+        "L_armThumbAFk_ctl_0", 
+        "L_armThumbBFk_ctl_0", 
+        "L_armThumbCFk_ctl_0", 
+        "L_armWristFk_ctl_0", 
+        "L_arrow_ctl_0", 
+        "L_bend0armElbow_ctl_0", 
+        "L_bend0legKnee_ctl_0", 
+        "L_bendarmElbow_ctl_0", 
+        "L_bendarmShoulder_ctl_0", 
+        "L_bendlegHip_ctl_0", 
+        "L_bendlegKnee_ctl_0", 
+        "L_browInOffsetOm_ctl_0", 
+        "L_browMidOffsetOm_ctl_0", 
+        "L_browOutOffsetOm_ctl_0", 
+        "L_cheekBackOffsetOm_ctl_0", 
+        "L_cheekOffsetOm_ctl_0", 
+        "L_cheekOutOffsetOm_ctl_0", 
+        "L_cheekTopOffsetOm_ctl_0", 
+        "L_eyeFacial_ctl_0", 
+        "L_eyeFK_cth_0|L_eye_ctl_0", 
+        "L_eyelidBottomInnerOm_ctl_0", 
+        "L_eyelidBottomMidOm_ctl_0", 
+        "L_eyelidBottomOuterOm_ctl_0", 
+        "L_eyelidTopInnerOm_ctl_0", 
+        "L_eyelidTopMidOm_ctl_0", 
+        "L_eyelidTopOuterOm_ctl_0", 
+        "L_furrowOffsetOm_ctl_0", 
+        "L_hemBack_ctl_0", 
+        "L_hemFront_ctl_0", 
+        "L_hemInner_ctl_0", 
+        "L_hemOuter_ctl_0", 
+        "L_hem_ctl_0", 
+        "L_innerToeAFk_ctl_0", 
+        "L_innerToeBFk_ctl_0", 
+        "L_jawlineInOffsetOm_ctl_0", 
+        "L_jawlineOffsetOm_ctl_0", 
+        "L_legAnkleFk_ctl_0", 
+        "L_legFkIk_ctl_0", 
+        "L_legHipFk_ctl_0", 
+        "L_legHipIk_ctl_0", 
+        "L_legIk_ctl_0", 
+        "L_legKneeFk_ctl_0", 
+        "L_legMidfootFk_ctl_0", 
+        "L_legMidfootIk_ctl_0", 
+        "L_legToesFk_ctl_0", 
+        "L_legToesIk_ctl_0", 
+        "L_middleToeAFk_ctl_0", 
+        "L_middleToeBFk_ctl_0", 
+        "L_noseOffsetOm_ctl_0", 
+        "L_outerToeAFk_ctl_0", 
+        "L_outerToeBFk_ctl_0", 
+        "L_poleArm_ctl_0", 
+        "L_poleLeg_ctl_0", 
+        "R_armClavicleFk_ctl_0", 
+        "R_armCupFk_ctl_0", 
+        "R_armElbowFk_ctl_0", 
+        "R_armFkIk_ctl_0", 
+        "R_armIk_ctl_0", 
+        "R_armIndexAFk_ctl_0", 
+        "R_armIndexBFk_ctl_0", 
+        "R_armIndexCFk_ctl_0", 
+        "R_armMiddleAFk_ctl_0", 
+        "R_armMiddleBFk_ctl_0", 
+        "R_armMiddleCFk_ctl_0", 
+        "R_armPinkyAFk_ctl_0", 
+        "R_armPinkyBFk_ctl_0", 
+        "R_armPinkyCFk_ctl_0", 
+        "R_armShoulderFk_ctl_0", 
+        "R_armThumbAFk_ctl_0", 
+        "R_armThumbBFk_ctl_0", 
+        "R_armThumbCFk_ctl_0", 
+        "R_armWristFk_ctl_0", 
+        "R_arrow_ctl_0", 
+        "R_bend0armElbow_ctl_0", 
+        "R_bend0legKnee_ctl_0", 
+        "R_bendarmElbow_ctl_0", 
+        "R_bendarmShoulder_ctl_0", 
+        "R_bendlegHip_ctl_0", 
+        "R_bendlegKnee_ctl_0", 
+        "R_browInOffsetOm_ctl_0", 
+        "R_browMidOffsetOm_ctl_0", 
+        "R_browOutOffsetOm_ctl_0", 
+        "R_cheekBackOffsetOm_ctl_0", 
+        "R_cheekOffsetOm_ctl_0", 
+        "R_cheekOutOffsetOm_ctl_0", 
+        "R_cheekTopOffsetOm_ctl_0", 
+        "R_eyeFacial_ctl_0", 
+        "R_eyeFK_cth_0|R_eye_ctl_0", 
+        "R_eyelidBottomInnerOm_ctl_0", 
+        "R_eyelidBottomMidOm_ctl_0", 
+        "R_eyelidBottomOuterOm_ctl_0", 
+        "R_eyelidTopInnerOm_ctl_0", 
+        "R_eyelidTopMidOm_ctl_0", 
+        "R_eyelidTopOuterOm_ctl_0", 
+        "R_furrowOffsetOm_ctl_0", 
+        "R_hemBack_ctl_0", 
+        "R_hemFront_ctl_0", 
+        "R_hemInner_ctl_0", 
+        "R_hemOuter_ctl_0", 
+        "R_hem_ctl_0", 
+        "R_innerToeAFk_ctl_0", 
+        "R_innerToeBFk_ctl_0", 
+        "R_jawlineInOffsetOm_ctl_0", 
+        "R_jawlineOffsetOm_ctl_0", 
+        "R_legAnkleFk_ctl_0", 
+        "R_legFkIk_ctl_0", 
+        "R_legHipFk_ctl_0", 
+        "R_legHipIk_ctl_0", 
+        "R_legIk_ctl_0", 
+        "R_legKneeFk_ctl_0", 
+        "R_legMidfootFk_ctl_0", 
+        "R_legMidfootIk_ctl_0", 
+        "R_legToesFk_ctl_0", 
+        "R_legToesIk_ctl_0", 
+        "R_middleToeAFk_ctl_0", 
+        "R_middleToeBFk_ctl_0", 
+        "R_noseOffsetOm_ctl_0", 
+        "R_outerToeAFk_ctl_0", 
+        "R_outerToeBFk_ctl_0", 
+        "R_poleArm_ctl_0", 
+        "R_poleLeg_ctl_0"
+    ], 
+    "btn_RArmPov": [
+        "L_poleArm_ctl_0"
+    ], 
+    "btn_LLegIKFK": [
+        "L_legFkIk_ctl_0"
+    ], 
+    "btn_Head": [
+        "C_headFk_ctl_0"
+    ], 
+    "btn_RLegIKFK": [
+        "R_legFkIk_ctl_0"
+    ], 
+    "btn_LMiddleEnd": [
+        "L_armMiddleCFk_ctl_0"
+    ], 
+    "btn_RMiddleBase": [
+        "R_armMiddleAFk_ctl_0"
+    ], 
+    "btn_RArmIK": [
+        "R_armIk_ctl_0"
+    ], 
+    "btn_backAFk": [
+        "C_backAFk_ctl_0"
+    ], 
+    "btn_LLegFK": [
+        "L_legHipFk_ctl_0"
+    ], 
+    "btn_Rhand": [
+        "R_armCupFk_ctl_0"
+    ], 
+    "btn_LOuterToe": [
+        "L_outerToeAFk_ctl_0", 
+        "L_outerToeBFk_ctl_0"
+    ], 
+    "btn_LPinkyEnd": [
+        "L_armPinkyCFk_ctl_0"
+    ], 
+    "QPushButton_5": [
+        "L_legFkIk_ctl_0"
+    ], 
+    "QPushButton_4": [
+        "L_legFrontFkIk_ctl_0"
+    ], 
+    "QPushButton_7": [
+        "C_neckquadFkIk_ctl_0"
+    ], 
+    "QPushButton_6": [
+        "R_legFkIk_ctl_0"
+    ], 
+    "btn_LArmBendA": [
+        "L_bendarmShoulder_ctl_0"
+    ], 
+    "btn_LArmBendC": [
+        "L_bendarmElbow_ctl_0"
+    ], 
+    "btn_LArmBendB": [
+        "L_bend0armElbow_ctl_0"
+    ], 
+    "btn_RArmFK": [
+        "R_armShoulderFk_ctl_0"
+    ], 
+    "QPushButton_9": [
+        "C_hipSwingerroot_ctl_0"
+    ], 
+    "QPushButton_8": [
+        "C_tailFkIk_ctl_0"
+    ], 
+    "btn_AimR_2": [
+        "R_eye_ctl_0"
+    ], 
+    "btn_RMiddleTip": [
+        "R_armMiddleBFk_ctl_0"
+    ], 
+    "btn_RAnkleFK": [
+        "R_legAnkleFk_ctl_0"
+    ], 
+    "btn_LIndexEnd": [
+        "L_armIndexCFk_ctl_0"
+    ], 
+    "btn_RRingTip": [], 
+    "btn_AimL_2": [
+        "L_eye_ctl_0"
+    ], 
+    "btn_LArmIKFK": [
+        "L_armFkIk_ctl_0"
+    ], 
+    "pushButton": [
+        "C_centerA_ctl_0"
+    ], 
+    "btn_RPinkyBase": [
+        "R_armPinkyAFk_ctl_0"
+    ], 
+    "btn_RRingBase": [], 
+    "btn_LPinkyTip": [
+        "L_armPinkyBFk_ctl_0"
+    ], 
+    "btn_LLegBend": [
+        "L_bendlegHip_ctl_0"
+    ], 
+    "btn_RPinkyEnd": [
+        "R_armPinkyCFk_ctl_0"
+    ], 
+    "btn_LArmIK": [
+        "L_armIk_ctl_0"
+    ], 
+    "btn_LPinkyBase": [
+        "L_armPinkyAFk_ctl_0"
+    ], 
+    "btn_LHandFK": [
+        "L_armWristFk_ctl_0"
+    ], 
+    "btn_LLegIK": [
+        "L_legIk_ctl_0"
+    ], 
+    "btn_RLegIK": [
+        "R_legIk_ctl_0"
+    ], 
+    "btn_LInnerToe": [
+        "L_innerToeAFk_ctl_0", 
+        "L_innerToeBFk_ctl_0"
+    ], 
+    "QPushButton_3": [
+        "R_legFrontFkIk_ctl_0"
+    ], 
+    "btn_RArmIKFK": [
+        "R_armFkIk_ctl_0"
+    ], 
+    "btn_AimR": [
+        "R_eye_ctl_0"
+    ], 
+    "QPushButton_2": [
+        "C_backAFk_ctl_0", 
+        "C_backBFk_ctl_0", 
+        "C_centerA_ctl_0", 
+        "C_centerB_ctl_0", 
+        "C_centerC_ctl_0", 
+        "C_chestFk_ctl_0", 
+        "C_eye_ctl_0", 
+        "C_headFkIk_ctl_0", 
+        "C_headFk_ctl_0", 
+        "C_headSquash_ctl_0", 
+        "C_hipMove_ctl_0", 
+        "C_hipSwingerroot_ctl_0", 
+        "C_mainA_ctl_0", 
+        "C_mainB_ctl_0", 
+        "C_neckAFk_ctl_0", 
+        "C_neckBFk_ctl_0", 
+        "C_neckquad0Ik_ctl_0", 
+        "C_neckquad1Ik_ctl_0", 
+        "C_neckquad2Ik_ctl_0", 
+        "C_neckquadFkIk_ctl_0", 
+        "C_spine0Ik_ctl_0", 
+        "C_spine2Ik_ctl_0", 
+        "C_spine4Ik_ctl_0", 
+        "C_tail1Ik_ctl_0", 
+        "C_tail2Ik_ctl_0", 
+        "C_tail3Ik_ctl_0", 
+        "C_tailAFk_ctl_0", 
+        "C_tailBFk_ctl_0", 
+        "C_tailCFk_ctl_0", 
+        "C_tailFkIk_ctl_0", 
+        "L_eye_ctl_0", 
+        "L_fforeLegScapula_ctl_1", 
+        "L_foreLegElbowFk_ctl_0", 
+        "L_foreLegFootFk_ctl_0", 
+        "L_foreLegMidfootFk_ctl_0", 
+        "L_foreLegMidfootIk_ctl_0", 
+        "L_foreLegScapulaFk_ctl_0", 
+        "L_foreLegShoulderFk_ctl_0", 
+        "L_foreLegToesFk_ctl_0", 
+        "L_foreLegToesIk_ctl_0", 
+        "L_foreLegWristIk_ctl_0", 
+        "L_hindLegAnkleFk_ctl_0", 
+        "L_hindLegHipFk_ctl_0", 
+        "L_hindLegHipIk_ctl_0", 
+        "L_hindLegHockFk_ctl_0", 
+        "L_hindLegKneeFk_ctl_0", 
+        "L_hindLegMidfootFk_ctl_0", 
+        "L_hindLegMidfootIk_ctl_0", 
+        "L_hindLegToesFk_ctl_0", 
+        "L_hindLegToesIk_ctl_0", 
+        "L_hindtoeAFk_ctl_0", 
+        "L_hindtoeAFk_ctl_1", 
+        "L_hindtoeAFk_ctl_2", 
+        "L_hindtoeBFk_ctl_0", 
+        "L_hindtoeCFk_ctl_1", 
+        "L_hindtoeBFk_ctl_1", 
+        "L_hindtoeBFk_ctl_2", 
+        "L_hindtoeCFk_ctl_0", 
+        "L_hindtoeCFk_ctl_2", 
+        "L_legFkIk_ctl_0", 
+        "L_legFrontFkIk_ctl_0", 
+        "L_legFrontIkExtra_ctl_0", 
+        "L_legFrontIk_ctl_0", 
+        "L_legIkExtra_ctl_0", 
+        "L_legIk_ctl_0", 
+        "L_poleLegFront_ctl_0", 
+        "L_poleLeg_ctl_0", 
+        "L_toeAFk_ctl_0", 
+        "L_toeAFk_ctl_1", 
+        "L_toeAFk_ctl_2", 
+        "L_toeBFk_ctl_0", 
+        "L_toeBFk_ctl_1", 
+        "L_toeBFk_ctl_2", 
+        "L_toeCFk_ctl_0", 
+        "L_toeCFk_ctl_1", 
+        "L_toeCFk_ctl_2", 
+        "R_eye_ctl_0", 
+        "R_fforeLegScapula_ctl_1", 
+        "R_foreLegElbowFk_ctl_0", 
+        "R_foreLegFootFk_ctl_0", 
+        "R_foreLegMidfootFk_ctl_0", 
+        "R_foreLegMidfootIk_ctl_0", 
+        "R_foreLegScapulaFk_ctl_0", 
+        "R_foreLegShoulderFk_ctl_0", 
+        "R_foreLegToesFk_ctl_0", 
+        "R_foreLegToesIk_ctl_0", 
+        "R_foreLegWristIk_ctl_0", 
+        "R_hindLegAnkleFk_ctl_0", 
+        "R_hindLegHipFk_ctl_0", 
+        "R_hindLegHipIk_ctl_0", 
+        "R_hindLegHockFk_ctl_0", 
+        "R_hindLegKneeFk_ctl_0", 
+        "R_hindLegMidfootFk_ctl_0", 
+        "R_hindLegMidfootIk_ctl_0", 
+        "R_hindLegToesFk_ctl_0", 
+        "R_hindLegToesIk_ctl_0", 
+        "R_hindtoeAFk_ctl_0", 
+        "R_hindtoeAFk_ctl_1", 
+        "R_hindtoeAFk_ctl_2", 
+        "R_hindtoeBFk_ctl_0", 
+        "R_hindtoeBFk_ctl_1", 
+        "R_hindtoeBFk_ctl_2", 
+        "R_hindtoeCFk_ctl_0", 
+        "R_hindtoeCFk_ctl_1", 
+        "R_hindtoeCFk_ctl_2", 
+        "R_legFkIk_ctl_0", 
+        "R_legFrontFkIk_ctl_0", 
+        "R_legFrontIkExtra_ctl_0", 
+        "R_legFrontIk_ctl_0", 
+        "R_legIkExtra_ctl_0", 
+        "R_legIk_ctl_0", 
+        "R_poleLegFront_ctl_0", 
+        "R_poleLeg_ctl_0", 
+        "R_toeAFk_ctl_0", 
+        "R_toeAFk_ctl_1", 
+        "R_toeAFk_ctl_2", 
+        "R_toeBFk_ctl_0", 
+        "R_toeBFk_ctl_1", 
+        "R_toeBFk_ctl_2", 
+        "R_toeCFk_ctl_0", 
+        "R_toeCFk_ctl_1", 
+        "R_toeCFk_ctl_2"
+    ], 
+    "btn_Neck": [
+        "C_neckFk_ctl_0", 
+        "C_neckBFk_ctl_0", 
+        "C_neckCFk_ctl_0", 
+        "C_neckDFk_ctl_0", 
+        "C_neckAFk_ctl_0"
+    ], 
+    "QPushButton_32": [
+        "C_spine0Ik_ctl_0"
+    ], 
+    "btn_LLegPov": [
+        "L_poleLeg_ctl_0"
+    ], 
+    "btn_LAnkleFK": [
+        "L_legAnkleFk_ctl_0"
+    ], 
+    "btn_RLegPov": [
+        "R_poleLeg_ctl_0"
+    ], 
+    "btn_RArmBendC": [
+        "R_bendarmElbow_ctl_0"
+    ], 
+    "btn_RArmBendB": [
+        "R_bend0armElbow_ctl_0"
+    ], 
+    "btn_RArmBendA": [
+        "R_bendarmShoulder_ctl_0"
+    ], 
+    "btn_SpineIKA": [
+        "C_spine0Ik_ctl_0"
+    ], 
+    "btn_SpineIKB": [
+        "C_spine2Ik_ctl_0"
+    ], 
+    "btn_SpineIKC": [
+        "C_spine4Ik_ctl_0"
+    ], 
+    "btn_LMiddleToe": [
+        "L_middleToeAFk_ctl_0", 
+        "L_middleToeBFk_ctl_0"
+    ], 
+    "btn_ROuterToe": [
+        "R_outerToeAFk_ctl_0", 
+        "R_outerToeBFk_ctl_0"
+    ], 
+    "btn_RInnerToe": [
+        "R_innerToeAFk_ctl_0", 
+        "R_innerToeBFk_ctl_0"
+    ], 
+    "btn_RPinkyTip": [
+        "R_armPinkyBFk_ctl_0"
+    ], 
+    "btn_RElbowFK": [
+        "R_armElbowFk_ctl_0"
+    ], 
+    "btn_LMiddleBase": [
+        "L_armMiddleAFk_ctl_0"
+    ], 
+    "btn_RRingEnd": []
+}
