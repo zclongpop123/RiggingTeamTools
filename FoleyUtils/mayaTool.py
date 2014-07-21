@@ -268,3 +268,67 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
     mfn.closestPoint(p, u_ptr, 0.001, maya.OpenMaya.MSpace.kWorld)
                     
     return u_util.getDouble(u_ptr)
+
+
+
+#==============================================
+#                 Skin weights                #
+#==============================================
+
+
+def getSkinWeightData(model):
+    data = {}
+    #-
+    skinNode = findSkinCluster(model)
+
+    if skinNode == '':
+        return data
+    
+    #- get influcence
+    influence = maya.cmds.skinCluster(model, q=True, inf=True)
+    
+    #- get weights
+    weightList = maya.cmds.getAttr('%s.weightList[:].weights'%skinNode)
+    for i in range(len(weightList)):
+        weights = []
+        for ii in range(len(influence)):
+            value = maya.cmds.getAttr('%s.wl[%d].w[%d]'%(skinNode, i, ii))
+            weights.append(value)
+        weightList[i] = weights
+            
+    #-+-+-+-+-
+    data['geometry']    = model
+    data['skinCluster'] = skinNode
+    data['influence']   = influence
+    data['weights']     = weightList
+    #-+-+-+-+-
+    return data
+    
+
+
+
+def setSkinWeightData(data):
+    model = data.get('geometry', '#')
+    
+    #- model exists ?
+    if not maya.cmds.objExists(model):
+        print '# Error : objects ( %s ) was not exists ! !'%model
+        return False
+    
+    #- joint exists ?
+    joints = data.get('influence', [])
+    for jnt in joints:
+        if not maya.cmds.objExists(jnt):
+            print '# Error : objects ( %s ) was not exists ! !'%jnt
+            return False
+    
+    #- bind 
+    skinNode = nameTool.compileMayaObjectName(data.get('skinCluster', 'skinCluster1'))
+    maya.cmds.skinCluster(joints, model, name=skinNode)
+    
+    #- set weights
+    weights = data.get('weights', [])
+    for vi, weight in enumerate(weights):
+        for wi, Value in enumerate(weight):
+            maya.cmds.setAttr('%s.wl[%d].w[%d]'%(skinNode, vi, wi), Value)
+    return True
