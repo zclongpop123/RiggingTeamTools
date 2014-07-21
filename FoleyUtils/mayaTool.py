@@ -307,6 +307,8 @@ def getSkinWeightData(model):
 
 
 
+
+
 def setSkinWeightData(data):
     model = data.get('geometry', '#')
     
