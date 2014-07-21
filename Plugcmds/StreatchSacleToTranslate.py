@@ -7,7 +7,7 @@ import re
 import maya.cmds as mc
 import maya.mel as mel
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-mel.evpasal('source "C:/Program Files/Autodesk/Maya2013.5/scripts/startup/channelBoxCommand.mel"')
+mel.eval('source "C:/Program Files/Autodesk/Maya2013.5/scripts/startup/channelBoxCommand.mel"')
 
 def breakScale():
     Joints = ' '.join(mc.ls(type='joint'))
