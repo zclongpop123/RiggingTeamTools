@@ -21,7 +21,7 @@ def getMayaWindow():
 
 def loadUi(uiPath):
     '''
-    read an ui file, get two classes to returm..
+    read an ui file, get two classes to return..
     '''
     windowClass, baseClass = uic.loadUiType(uiPath)
     return windowClass, baseClass
