@@ -285,13 +285,16 @@ def getSkinWeightData(model):
         return data
     
     #- get influcence
-    influence = maya.cmds.skinCluster(model, q=True, inf=True)
+    influence  = maya.cmds.skinCluster(model, q=True, inf=True)
+    inf_Counts = len(influence)
     
     #- get weights
-    weightList = maya.cmds.getAttr('%s.weightList[:].weights'%skinNode)
-    for i in range(len(weightList)):
+    weightList       = maya.cmds.getAttr('%s.weightList[:].weights'%skinNode)
+    weightList_Count = len(weightList)
+    
+    for i in range(weightList_Count):
         weights = []
-        for ii in range(len(influence)):
+        for ii in range(inf_Counts):
             value = maya.cmds.getAttr('%s.wl[%d].w[%d]'%(skinNode, i, ii))
             weights.append(value)
         weightList[i] = weights
@@ -326,7 +329,7 @@ def setSkinWeightData(data):
     
     #- bind 
     skinNode = nameTool.compileMayaObjectName(data.get('skinCluster', 'skinCluster1'))
-    maya.cmds.skinCluster(joints, model, name=skinNode)
+    maya.cmds.skinCluster(joints, model, tsb=True, name=skinNode)
     
     #- set weights
     weights = data.get('weights', [])
