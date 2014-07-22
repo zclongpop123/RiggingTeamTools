@@ -223,9 +223,13 @@ def getControlData(control):
     
     data = {'control':control}
     for shape in shapes:
+        if maya.cmds.nodeType(shape) != 'nurbsCurve':
+            continue
+        #- get data
         positions = maya.cmds.xform('%s.cv[:]'%shape, q=True, ws=True, t=True)
         positions = [(positions[i+0], positions[i+1], positions[i+2]) for i in range(0, len(positions), 3)]
         data[shape] = positions
+        
     return data
 
 
@@ -235,8 +239,11 @@ def getControlData(control):
 def setControlData(data):
     if not maya.cmds.objExists(data.get('control', '#')):
         return
+    
     for shape, postions in data.iteritems():
-        if shape == 'control':continue
+        if maya.cmds.nodeType(shape) != 'nurbsCurve':
+            continue
+        #- set control data
         for i, ps in enumerate(postions):
             maya.cmds.xform('%s.cv[%d]'%(shape, i), ws=True, t=ps)
             
