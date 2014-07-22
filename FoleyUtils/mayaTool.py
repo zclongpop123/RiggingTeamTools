@@ -212,8 +212,36 @@ def makeControl(side, nameSpace, count):
         else:
             control.append(maya.cmds.group(control[-1], n=controlName))
     return control
+        
+
+
+
+
+def getControlData(control):
+    shapes = maya.cmds.listRelatives(control, s=True, path=True)
+    if not shapes:return
+    
+    data = {'control':control}
+    for shape in shapes:
+        positions = maya.cmds.xform('%s.cv[:]'%shape, q=True, ws=True, t=True)
+        positions = [(positions[i+0], positions[i+1], positions[i+2]) for i in range(0, len(positions), 3)]
+        data[shape] = positions
+    return data
+
+
+
+
+
+def setControlData(data):
+    if not maya.cmds.objExists(data.get('control', '#')):
+        return
+    for shape, postions in data.iteritems():
+        if shape == 'control':continue
+        for i, ps in enumerate(postions):
+            maya.cmds.xform('%s.cv[%d]'%(shape, i), ws=True, t=ps)
             
-            
+
+
 #==============================================
 #                  Other                      #
 #==============================================
