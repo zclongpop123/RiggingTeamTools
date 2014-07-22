@@ -241,6 +241,8 @@ def setControlData(data):
         return
     
     for shape, postions in data.iteritems():
+        if not maya.cmds.objExists(shape):
+            continue
         if maya.cmds.nodeType(shape) != 'nurbsCurve':
             continue
         #- set control data
