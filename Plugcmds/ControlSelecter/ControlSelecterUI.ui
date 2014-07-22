@@ -868,7 +868,7 @@ QPushButton:checked{
           </widget>
           <widget class="QPushButton" name="btn_All">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="geometry">
             <rect>
@@ -4793,7 +4793,7 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="btn_SelectFaceAll">
            <property name="text">
-            <string>#   Facel   #</string>
+            <string>#   Face   #</string>
            </property>
           </widget>
          </item>
@@ -4837,6 +4837,9 @@ p, li { white-space: pre-wrap; }
       </property>
       <item>
        <widget class="QPushButton" name="btn_TposeAll">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -4855,6 +4858,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QPushButton" name="btn_TposeSelected">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
