@@ -373,7 +373,7 @@ QToolBox::tab:selected{
            <number>1</number>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>7</number>
           </property>
           <property name="tabSpacing">
            <number>2</number>
@@ -2039,7 +2039,7 @@ Selecter</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
+            <item row="2" column="0">
              <spacer name="verticalSpacer_4">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -2064,6 +2064,34 @@ Selecter</string>
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="btn_ReplaceUV">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>ReplaceUV</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>

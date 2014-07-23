@@ -288,3 +288,9 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.FixShape.FixShape
         reload(Plugcmds.FixShape.FixShape)
         Plugcmds.FixShape.FixShape.FixShapeUI(uiTool.getMayaWindow())
+    
+    def on_btn_ReplaceUV_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.ReplaceUV.ReplaceUV
+        reload(Plugcmds.ReplaceUV.ReplaceUV)
+        Plugcmds.ReplaceUV.ReplaceUV.ReplaceUV(uiTool.getMayaWindow())

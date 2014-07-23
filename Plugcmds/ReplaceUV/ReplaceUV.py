@@ -4,6 +4,7 @@
 #   date: Tue, 22 Jul 2014 17:41:44
 #=============================================
 import os, re, RemoveUVWasteNode
+reload(RemoveUVWasteNode)
 import maya.cmds as mc
 from PyQt4 import QtCore, QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool, mathTool
@@ -61,7 +62,7 @@ class ReplaceUV(windowClass, baseClass):
         model_use_list = []
         for folder in ASSET_FOLDER:
             for child in os.listdir(os.path.join(ASSET_PATH, folder)):
-                if not re.match(assetName, child):
+                if not re.match(assetName, child, re.I):
                     continue
                 
                 tup = (folder, child, 'Model', 'publish', 'maya')
@@ -121,8 +122,7 @@ class ReplaceUV(windowClass, baseClass):
             print '# Result # Copyed UV %s -> %s'%(UVgeo, geo)
 
             #- delete history
-            mc.select(geo)
-            RemoveUVWasteNode.RemoveUVWasteNode()
+            RemoveUVWasteNode.delUVTransferAttributesNode(geo)
         
         self.progressBar.setMaximum(1)
         self.progressBar.setValue(0)
