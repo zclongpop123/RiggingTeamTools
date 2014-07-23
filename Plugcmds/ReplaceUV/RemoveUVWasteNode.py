@@ -19,26 +19,8 @@ def delUVTransferAttributesNode(obj):
     allSH = cmds.listRelatives(obj, s=True, f=True, type='mesh')
     orgSH = []
     deformers = []
-    inputType = ['skinCluster',
-     'blendShape',
-     'ffd',
-     'wrap',
-     'cluster',
-     'nonLinear',
-     'sculpt',
-     'jiggle',
-     'wire',
-     'groupParts',
-     'groupId']
-    deformerType = ['skinCluster',
-     'blendShape',
-     'ffd',
-     'wrap',
-     'cluster',
-     'nonLinear',
-     'sculpt',
-     'jiggle',
-     'wire']
+    inputType    = ('skinCluster', 'blendShape', 'ffd', 'wrap', 'cluster', 'nonLinear', 'sculpt', 'jiggle', 'wire', 'groupParts', 'groupId')
+    deformerType = ('skinCluster', 'blendShape', 'ffd', 'wrap', 'cluster', 'nonLinear', 'sculpt', 'jiggle', 'wire')
     hist = cmds.listHistory(obj)
     for histIt in hist:
         ListNode = cmds.nodeType(histIt)
@@ -65,6 +47,7 @@ def delUVTransferAttributesNode(obj):
 
                 if cmds.delete(cmds.listRelatives(mesh, p=True, f=True)):
                     pass
+                
                 n = True
                 while n:
                     inputNode = cmds.listConnections((SH[0] + '.inMesh'), d=False, sh=True)
@@ -79,9 +62,3 @@ def delUVTransferAttributesNode(obj):
                         break
                     cmds.delete(inputNode)
                     n = False
-
-
-
-
-#+++ okay decompyling
-# decompiled 1 files: 1 okay, 0 failed, 0 verify failed
