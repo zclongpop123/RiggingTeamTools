@@ -4,7 +4,6 @@
 #   date: Tue, 22 Jul 2014 17:41:44
 #=============================================
 import os, re, RemoveUVWasteNode
-reload(RemoveUVWasteNode)
 import maya.cmds as mc
 from PyQt4 import QtCore, QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool, mathTool
