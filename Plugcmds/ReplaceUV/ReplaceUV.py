@@ -42,6 +42,8 @@ class ListModel(QtCore.QAbstractListModel):
 windowClass, baseClass = uiTool.loadUi(os.path.join(scriptTool.getScriptPath(), 'replaceUV.ui'))
 class ReplaceUV(windowClass, baseClass):
     def __init__(self, parent=None):
+        if uiTool.windowExists(parent, 'replaceUVwindow'):return
+        
         super(ReplaceUV, self).__init__(parent)
         self.setupUi(self)
         #----------------
