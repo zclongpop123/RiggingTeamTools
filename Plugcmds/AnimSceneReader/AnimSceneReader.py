@@ -6,7 +6,7 @@
 import os, re, tempfile, shutil
 import maya.cmds as mc
 import maya.mel as mel
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
