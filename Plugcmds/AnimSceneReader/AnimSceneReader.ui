@@ -274,7 +274,7 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="layoutDirection">
@@ -282,17 +282,102 @@
            </property>
            <item>
             <property name="text">
+             <string>ANI_blocking</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>ANI_1st</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>ANI_Blocking</string>
+             <string>ANI_final</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>ANI_Final</string>
+             <string>FLO_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>FLO_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>FLO_3rd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>LGT_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>LGT_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>LGT_KeyLight</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>REN_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>REN_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SFX_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SFX_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SFX_3rd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>CFX_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>CFX_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>CMP_1st</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>CMP_2nd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>CMP_KeyLight</string>
             </property>
            </item>
           </widget>
@@ -307,7 +392,7 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="layoutDirection">

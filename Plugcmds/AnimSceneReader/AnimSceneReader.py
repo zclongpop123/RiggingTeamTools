@@ -60,7 +60,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
         self.CBX_files.clear()
         if not os.path.isdir(dirPath):return
 
-        fileList = [x for x in os.listdir(dirPath) if re.search('\.ma$', x)]
+        fileList = [x for x in os.listdir(dirPath) if re.search('\.m[ab]$', x)]
         self.CBX_files.addItems(fileList)
         self.CBX_files.setCurrentIndex(self.CBX_files.count()-1)
 
