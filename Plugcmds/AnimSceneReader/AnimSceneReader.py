@@ -39,9 +39,30 @@ class AnimSceneReaderUI(windowClass, baseClass):
         
         #-+
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'blank_folder.png')))
-        self.btn_SelectPath.setIcon(icon)        
+        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'map_pin.png')))
+        self.btn_SelectPath.setIcon(icon)   
         
+        
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'fork.png')))
+        self.btn_open.setIcon(icon)              
+  
+        
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'cloud_upload.png')))
+        self.btn_saveas.setIcon(icon)   
+        
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'blank_folder.png')))
+        self.btn_OpenFolder.setIcon(icon)      
+        
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(scriptTool.getScriptPath(), 'icons', 'light_on.png')))
+        self.btn_light.setIcon(icon)
+        
+        #-+
         self.show()
         #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     
@@ -52,18 +73,25 @@ class AnimSceneReaderUI(windowClass, baseClass):
         self.V_progress  = str(self.LET_progress.currentText())
         self.workpublish = str(self.LET_workpublish.currentText())
         self.V_file      = str(self.CBX_files.currentText())
+        self.dir_path    = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
+    
+    def __openCloseLight(self, args):
+        self.btn_light.setEnabled(args)
+        
 
     def __refreshFiles(self):
         self.__getValues()
-        dirPath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
         
         self.CBX_files.clear()
-        if not os.path.isdir(dirPath):return
+        if not os.path.isdir(self.dir_path):
+            self.__openCloseLight(False)
+            return
 
-        fileList = [x for x in os.listdir(dirPath) if re.search('\.m[ab]$', x)]
+        fileList = [x for x in os.listdir(self.dir_path) if re.search('\.m[ab]$', x)]
         self.CBX_files.addItems(fileList)
         self.CBX_files.setCurrentIndex(self.CBX_files.count()-1)
-
+        self.__openCloseLight(True)
+    
     
     def on_LET_type_editingFinished(self):
         self.__refreshFiles()
@@ -101,8 +129,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
         if args==None:return
         self.__getValues()
 
-        filePath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya', self.V_file)
-        
+        filePath = os.path.join(self.dir_path, self.V_file)
         if not os.path.isfile(filePath):return 
         
         if mel.eval('saveChanges("file -f -new;");') == 0:return
@@ -112,8 +139,8 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_btn_saveas_clicked(self, args=None):
         if args==None:return
         self.__getValues()
-        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
-        newFilePath = getNewVersionFile(path)
+
+        newFilePath = getNewVersionFile(self.dir_path)
         tempPath = tempfile.mktemp('.ma')
                 
         mc.file(rn=tempPath)
@@ -127,7 +154,8 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_btn_OpenFolder_clicked(self, args=None):
         if args==None:return
         self.__getValues()
-        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')        
+        
+        path = self.dir_path
         if not os.path.isdir(path):
             return
         path = path.replace('/', '\\')
