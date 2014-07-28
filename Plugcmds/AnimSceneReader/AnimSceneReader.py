@@ -46,15 +46,16 @@ class AnimSceneReaderUI(windowClass, baseClass):
         #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     
     def __getValues(self):
-        self.V_type     = str(self.LET_type.text())
-        self.V_sc       = str(self.LET_scene.text())
-        self.V_cam      = str(self.LET_camera.text())
-        self.V_progress = str(self.LET_progress.currentText()) 
-        self.V_file     = str(self.CBX_files.currentText())
+        self.V_type      = str(self.LET_type.text())
+        self.V_sc        = str(self.LET_scene.text())
+        self.V_cam       = str(self.LET_camera.text())
+        self.V_progress  = str(self.LET_progress.currentText())
+        self.workpublish = str(self.LET_workpublish.currentText())
+        self.V_file      = str(self.CBX_files.currentText())
 
     def __refreshFiles(self):
         self.__getValues()
-        dirPath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, 'work', 'maya')
+        dirPath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
         
         self.CBX_files.clear()
         if not os.path.isdir(dirPath):return
@@ -76,7 +77,10 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_LET_progress_currentIndexChanged(self, index):
         if isinstance(index, int):return
         self.__refreshFiles()
-
+    
+    def on_LET_workpublish_currentIndexChanged(self, index):
+        if isinstance(index, int):return
+        self.__refreshFiles()    
     
     def on_btn_SelectPath_clicked(self, args=None):
         if args==None:return
@@ -97,7 +101,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
         if args==None:return
         self.__getValues()
 
-        filePath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, 'work', 'maya', self.V_file)
+        filePath = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya', self.V_file)
         
         if not os.path.isfile(filePath):return 
         
@@ -108,7 +112,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_btn_saveas_clicked(self, args=None):
         if args==None:return
         self.__getValues()
-        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, 'work', 'maya')
+        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
         newFilePath = getNewVersionFile(path)
         tempPath = tempfile.mktemp('.ma')
                 
@@ -123,7 +127,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_btn_OpenFolder_clicked(self, args=None):
         if args==None:return
         self.__getValues()
-        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, 'work', 'maya')        
+        path = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')        
         if not os.path.isdir(path):
             return
         path = path.replace('/', '\\')
