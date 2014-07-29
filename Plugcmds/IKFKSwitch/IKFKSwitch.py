@@ -231,6 +231,13 @@ def matchIK(side='L', starts='', args=None):
         mc.setAttr('%s.%s'%(ctr, attr), defaultValue)
 
 
+
+def matchScale(starts, side, src, dst):
+    value = mc.getAttr(starts + ':' + src%side)
+    try:
+        mc.setAttr(starts + ':' + dst%side, value)
+    except:
+        pass
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- ( Components Switch ) -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
@@ -283,7 +290,10 @@ def legToIK(side='L', starts=''):
 
 
 def hindLegToFK(side='L', starts=''):
-    args = (('%s_hindLegHipIk_ctl_0', '%s_hindLegHipFk_ctl_0'),
+    matchScale(starts, side, '%s_legIk_ctl_0.Lenght2', '%s_hindLegKneeFk_ctl_0.sx') 
+    matchScale(starts, side, '%s_legIk_ctl_0.Lenght3', '%s_hindLegHockFk_ctl_0.sx') 
+
+    args = (('%s_hindLegHip_bnd_0', '%s_hindLegHipFk_ctl_0'),
             ('%s_hindLegKnee_bnd_0', '%s_hindLegKneeFk_ctl_0'), 
             ('%s_hindLegHock_bnd_0', '%s_hindLegHockFk_ctl_0'), 
             ('%s_hindLegAnkle_bnd_0', '%s_hindLegAnkleFk_ctl_0'),
@@ -313,6 +323,7 @@ def hindLegToIK(side='L', starts=''):
 
 
 def foreLegToFK(side='L', starts=''):
+    matchScale(starts, side, '%s_legFrontIk_ctl_0.Lenght2', '%s_foreLegElbowFk_ctl_0.sx')    
     args = (('%s_foreLegScapula_bnd_0', '%s_foreLegScapulaFk_ctl_0'),
             ('%s_foreLegShoulder_bnd_0', '%s_foreLegShoulderFk_ctl_0'),
             ('%s_foreLegElbow_bnd_0', '%s_foreLegElbowFk_ctl_0'),
