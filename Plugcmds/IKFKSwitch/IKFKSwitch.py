@@ -1,7 +1,12 @@
+#=============================================
+# author: changlong.zang
+#   mail: zclongpop@163.com
+#   date: Tue, 29 Jul 2014 09:29:32
+#=============================================
 import math, re, os
 import maya.cmds as mc
-from FoleyUtils import uiTool, scriptTool, mayaTool
-
+from FoleyUtils import uiTool, scriptTool, mayaTool, mathTool
+#--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 #- Refresh Characters                                           +
@@ -226,27 +231,6 @@ def matchIK(side='L', starts='', args=None):
         mc.setAttr('%s.%s'%(ctr, attr), defaultValue)
 
 
-
-
-def getVectorPosition(pointJointA, pointJointB, pointJointC):
-    A = mc.xform(pointJointA, q=True, ws=True, t=True)
-    B = mc.xform(pointJointB, q=True, ws=True, t=True)
-    C = mc.xform(pointJointC, q=True, ws=True, t=True)
-    
-    AB = math.sqrt((A[0] - B[0]) ** 2 + (A[1] - B[1]) ** 2 + (A[2] - B[2]) ** 2)
-    BC = math.sqrt((B[0] - C[0]) ** 2 + (B[1] - C[1]) ** 2 + (B[2] - C[2]) ** 2)
-    AC = math.sqrt((A[0] - C[0]) ** 2 + (A[1] - C[1]) ** 2 + (A[2] - C[2]) ** 2)
-    
-    AD = (AB ** 2 + AC ** 2 - BC**2 ) / (AC * 2)
-    ADpr = AD / AC
-    
-    D = ((C[0] - A[0]) * ADpr + A[0], (C[1] - A[1]) * ADpr + A[1], (C[2] - A[2]) * ADpr + A[2])
-    BD = math.sqrt((B[0] - D[0]) ** 2 + (B[1] - D[1]) ** 2 + (B[2] - D[2]) ** 2)
-    ScaleV = (AB + BC) / BD
-    endP   = ((B[0] - D[0]) * ScaleV + D[0], (B[1] - D[1]) * ScaleV + D[1], (B[2] - D[2]) * ScaleV + D[2])
-    
-    return endP 
-
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- ( Components Switch ) -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
@@ -267,7 +251,7 @@ def armToIK(side='L', starts=''):
     pointJointA = starts + ':' + '%s_armShoulder_bnd_0'%side
     pointJointB = starts + ':' + '%s_armElbow_bnd_0'%side
     pointJointC = starts + ':' + '%s_armWrist_bnd_0'%side
-    endP = getVectorPosition(pointJointA, pointJointB, pointJointC)
+    endP = mathTool.getPoleVectorPosition(pointJointA, pointJointB, pointJointC)
     mc.move(endP[0], endP[1], endP[2], starts + ':' + '%s_poleArm_ctl_0'%side, a=True)
 
 
@@ -291,7 +275,7 @@ def legToIK(side='L', starts=''):
     pointJointA = starts + ':' + '%s_legHip_bnd_0'%side
     pointJointB = starts + ':' + '%s_legKnee_bnd_0'%side
     pointJointC = starts + ':' + '%s_legAnkle_bnd_0'%side
-    endP = getVectorPosition(pointJointA, pointJointB, pointJointC)
+    endP = mathTool.getPoleVectorPosition(pointJointA, pointJointB, pointJointC)
     mc.move(endP[0], endP[1], endP[2], starts + ':' + '%s_poleLeg_ctl_0'%side, a=True)
 
 
@@ -322,7 +306,7 @@ def hindLegToIK(side='L', starts=''):
     pointJointA = starts + ':' + '%s_hindLegKnee_bnd_0'%side
     pointJointB = starts + ':' + '%s_hindLegHock_bnd_0'%side
     pointJointC = starts + ':' + '%s_hindLegAnkle_bnd_0'%side
-    endP = getVectorPosition(pointJointA, pointJointB, pointJointC)
+    endP = mathTool.getPoleVectorPosition(pointJointA, pointJointB, pointJointC)
     mc.move(endP[0], endP[1], endP[2], starts + ':' + '%s_poleLeg_ctl_0'%side, a=True)
 
 
@@ -349,7 +333,7 @@ def foreLegToIK(side='L', starts=''):
     pointJointA = starts + ':' + '%s_foreLegShoulder_bnd_0'%side
     pointJointB = starts + ':' + '%s_foreLegElbow_bnd_0'%side
     pointJointC = starts + ':' + '%s_foreLegFoot_bnd_0'%side
-    endP = getVectorPosition(pointJointA, pointJointB, pointJointC)
+    endP = mathTool.getPoleVectorPosition(pointJointA, pointJointB, pointJointC)
     mc.move(endP[0], endP[1], endP[2], starts + ':' + '%s_poleLegFront_ctl_0'%side, a=True)
 
 

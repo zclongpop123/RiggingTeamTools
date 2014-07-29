@@ -158,9 +158,9 @@ class PlugTool(Uiwnd, UiClass):
 
     def on_btn_IKFKSwitch_clicked(self, args=None):
         if args==None:return
-        import Plugcmds.IKFKSwitch
-        reload(Plugcmds.IKFKSwitch)
-        Plugcmds.IKFKSwitch.IKFKSwitch(uiTool.getMayaWindow())
+        import Plugcmds.IKFKSwitch.IKFKSwitch
+        reload(Plugcmds.IKFKSwitch.IKFKSwitch)
+        Plugcmds.IKFKSwitch.IKFKSwitch.IKFKSwitch(uiTool.getMayaWindow())
         
     
     def on_btn_AddIKFKSwitch_clicked(self, args=None):
