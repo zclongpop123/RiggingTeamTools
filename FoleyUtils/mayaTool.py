@@ -383,8 +383,10 @@ def setSkinWeightData(data):
 def getMeshPositionData(geometry):
     '''
     return mesh postions and vtx id in dict..
-    Exp:{ 'ffed2a41208043c0ca0a7141': 0,
-          'fff2a21fb3232142067cb2c1': 1 }
+    Exp:{ 
+          'ffed2a41208043c0ca0a7141': 0,
+          'fff2a21fb3232142067cb2c1': 1 
+        }
     '''
     if not maya.cmds.objExists(geometry):
         return
