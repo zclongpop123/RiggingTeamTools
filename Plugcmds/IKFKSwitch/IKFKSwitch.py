@@ -306,11 +306,12 @@ def hindLegToFK(side='L', starts=''):
 
 
 def hindLegToIK(side='L', starts=''):
-    args = (('%s_legIk_ctlAim_0',  '%s_legIk_ctl_0'), )
+    args = (('%s_hindLegHipIk_ctlAim_0', '%s_hindLegHipIk_ctl_0'),
+            ('%s_legIk_ctlAim_0',  '%s_legIk_ctl_0'), )
     matchIK(side, starts, args)
     
-    HipControls = (('%s_hindLegHipFk_ctl_0', '%s_hindLegHipIk_ctl_0'), )
-    matchFK(side, starts, HipControls)
+    #HipControls = (('%s_hindLegHipFk_ctl_0', '%s_hindLegHipIk_ctl_0'), )
+    #matchFK(side, starts, HipControls)
     
     #- move pole Vector Control -
     pointJointA = starts + ':' + '%s_hindLegKnee_bnd_0'%side
