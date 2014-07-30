@@ -3,7 +3,7 @@
 #   mail: zclongpop@163.com
 #   date: Tue, 08 Jul 2014 14:46:14
 #=============================================
-import re
+import re, struct
 import maya.cmds, maya.mel, pymel.core, maya.OpenMaya
 import nameTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
@@ -374,3 +374,26 @@ def setSkinWeightData(data):
         for wi, Value in enumerate(weight):
             maya.cmds.setAttr('%s.wl[%d].w[%d]'%(skinNode, vi, wi), Value)
     return True
+
+
+
+
+
+
+def getMeshPositionData(geometry):
+    '''
+    return mesh postions and vtx id in dict..
+    Exp:{ 'ffed2a41208043c0ca0a7141': 0,
+          'fff2a21fb3232142067cb2c1': 1 }
+    '''
+    if not maya.cmds.objExists(geometry):
+        return
+    
+    positions = maya.cmds.xform('%s.vtx[:]'%geometry, q=True, ws=True, t=True)
+    data = {}
+    vtx  = 0
+    for i in range(0, len(positions), 3):
+        posi_hex = struct.pack('fff', positions[i], positions[i+1], positions[i+2]).encode('hex')
+        data[posi_hex] = vtx
+        vtx += 1
+    return data
