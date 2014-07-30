@@ -6,18 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>299</height>
+    <width>491</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Anim File Reader</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <property name="spacing">
-     <number>4</number>
-    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QGroupBox" name="groupBox">
       <property name="title">
@@ -25,387 +22,403 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QWidget" name="widget_2" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Type:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Scene:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Camera:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Progress:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Work/Publish:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>File:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QLineEdit" name="LET_type">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="LET_scene">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="LET_camera">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="LET_progress">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <item>
-             <property name="text">
-              <string>ANI_blocking</string>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>ANI_1st</string>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
              </property>
-            </item>
-            <item>
              <property name="text">
-              <string>ANI_final</string>
+              <string>Type:</string>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LET_type">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
-              <string>FLO_1st</string>
+              <string/>
              </property>
-            </item>
-            <item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
-              <string>FLO_2nd</string>
+              <string>Scene:</string>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LET_scene">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
-              <string>FLO_3rd</string>
+              <string/>
              </property>
-            </item>
-            <item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
-              <string>LGT_1st</string>
+              <string>Camera:</string>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LET_camera">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
-              <string>LGT_2nd</string>
+              <string/>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
-              <string>LGT_KeyLight</string>
+              <string>Progress:</string>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="LET_progress">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <item>
+              <property name="text">
+               <string>ANI_blocking</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ANI_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ANI_final</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>FLO_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>FLO_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>FLO_3rd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>LGT_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>LGT_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>LGT_KeyLight</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>REN_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>REN_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SFX_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SFX_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SFX_3rd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>CFX_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>CFX_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>CMP_1st</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>CMP_2nd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>MP</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>CMP_KeyLight</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
-              <string>REN_1st</string>
+              <string>Work/Publish:</string>
              </property>
-            </item>
-            <item>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="LET_workpublish">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <item>
+              <property name="text">
+               <string>work</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>publish</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="25,75">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
-              <string>REN_2nd</string>
+              <string>File:</string>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>SFX_1st</string>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>SFX_2nd</string>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="CBX_files">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>24</height>
+              </size>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>SFX_3rd</string>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>CFX_1st</string>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>CFX_2nd</string>
+             <property name="editable">
+              <bool>false</bool>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>CMP_1st</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>CMP_2nd</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>MP</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>CMP_KeyLight</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="LET_workpublish">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <item>
-             <property name="text">
-              <string>work</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>publish</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="CBX_files">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="editable">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </item>
        <item>
         <widget class="QPushButton" name="btn_SelectPath">
