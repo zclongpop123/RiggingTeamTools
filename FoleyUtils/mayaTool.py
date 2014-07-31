@@ -410,7 +410,7 @@ def setSkinWeightData(data):
 
 
 
-def getMeshPositionData(geometry):
+def getMeshPositionData(geometry, precision=6):
     '''
     Return mesh postions and vtx id in dict..
     Exp:{ 
@@ -425,7 +425,7 @@ def getMeshPositionData(geometry):
     data = {}
     vtx  = 0
     for i in range(0, len(positions), 3):
-        posi_hex = struct.pack('fff', positions[i], positions[i+1], positions[i+2]).encode('hex')
+        posi_hex = struct.pack('fff', round(positions[i], precision), round(positions[i+1], precision), round(positions[i+2], precision)).encode('hex')
         data[vtx] = posi_hex
         vtx += 1
     return data
