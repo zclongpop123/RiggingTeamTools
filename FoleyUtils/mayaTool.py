@@ -10,7 +10,7 @@ import nameTool
 
 def undo_decorator(func):
     '''
-    to fix maya can't undo bug..
+    To fix maya can't undo bug..
     '''
     def doIt(*args, **kvargs):
         maya.cmds.undoInfo(openChunk=True)
@@ -26,7 +26,9 @@ def undo_decorator(func):
 
 
 def getChildren(dagObject, dagType='transform'):
-    '''give a root dagNode name, find all children to return'''
+    '''
+    give a root dagNode name, find all children to return..
+    '''
     L = [dagObject]
     for O in maya.cmds.listRelatives(dagObject, c=True, type=dagType, path=True) or []:
         L.append(O)
@@ -48,7 +50,7 @@ def getChildren(dagObject, dagType='transform'):
 
 def parentShape(*args):
     '''
-    parent shapes to last one..
+    Parent shapes to last one..
     '''
     if len(args) < 2:
         return
@@ -75,7 +77,7 @@ def conformShapeNames(transform):
 
 def getHistoryByType(geometry, historyType):
     '''
-    return object history by type..
+    Return object history by type..
     '''
     historys = maya.cmds.listHistory(geometry, pdo=True)
     typedHistory = maya.cmds.ls(historys, type=historyType)
@@ -88,7 +90,7 @@ def getHistoryByType(geometry, historyType):
 
 def findDeformer(geometry):
     '''
-    return object's deformers..
+    Return object's deformers..
     '''
     deformers = maya.mel.eval('findRelatedDeformer("%s")'%geometry)
     return deformers
@@ -98,7 +100,7 @@ def findDeformer(geometry):
 
 def findSkinCluster(geometry):
     '''
-    return object's skinCluster node..
+    Return object's skinCluster node..
     '''
     skinCluster = maya.mel.eval('findRelatedSkinCluster("%s")'%geometry)
     return skinCluster
@@ -113,7 +115,7 @@ def findSkinCluster(geometry):
 
 def getBlendShapeInfo(blendShape):
     '''
-    return blendShape's ID and attributes dict..
+    Return blendShape's ID and attributes dict..
     '''
     attribute_dict = {}
     if maya.cmds.nodeType(blendShape) != 'blendShape':
@@ -134,7 +136,7 @@ def getBlendShapeInfo(blendShape):
 
 def getBlendShapeAttributes(blendShape):
     '''
-    return blendShape attributes..
+    Return blendShape attributes..
     '''
     attribute_dict = getBlendShapeInfo(blendShape)
     bs_idList = attribute_dict.keys()
@@ -148,6 +150,9 @@ def getBlendShapeAttributes(blendShape):
 
 
 def getBlendShapeInputGeomTarget(blendShape):
+    '''
+    Return blendShape's inputTargentGeometry ( targent connected attr ) attributes..
+    '''
     igt_dict = {}
 
     attributes = ' '.join(maya.cmds.listAttr(blendShape, m=True))
@@ -170,7 +175,7 @@ def getBlendShapeInputGeomTarget(blendShape):
 
 def getActiveTargets(blendShape):
     '''
-    get opend blendShape's ids..
+    Get opend blendShape's ids..
     '''
     targents = []
     for weightid, attr in getBlendShapeInfo(blendShape).iteritems():
@@ -184,7 +189,7 @@ def getActiveTargets(blendShape):
 
 def getSetsMembers(Sets):
     '''
-    get all of sets children..
+    Get all of sets children..
     '''
     args = []
     
@@ -204,6 +209,9 @@ def getSetsMembers(Sets):
 #==============================================
 
 def makeControl(side, nameSpace, count):
+    '''
+    Make control with Hierarchy..
+    '''
     types = ('ctl', 'cth', 'ctg', 'grp')
     control = []
     for t in types:
@@ -219,6 +227,9 @@ def makeControl(side, nameSpace, count):
 
 
 def getControlData(control):
+    '''
+    Return control shape data by dict..
+    '''
     shapes = maya.cmds.listRelatives(control, s=True, path=True)
     if not shapes:return
     
@@ -238,6 +249,9 @@ def getControlData(control):
 
 
 def setControlData(data):
+    '''
+    Input control data, set control shape data..
+    '''
     if not maya.cmds.objExists(data.get('control', '#')):
         return
     
@@ -258,6 +272,9 @@ def setControlData(data):
 
 
 def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True):
+    '''
+    Attact an object on a curve..
+    '''
     CusShape = maya.cmds.listRelatives(pathCus, s=True, type='nurbsCurve')
     motionpathNode = maya.cmds.createNode('motionPath')
     
@@ -280,7 +297,7 @@ def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True)
         return motionpathNode
     # set upvector..
     maya.cmds.setAttr(motionpathNode + '.worldUpType', 1)
-    maya.cmds.connectAttr(UpperOBJ + '.worldMatrix[0]', motionpathNode + '.worldUpMatrix')
+    maya.cmds.connectAttr(UpperOBJ   + '.worldMatrix[0]', motionpathNode + '.worldUpMatrix')
     maya.cmds.setAttr(motionpathNode + '.frontAxis', 0)
     maya.cmds.setAttr(motionpathNode + '.upAxis', 2)
     return motionpathNode
@@ -289,7 +306,9 @@ def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True)
 
 
 def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
-
+    '''
+    Input a curve and a position, return a parameter value on curve..
+    '''
     # Get the point as an MPoint.
     p = maya.OpenMaya.MPoint(*point)
     
@@ -316,6 +335,9 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
 
 
 def getSkinWeightData(model):
+    '''
+    Get a skinCluster weights data by a dict..
+    '''
     data = {}
     #-
     skinNode = findSkinCluster(model)
@@ -352,6 +374,9 @@ def getSkinWeightData(model):
 
 
 def setSkinWeightData(data):
+    '''
+    Input a data dict, set skinCluster weights values..
+    '''
     model = data.get('geometry', '#')
     
     #- model exists ?
@@ -387,7 +412,7 @@ def setSkinWeightData(data):
 
 def getMeshPositionData(geometry):
     '''
-    return mesh postions and vtx id in dict..
+    Return mesh postions and vtx id in dict..
     Exp:{ 
           'ffed2a41208043c0ca0a7141': 0,
           'fff2a21fb3232142067cb2c1': 1 
