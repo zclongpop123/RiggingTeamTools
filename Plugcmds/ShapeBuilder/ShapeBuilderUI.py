@@ -7,8 +7,11 @@ import cvShapeInverterCmds
 from FoleyUtils import uiTool, scriptTool, nameTool, mathTool, mayaTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
-def openCloseDeformer(model, value):
+def openCloseDeformer(model, value, ignal=()):
     for dfm in mayaTool.findDeformer(model):
+        if mc.nodeType(dfm) in ignal:
+            continue 
+        
         if mc.getAttr('%s.en'%dfm, se=1):
             mc.setAttr('%s.en'%dfm, value)
         else:
@@ -354,8 +357,21 @@ class ShapeBuilderUI(shapeBaseClass, shapeWindowClass):
         
     def on_btn_FixSkinBsStart_clicked(self, clicked=None):
         if clicked == None:return
+        openCloseDeformer(self.__baseModel, 0, ('skinCluster'))
         self.duplicateScupModel()
+        
+        
+        openCloseDeformer(self.__baseModel, 1, ('skinCluster'))
+        bs = mc.blendShape(self.__baseModel, self.__sculpmodel)[0]
+        attr = mc.aliasAttr(bs, q=True)[0]
+        mc.setAttr(bs + '.' + attr, 1)
+        mc.delete(self.__sculpmodel, ch=True)
+        
+        
+        
+        openCloseDeformer(self.__baseModel, 0, ('skinCluster'))
         self.dupliacteTempModel()
+        
 
 
     def on_btn_FixSkinBsEnd_clicked(self, clicked=None):
@@ -366,10 +382,11 @@ class ShapeBuilderUI(shapeBaseClass, shapeWindowClass):
         selectAttr = self.__AttributeModel.data(selectIndexes[0], QtCore.Qt.DisplayRole)
         if not uiTool.warning('BlendShape\'s shape on attribute "%s" will be changed,\nand it can\'t to undo, \ncontinue? ?'%selectAttr):return
         
-        
+        openCloseDeformer(self.__baseModel, 0, ('skinCluster'))
         newSculpModel = cvShapeInverterCmds.invert(self.__baseModel, self.__sculpmodel, self.progressBar)
         mc.delete(newSculpModel, ch=True)        
-     
+        
+            
         if mc.objExists(selectAttr):
             mc.blendShape(newSculpModel, selectAttr, w=((0, 1)))
             mc.delete(selectAttr, ch=True)
