@@ -27,7 +27,7 @@ def undo_decorator(func):
 
 def getChildren(dagObject, dagType='transform'):
     '''
-    give a root dagNode name, find all children to return..
+    Give a root dagNode name, find all children to return..
     '''
     L = [dagObject]
     for O in maya.cmds.listRelatives(dagObject, c=True, type=dagType, path=True) or []:
