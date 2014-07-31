@@ -7,6 +7,28 @@ import math
 import maya.cmds as mc
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
+
+def getIntLength(intValue):
+    '''
+    Get the how many digits in a int..
+    Exp:
+        8     ->  1
+        86    ->  2
+        835   ->  3
+        ...
+        96158 ->  5
+    '''
+    i = 1
+    d = 1
+    while True:
+        if abs(intValue) // d < 10:
+            return i
+        i += 1
+        d *= 10
+
+
+
+
 def clamp(minV, maxV, value):
     '''
     0, 10,  5  ->   5
