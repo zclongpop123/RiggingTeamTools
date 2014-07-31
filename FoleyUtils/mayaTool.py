@@ -21,6 +21,27 @@ def undo_decorator(func):
 
 
 #==============================================
+#                  General                    #
+#==============================================
+
+
+def getChildren(dagObject, dagType='transform'):
+    '''give a root dagNode name, find all children to return'''
+    L = [dagObject]
+    for O in maya.cmds.listRelatives(dagObject, c=True, type=dagType, path=True) or []:
+        L.append(O)
+        
+        ccd = maya.cmds.listRelatives(O, c=True, type=dagType, path=True)
+        if ccd:
+            for o in ccd:
+                L.extend(getChildren(o))
+        else:
+            pass
+    return L
+
+
+
+#==============================================
 #                    Shapes                   #
 #==============================================
 
@@ -50,7 +71,6 @@ def conformShapeNames(transform):
 #==============================================
 #                    History                  #
 #==============================================
-
 
 
 def getHistoryByType(geometry, historyType):
@@ -180,25 +200,6 @@ def getSetsMembers(Sets):
 
 
 #==============================================
-#                  General                    #
-#==============================================
-    
-def getChildren(dagObject, dagType='transform'):
-    '''give a root dagNode name, find all children to return'''
-    L = [dagObject]
-    for O in maya.cmds.listRelatives(dagObject, c=True, type=dagType, path=True) or []:
-        L.append(O)
-        
-        ccd = maya.cmds.listRelatives(O, c=True, type=dagType, path=True)
-        if ccd:
-            for o in ccd:
-                L.extend(getChildren(o))
-        else:
-            pass
-    return L
-
-
-#==============================================
 #                  Control                    #
 #==============================================
 
@@ -252,8 +253,9 @@ def setControlData(data):
 
 
 #==============================================
-#                  Other                      #
+#                  Curve                      #
 #==============================================
+
 
 def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True):
     CusShape = maya.cmds.listRelatives(pathCus, s=True, type='nurbsCurve')
@@ -377,6 +379,9 @@ def setSkinWeightData(data):
 
 
 
+#==============================================
+#                   Polygon                   #
+#==============================================
 
 
 
