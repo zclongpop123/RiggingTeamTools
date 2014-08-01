@@ -1,3 +1,8 @@
+#=============================================
+# author: changlong.zang
+#   mail: zclongpop@163.com
+#   date: Fri, 01 Aug 2014 13:48:54
+#=============================================
 import os, re
 from PyQt4 import QtCore, QtGui
 import maya.cmds as mc
