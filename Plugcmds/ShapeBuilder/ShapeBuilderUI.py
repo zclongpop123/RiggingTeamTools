@@ -390,7 +390,7 @@ class ShapeBuilderUI(shapeBaseClass, shapeWindowClass):
         openCloseDeformer(self.__baseModel, 0, ('skinCluster'))
         newSculpModel = cvShapeInverterCmds.invert(self.__baseModel, self.__sculpmodel, self.progressBar)
         mc.delete(newSculpModel, ch=True)        
-        
+        openCloseDeformer(self.__baseModel, 1, ('skinCluster'))
             
         if mc.objExists(selectAttr):
             mc.blendShape(newSculpModel, selectAttr, w=((0, 1)))
