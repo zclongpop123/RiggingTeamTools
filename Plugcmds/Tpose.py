@@ -1,5 +1,13 @@
-import re, rigToolUtils
+#=============================================
+# author: changlong.zang
+#   mail: zclongpop@163.com
+#   date: Fri, 01 Aug 2014 14:22:51
+#=============================================
+
+import re
 import maya.cmds as mc
+from FoleyUtils import mayaTool
+
 #=====================================================================================
 CONTROL_TYPE = ('_ctl_', '_ctr_')
 
@@ -30,7 +38,7 @@ def Set(control):
             mc.setAttr('%s.%s'%(control, attr), defaultValue)
 
 #----------------------------------------------------------------------------------------------------------
-@rigToolUtils.undo_decorator
+@mayaTool.undo_decorator
 def backtoTpose():
     selectControl = mc.ls(sl=True)
     if len(selectControl) == 0:
