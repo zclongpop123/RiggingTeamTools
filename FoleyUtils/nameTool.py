@@ -94,7 +94,7 @@ def SerializationFileNames(path, nameFormat='Temp*', start=0, padding=3):
     
     for i, f in enumerate(files):
         #- build name
-        extention = os.path.splitext(f)[-1]
-        NewName = nameFormat.replace('*', string.zfill(i + start, padding)) + extention
+        fextension = os.path.splitext(f)[-1]
+        NewName = nameFormat.replace('*', string.zfill(i + start, padding)) + fextension
         #- rename
         os.rename(os.path.join(path, f), compileWindowsFileName(os.path.join(path, NewName)))
