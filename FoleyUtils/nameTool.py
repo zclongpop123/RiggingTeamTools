@@ -56,7 +56,7 @@ def compileMayaObjectName(objectName):
 
 
 
-def SerializationObjectNames(objectList, nameFormat='Temp*', padding=3):
+def SerializationObjectNames(objectList, nameFormat='Temp*', start=0, padding=3):
     '''
     objectList must is a list or a tuple
     nameFormat mutst have one " * "
@@ -75,6 +75,6 @@ def SerializationObjectNames(objectList, nameFormat='Temp*', padding=3):
     
     newNameList = []
     for i, obj in enumerate(objectList):
-        newName = compileMayaObjectName(nameFormat.replace('*', string.zfill(i, padding)))
+        newName = compileMayaObjectName(nameFormat.replace('*', string.zfill(i + start, padding)))
         newNameList.append(newName)
     return newNameList
