@@ -5,6 +5,7 @@
 #=============================================
 import re, os, string
 import maya.cmds as mc
+
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 def compileWindowsFileName(fullPath):
@@ -70,7 +71,7 @@ def SerializationObjectNames(objectList, nameFormat='Temp*', padding=3):
         return
     
     if nameFormat.count('*') != 1:
-        return objectList
+        return
     
     newNameList = []
     for i, obj in enumerate(objectList):
