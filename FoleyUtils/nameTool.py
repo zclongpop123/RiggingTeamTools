@@ -78,3 +78,23 @@ def SerializationObjectNames(objectList, nameFormat='Temp*', start=0, padding=3)
         newName = compileMayaObjectName(nameFormat.replace('*', string.zfill(i + start, padding)))
         newNameList.append(newName)
     return newNameList
+
+
+
+
+def SerializationFileNames(path, nameFormat='Temp*', start=0, padding=3):
+    if not os.path.isdir(path):
+        return
+    
+    if nameFormat.count('*') != 1:
+        return
+    
+    #- get files -
+    files = os.listdir(path)
+    
+    for i, f in enumerate(files):
+        #- build name
+        extention = os.path.splitext(f)[-1]
+        NewName = nameFormat.replace('*', string.zfill(i + start, padding)) + extention
+        #- rename
+        os.rename(os.path.join(path, f), compileWindowsFileName(os.path.join(path, NewName)))
