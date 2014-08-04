@@ -435,11 +435,11 @@ def setSkinWeightsData(skindict, geo):
         print 'Error: geometry lost ( %s )...'%geo
     
 
+    #- set weights data
     skincluster = maya.cmds.skinCluster(influences, geo, sm=2, tsb=True, nw=1)[0]
     for vtx, weights in weightData.iteritems():
         for i, weight in enumerate(weights):
             maya.cmds.setAttr('%s.wl[%s].w[%d]'%(skincluster, vtx, i), weight)
-            print '%s.wl[%s].w[%d]'%(skincluster, vtx, i), weight
     
 
 #==============================================
