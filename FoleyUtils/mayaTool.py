@@ -186,7 +186,7 @@ def getBlendShapeInputGeomTarget(blendShape):
     for old, new in (('inputTargetGroup', 'itg'),
                       ('inputTargetItem',  'iti'),
                       ('inputGeomTarget',  'igt'),
-                      ('inputTarget',       'it')):
+                      ('inputTarget',      'it')):
         attributes = attributes.replace(old, new)
         
     igt_attributes = re.findall('it\[0\]\.itg\[\d+\]\.iti\[\d{4,}\]\.igt', attributes)
