@@ -361,11 +361,16 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
 #==============================================
 
 
-def getSkinWeightsData(skincluster):
-    """Spit out a dictionary containing the skin data per vertex of a dagnode."""
-
-    skindict = {}
-
+def getSkinWeightsData(geometry):
+    """
+    Export skinWeights data by a dict..
+    """
+    skindict = {'geometry':geometry}
+    
+    skincluster = findSkinCluster(geometry)
+    if not skincluster:
+        return skindict
+    
     # get skin cluster
     selection = maya.OpenMaya.MSelectionList()
     selection.add(skincluster)
@@ -406,7 +411,8 @@ def getSkinWeightsData(skincluster):
         it.next()
 
 
-    skindict['weightData']   = pointdata
+    skindict['weightData'] = pointdata
+    skindict['posiData']   = getMeshPositionData(geometry)
     
     return skindict
     
@@ -415,12 +421,15 @@ def getSkinWeightsData(skincluster):
 
 
 
-def setSkinWeightsData(skindict, geo):
+def setSkinWeightsData(skindict):
     '''
+    Import skinWeights data for a geometry..
     '''
+    geometry   = skindict.get('geometry',  '*')
     influences = skindict.get('influences', [])
     weightData = skindict.get('weightData', {})
-    #- check influecens..
+    
+    #- check influecens
     lostInfluecens = []
     for inf in influences:
         if not maya.cmds.objExists(inf):
@@ -431,16 +440,19 @@ def setSkinWeightsData(skindict, geo):
         return False
     
     #- check geometry
-    if not maya.cmds.objExists(geo):
-        print 'Error: geometry lost ( %s )...'%geo
-    
+    if not maya.cmds.objExists(geometry):
+        print 'Error: geometry lost ( %s )...'%geometry
+        return False
 
     #- set weights data
-    skincluster = maya.cmds.skinCluster(influences, geo, sm=2, tsb=True, nw=1)[0]
+    skincluster = maya.cmds.skinCluster(influences, geometry, sm=2, tsb=True, nw=1)[0]
     for vtx, weights in weightData.iteritems():
         for i, weight in enumerate(weights):
             maya.cmds.setAttr('%s.wl[%s].w[%d]'%(skincluster, vtx, i), weight)
     
+    return True
+
+
 
 #==============================================
 #                   Polygon                   #
