@@ -340,7 +340,7 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
     p = maya.OpenMaya.MPoint(*point)
     
     # I'm using pymel to get the curve because it's easier to pass to the API.
-    crv = maya.mel.core.PyNode(curve)
+    crv = pymel.core.PyNode(curve)
     
     # We need to create a pointer to capture the parameter value.
     u_util = maya.OpenMaya.MScriptUtil(0.0)
