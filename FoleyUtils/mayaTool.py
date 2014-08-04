@@ -4,7 +4,7 @@
 #   date: Tue, 08 Jul 2014 14:46:14
 #=============================================
 import re, struct
-import maya.cmds, maya.mel, pymel.core, maya.OpenMaya
+import maya.cmds, maya.mel, pymel.core, maya.OpenMaya, maya.OpenMayaAnim
 import nameTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
@@ -340,7 +340,7 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
     p = maya.OpenMaya.MPoint(*point)
     
     # I'm using pymel to get the curve because it's easier to pass to the API.
-    crv = pymel.core.PyNode(curve)
+    crv = maya.mel.core.PyNode(curve)
     
     # We need to create a pointer to capture the parameter value.
     u_util = maya.OpenMaya.MScriptUtil(0.0)
@@ -361,73 +361,224 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
 #==============================================
 
 
-def getSkinWeightData(model):
-    '''
-    Get a skinCluster weights data by a dict..
-    '''
-    data = {}
-    #-
-    skinNode = findSkinCluster(model)
+def getSkinClusterAsDictionary(skincluster, dataDict={}):
+    """Spit out a dictionary containing the skin data per vertex of a dagnode."""
 
-    if skinNode == '':
-        return data
+    skindict = {}
+
+    # get skin cluster
+    selection = maya.OpenMaya.MSelectionList()
+    selection.add(skincluster)
+    clusterobject = maya.OpenMaya.MObject()
+    selection.getDependNode(0, clusterobject)
+    skin = maya.OpenMayaAnim.MFnSkinCluster(clusterobject)
+
+    # get influences
+    influences = maya.OpenMaya.MDagPathArray()
+    infcount = skin.influenceObjects(influences)
+
+    strinfluences = []
+    for i in range(infcount):
+        infpath = influences[i]
+        strinfluences.append(infpath.partialPathName())
+
+    # get dagpath to skinned object
+    skinpath = maya.OpenMaya.MDagPath()
+    skin.getPathAtIndex(0, skinpath) # hardcoded to first element - should iterate
+
+    skindict['influences'] = strinfluences
+    pointdata = {}
+
+    it = maya.OpenMaya.MItGeometry(skinpath)
+    while not it.isDone(): # step through vertices
+
+        posarray = []
+        weightarray = []
+
+        comp = it.currentItem() # get vertex
+        db = maya.OpenMaya.MDoubleArray() # place holder
+
+        # get skin weights
+        for i in range(infcount): # step through influences
+            skin.getWeights(skinpath, comp, i, db)
+            weightarray.append(db[0])
+
+        # get blend weights
+        skin.getBlendWeights(skinpath, comp, db)
+        blendweight = (db[0])
+
+        # get vertex positions
+        point = maya.OpenMaya.MPoint(it.position(maya.OpenMaya.MSpace.kWorld))
+        posarray.append(point.x)
+        posarray.append(point.y)
+        posarray.append(point.z)
+
+        pointdata[it.index()] = {'position':posarray, 'skinweights':weightarray, 'blendweight':blendweight}
+
+        it.next()
+
+    skindict['pointdata'] = pointdata
+    dataDict['skinCluster'] = skindict
+
+    return dataDict
     
-    #- get influcence
-    influence  = maya.cmds.skinCluster(model, q=True, inf=True)
-    inf_Counts = len(influence)
+
+
+
+
+
+def importSkin(skindict, geo, count=0, mirrored=False, **kwargs):
+    """Import and apply skin weighting from json file."""
     
-    #- get weights
-    weightList       = maya.cmds.getAttr('%s.weightList[:].weights'%skinNode)
-    weightList_Count = len(weightList)
+    influences = skindict['influences']
+    pointdata  = skindict['pointdata']
+    notfound   = []
+    tmp        = []
     
-    for i in range(weightList_Count):
-        weights = []
-        for ii in range(inf_Counts):
-            value = maya.cmds.getAttr('%s.wl[%d].w[%d]'%(skinNode, i, ii))
-            weights.append(value)
-        weightList[i] = weights
-            
-    #-+-+-+-+-
-    data['geometry']    = model
-    data['skinCluster'] = skinNode
-    data['influence']   = influence
-    data['weights']     = weightList
-    #-+-+-+-+-
-    return data
-    
+    for inf in influences:
+        if mirrored:
+            if inf[0] == 'R':
+                inf = 'L%s' % inf[1:]
+            elif inf[0] == 'L':
+                inf = 'R%s' % inf[1:]
+            tmp.append(inf)
 
+        if not maya.cmds.objExists(inf): notfound.append(inf)
 
+    # switch around the influences
+    if mirrored: influences = tmp
 
+    # test influence existence
+    if notfound:
+        msg = 'Influences Not Found For: %s\n' % geo
+        for nf in notfound:
+            msg = '%s%s\n' % (msg, nf)
 
-
-def setSkinWeightData(data):
-    '''
-    Input a data dict, set skinCluster weights values..
-    '''
-    model = data.get('geometry', '#')
-    
-    #- model exists ?
-    if not maya.cmds.objExists(model):
-        print '# Error : objects ( %s ) was not exists ! !'%model
+        rigUtils.log(msg, 'e')
         return False
+
+    # test skin cluster existence
+    skincluster = findSkinCluster(geo)
     
-    #- joint exists ?
-    joints = data.get('influence', [])
-    for jnt in joints:
-        if not maya.cmds.objExists(jnt):
-            print '# Error : objects ( %s ) was not exists ! !'%jnt
-            return False
+    if skincluster: maya.cmds.delete(skincluster)
+    #if not skincluster:
+        
+    # ensure geo is visible
+    shps   = maya.cmds.listRelatives(geo, s=True)
+    geosrc = maya.cmds.listConnections('%s.v' % geo, s=True, d=False, p=True)
     
-    #- bind 
-    skinNode = nameTool.compileMayaObjectName(data.get('skinCluster', 'skinCluster1'))
-    maya.cmds.skinCluster(joints, model, tsb=True, name=skinNode)
+    if geosrc:
+        maya.cmds.disconnectAttr(geosrc[0], '%s.v' % geo)
+        maya.cmds.setAttr('%s.v' % geo, 1)
+    for shp in shps:
+        shpsrc = maya.cmds.listConnections('%s.v' % shp, s=True, d=False, p=True)
+        if shpsrc:
+            maya.cmds.disconnectAttr(shpsrc[0], '%s.v' % shp)
+            maya.cmds.setAttr('%s.v' % shp, 1)
+    # apply
+    ###################################################################
+    # hack - need to replace with storing of skin position in JSON file
+    ###################################################################
+
+    bShapes = None
+    shape = maya.cmds.listRelatives(geo, ad=True, s=True, path=True)
+    if shape:
+        bShapes = maya.cmds.listConnections(shape[0], s=True, d=False, p=False, type='blendShape')
+
+#         if 'jacket' in geo:
+#             skincluster = maya.cmds.skinCluster(influences, geo, sm=2, foc=False, tsb=True, nw=2)[0]
+#         elif bShapes and maya.cmds.objExists('%s.frontOfChain' % bShapes[0]): # frontOfChain tag for corrective blendShapes
+#             skincluster = maya.cmds.skinCluster(influences, geo, sm=2, foc=False, tsb=True, nw=2)[0]
+#         else:
+#             skincluster = maya.cmds.skinCluster(influences, geo, sm=2, foc=True, tsb=True, nw=2)[0]
+
+    VALID_ARGS = [
+        ('af', 'after'),
+        ('ar', 'afterReference'),
+        ('bf', 'before'),
+        ('ex', 'exclusive'),
+        ('foc', 'frontOfChain'),
+        ('par', 'parallel')
+        ]
+
+    skinArgs = dict()
+
+    if not kwargs:
+        skinArgs['foc'] = False  # 2013.12.5 change True -> False (changlong)
+    else:
+        for item in VALID_ARGS:
+            for i in item:
+                if i in kwargs:
+                    skinArgs[i] = kwargs[i]
+                    break
+
+    skincluster = maya.cmds.skinCluster(influences, geo, sm=2, tsb=True, nw=1, **skinArgs)[0]
+
+    # reconnect
+    if geosrc: maya.cmds.connectAttr(geosrc[0], '%s.v' % geo)
+    if shpsrc: maya.cmds.connectAttr(shpsrc[0], '%s.v' % shp)
     
-    #- set weights
-    weights = data.get('weights', [])
-    for vi, weight in enumerate(weights):
-        for wi, Value in enumerate(weight):
-            maya.cmds.setAttr('%s.wl[%d].w[%d]'%(skinNode, vi, wi), Value)
-    return True
+    # Check to see that the influences are actually attached to the skinCluster.
+    invalidInfs = list()
+    skinInfluences = maya.cmds.skinCluster(skincluster, q=True, inf=True)
+
+    for influence in influences:
+        if not influence in skinInfluences: invalidInfs.append(influence)
+
+    if invalidInfs:
+        msg = str()
+        for inf in invalidInfs:
+            msg += '%s is not an influence object for skinCluster %s\n' % (inf, skincluster)
+
+        rigUtils.log(msg, 'e')
+        return False
+
+    # We need to know what we're applying the weights too so we can get the
+    # component identifier correct.
+    cidDict = {
+        'lattice':'pt',
+        'mesh':'vtx',
+        'nurbsCurve':'cv',
+        'nurbsSurface':'cv'
+        }
+
+    cid = cidDict[maya.cmds.objectType(maya.cmds.skinCluster(skincluster, q=True, g=True)[0])]
+
+
+    # Get the size of the weight array.
+    arraySize = maya.cmds.getAttr('%s.weightList' % skincluster, size=True)
+
+    # Start the progress bar.
+    gMainProgressBar = maya.mel.eval('$tmp = $gMainProgressBar')
+    maya.cmds.progressBar(gMainProgressBar, e=True, bp=True, ii=True, st='Applying weights to %s' % geo, max=arraySize)
+
+    # Apply the weights.
+#     for i in range(arraySize):
+    for point in pointdata:
+        #  Increase the progress bar.
+        if maya.cmds.progressBar(gMainProgressBar, q=True, ic=True): break
+        maya.cmds.progressBar(gMainProgressBar, e=True, s=1)
+
+#         try: point = pointdata[unicode(i)]
+#         except KeyError:
+#             rigUtils.log('Mismatching number of verts for %s' % geo, 'w')
+#             break
+#
+#         weights     = point['skinweights']
+#         blendweight = point['blendweight']
+
+        weights     = pointdata[point]['skinweights']
+        blendweight = pointdata[point]['blendweight']
+
+        for j, value in enumerate(weights):
+#             maya.cmds.setAttr('%s.weightList[%d].weights[%d]' % (skincluster, i, j), value)
+            maya.cmds.setAttr('%s.weightList[%s].weights[%s]' % (skincluster, point, j), value)
+
+#         maya.cmds.setAttr('%s.blendWeights[%d]' % (skincluster, i), blendweight)
+        maya.cmds.setAttr('%s.blendWeights[%s]' % (skincluster, point), blendweight)
+
+    # Stop the progress bar.
+    maya.cmds.progressBar(gMainProgressBar, e=True, ep=True)
 
 
 
