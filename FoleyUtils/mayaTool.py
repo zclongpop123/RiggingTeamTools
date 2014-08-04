@@ -361,7 +361,7 @@ def findClosestPointOnCurve(curve, point=[0.0, 0.0, 0.0]):
 #==============================================
 
 
-def getSkinClusterAsDictionary(skincluster, dataDict={}):
+def getSkinWeightsData(skincluster):
     """Spit out a dictionary containing the skin data per vertex of a dagnode."""
 
     skindict = {}
@@ -392,7 +392,6 @@ def getSkinClusterAsDictionary(skincluster, dataDict={}):
     it = maya.OpenMaya.MItGeometry(skinpath)
     while not it.isDone(): # step through vertices
 
-        posarray = []
         weightarray = []
 
         comp = it.currentItem() # get vertex
@@ -402,25 +401,14 @@ def getSkinClusterAsDictionary(skincluster, dataDict={}):
         for i in range(infcount): # step through influences
             skin.getWeights(skinpath, comp, i, db)
             weightarray.append(db[0])
-
-        # get blend weights
-        skin.getBlendWeights(skinpath, comp, db)
-        blendweight = (db[0])
-
-        # get vertex positions
-        point = maya.OpenMaya.MPoint(it.position(maya.OpenMaya.MSpace.kWorld))
-        posarray.append(point.x)
-        posarray.append(point.y)
-        posarray.append(point.z)
-
-        pointdata[it.index()] = {'position':posarray, 'skinweights':weightarray, 'blendweight':blendweight}
+        pointdata[it.index()] = weightarray
 
         it.next()
 
-    skindict['pointdata'] = pointdata
-    dataDict['skinCluster'] = skindict
 
-    return dataDict
+    skindict['weightData']   = pointdata
+    
+    return skindict
     
 
 
@@ -454,7 +442,6 @@ def importSkin(skindict, geo, count=0, mirrored=False, **kwargs):
         for nf in notfound:
             msg = '%s%s\n' % (msg, nf)
 
-        rigUtils.log(msg, 'e')
         return False
 
     # test skin cluster existence
@@ -530,7 +517,6 @@ def importSkin(skindict, geo, count=0, mirrored=False, **kwargs):
         for inf in invalidInfs:
             msg += '%s is not an influence object for skinCluster %s\n' % (inf, skincluster)
 
-        rigUtils.log(msg, 'e')
         return False
 
     # We need to know what we're applying the weights too so we can get the
