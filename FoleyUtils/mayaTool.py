@@ -454,7 +454,13 @@ def setSkinWeightsData(skindict, world=True):
     for vtx, weights in weightData.iteritems():
         #- get new vtx 
         if world:
-            newVtx = newPosiData.get(posiData[vtx], None)
+            if posiData[vtx] in newPosiData:
+                newVtx = newPosiData.get(posiData[vtx], None)
+            else:
+                for posihex in newPosiData.iterkeys():
+                    if not hexEqual(posihex, posiData[vtx]):
+                        continue
+                    newVtx = newPosiData[posihex]
             vtx = newVtx
         
         #- set value
@@ -468,6 +474,13 @@ def setSkinWeightsData(skindict, world=True):
 #==============================================
 #                   Polygon                   #
 #==============================================
+
+def hexEqual(argA, argB, pre=5):
+    x1, y1, z1 = struct.unpack('fff', argA.decode('hex'))
+    x2, y2, z2 = struct.unpack('fff', argB.decode('hex'))
+    if abs(x1 - x2) < 0.1**pre and abs(y1 - y2) < 0.1**pre and abs(z1 - z2) < 0.1**pre:
+        return True
+    return False
 
 
 
