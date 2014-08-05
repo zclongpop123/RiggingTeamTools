@@ -486,7 +486,10 @@ def getMeshPositionData(geometry, precision=6):
     data = {}
     vtx  = 0
     for i in range(0, len(positions), 3):
-        posi_hex = struct.pack('fff', round(positions[i], precision), round(positions[i+1], precision), round(positions[i+2], precision)).encode('hex')
+        x = round(positions[i+0], precision)
+        y = round(positions[i+1], precision)
+        z = round(positions[i+2], precision)
+        posi_hex = struct.pack('fff', x, y, z).encode('hex')
         data[vtx] = posi_hex
         vtx += 1
     return data
