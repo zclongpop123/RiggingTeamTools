@@ -421,14 +421,14 @@ def getSkinWeightsData(geometry):
 
 
 
-def setSkinWeightsData(skindict):
+def setSkinWeightsData(skindict, world=True):
     '''
     Import skinWeights data for a geometry..
     '''
     geometry   = skindict.get('geometry',  '*')
     influences = skindict.get('influences', [])
     weightData = skindict.get('weightData', {})
-    
+    posiData   = skindict.get('posiData', {})
     #- check influecens
     lostInfluecens = []
     for inf in influences:
@@ -443,10 +443,21 @@ def setSkinWeightsData(skindict):
     if not maya.cmds.objExists(geometry):
         print 'Error: geometry lost ( %s )...'%geometry
         return False
-
+    
+    #- position data
+    if world:
+        newPosiData = getMeshPositionData(geometry)
+        newPosiData = dict(zip(newPosiData.values(), newPosiData.keys()))
+        
     #- set weights data
     skincluster = maya.cmds.skinCluster(influences, geometry, sm=2, tsb=True, nw=1)[0]
     for vtx, weights in weightData.iteritems():
+        #- get new vtx 
+        if world:
+            newVtx = newPosiData.get(posiData[vtx], None)
+            vtx = newVtx
+        
+        #- set value
         for i, weight in enumerate(weights):
             maya.cmds.setAttr('%s.wl[%s].w[%d]'%(skincluster, vtx, i), weight)
     
