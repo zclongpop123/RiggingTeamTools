@@ -421,7 +421,7 @@ def getSkinWeightsData(geometry):
 
 
 
-def setSkinWeightsData(skindict, world=True):
+def setSkinWeightsData(skindict, world=False):
     '''
     Import skinWeights data for a geometry..
     '''
@@ -446,27 +446,26 @@ def setSkinWeightsData(skindict, world=True):
     
     #- position data
     if world:
-        newPosiData = getMeshPositionData(geometry)
-        newPosiData = dict(zip(newPosiData.values(), newPosiData.keys()))
-        
+        infoNode = maya.cmds.createNode('closestPointOnMesh')
+        shape = [shape for shape in maya.cmds.listRelatives(geometry, s=True, path=True) if maya.cmds.getAttr('%s.io'%shape)==0][0]
+        maya.cmds.connectAttr('%s.outMesh'%shape, '%s.inMesh'%infoNode)
+    
     #- set weights data
     skincluster = maya.cmds.skinCluster(influences, geometry, sm=2, tsb=True, nw=1)[0]
     for vtx, weights in weightData.iteritems():
         #- get new vtx 
         if world:
-            if posiData[vtx] in newPosiData:
-                newVtx = newPosiData.get(posiData[vtx], None)
-            else:
-                for posihex in newPosiData.iterkeys():
-                    if not hexEqual(posihex, posiData[vtx]):
-                        continue
-                    newVtx = newPosiData[posihex]
-            vtx = newVtx
+            position = struct.unpack('fff', posiData[vtx].decode('hex'))
+            maya.cmds.setAttr('%s.ip'%infoNode, *position)
+            vtx = maya.cmds.getAttr('%s.vt'%infoNode)
         
         #- set value
         for i, weight in enumerate(weights):
             maya.cmds.setAttr('%s.wl[%s].w[%d]'%(skincluster, vtx, i), weight)
     
+    if world:
+        maya.cmds.delete(infoNode)
+
     return True
 
 
@@ -475,16 +474,8 @@ def setSkinWeightsData(skindict, world=True):
 #                   Polygon                   #
 #==============================================
 
-def hexEqual(argA, argB, pre=5):
-    x1, y1, z1 = struct.unpack('fff', argA.decode('hex'))
-    x2, y2, z2 = struct.unpack('fff', argB.decode('hex'))
-    if abs(x1 - x2) < 0.1**pre and abs(y1 - y2) < 0.1**pre and abs(z1 - z2) < 0.1**pre:
-        return True
-    return False
 
-
-
-def getMeshPositionData(geometry, precision=6):
+def getMeshPositionData(geometry, precision=12):
     '''
     Return mesh postions and vtx id in dict..
     Exp:{ 
