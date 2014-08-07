@@ -302,7 +302,7 @@ def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True)
     '''
     Attact an object on a curve..
     '''
-    CusShape = maya.cmds.listRelatives(pathCus, s=True, type='nurbsCurve')
+    CusShape = maya.cmds.listRelatives(curve, s=True, type='nurbsCurve')
     motionpathNode = maya.cmds.createNode('motionPath')
     
     # connect curve and motionpath node..
@@ -310,21 +310,21 @@ def attachToCurve(curve, attachOBJ, uValue, upperOBJ=None, uValuezerotoOne=True)
     
     # connect motionpath node and object..
     for outAttr, inAttr in (('.rotateOrder', '.rotateOrder'),('.rotate', '.rotate'),('.allCoordinates', '.translate')):
-        maya.cmds.connectAttr(motionpathNode + outAttr, attactOBJ + inAttr)
+        maya.cmds.connectAttr(motionpathNode + outAttr, attachOBJ + inAttr)
 
     # set Uvalue..
     maya.cmds.setAttr(motionpathNode + '.uValue', uValue)
     
     # set offset..
-    if uValuezerotoone:
+    if uValuezerotoOne:
         maya.cmds.setAttr(motionpathNode + '.fractionMode', 1)
 
     
-    if not UpperOBJ:
+    if not upperOBJ:
         return motionpathNode
     # set upvector..
     maya.cmds.setAttr(motionpathNode + '.worldUpType', 1)
-    maya.cmds.connectAttr(UpperOBJ   + '.worldMatrix[0]', motionpathNode + '.worldUpMatrix')
+    maya.cmds.connectAttr(upperOBJ   + '.worldMatrix[0]', motionpathNode + '.worldUpMatrix')
     maya.cmds.setAttr(motionpathNode + '.frontAxis', 0)
     maya.cmds.setAttr(motionpathNode + '.upAxis', 2)
     return motionpathNode
