@@ -116,7 +116,7 @@ def getNewFile(path, fname_format='name_v*', fextension=None):
     filePath = ''
     lastFile = getLastFile(path, fextension)
     if not os.path.isfile(lastFile):
-        filePath = conformFilePath(os.path.join(path, fname_format%string.zfill(1, VERSION_PADDING)))
+        filePath = conformFilePath(os.path.join(path, fname_format.replace('*', string.zfill(1, VERSION_PADDING))))
   
     else:
         lastVersion = getLastVersion(path, fextension)
