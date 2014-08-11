@@ -109,7 +109,7 @@ def getLastFile(path, fextension=None):
 
 
 
-def getNewFile(path, fname_format='name_v%s', fextension=None):
+def getNewFile(path, fname_format='name_v*', fextension=None):
     '''
     build a new version file...
     '''
@@ -123,7 +123,7 @@ def getNewFile(path, fname_format='name_v%s', fextension=None):
         newVersion  = getNewVersion(path, fextension)
 
         fname, fextension = os.path.splitext(lastFile)
-        filePath = re.sub('%s$'%lastVersion, newVersion, fname) + fextension
+        filePath = re.sub('\*$'%lastVersion, newVersion, fname) + fextension
     
     return filePath
 
