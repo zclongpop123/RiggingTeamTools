@@ -123,7 +123,7 @@ def getNewFile(path, fname_format='name_v*', fextension=None):
         newVersion  = getNewVersion(path, fextension)
 
         fname, fextension = os.path.splitext(lastFile)
-        filePath = re.sub('\*$'%lastVersion, newVersion, fname) + fextension
+        filePath = re.sub('%s$'%lastVersion, newVersion, fname) + fextension
     
     return filePath
 
