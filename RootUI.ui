@@ -373,7 +373,7 @@ QToolBox::tab:selected{
            <number>1</number>
           </property>
           <property name="currentIndex">
-           <number>7</number>
+           <number>2</number>
           </property>
           <property name="tabSpacing">
            <number>2</number>
@@ -1145,7 +1145,7 @@ SkinWeight</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="3">
+            <item row="0" column="4">
              <spacer name="horizontalSpacer_4">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -1232,6 +1232,38 @@ Weight</string>
 BlendShape
 
 Weight</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QPushButton" name="btn_EditBlendShapeWeights">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Edit
+
+BlendShape
+
+Weights</string>
               </property>
              </widget>
             </item>

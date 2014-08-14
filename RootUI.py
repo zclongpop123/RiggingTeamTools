@@ -294,3 +294,9 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.ReplaceUV.ReplaceUV
         reload(Plugcmds.ReplaceUV.ReplaceUV)
         Plugcmds.ReplaceUV.ReplaceUV.ReplaceUV(uiTool.getMayaWindow())
+    
+    def on_btn_EditBlendShapeWeights_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.blendShapeWeightsTool.blendShapeWeights
+        reload(Plugcmds.blendShapeWeightsTool.blendShapeWeights)
+        Plugcmds.blendShapeWeightsTool.blendShapeWeights.BlendShapeWeightsUI(uiTool.getMayaWindow()) 
