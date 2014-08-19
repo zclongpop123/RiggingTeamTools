@@ -47,7 +47,7 @@ def invertBlendShapeWeights(model, blendShape, envelope=True):
     
     # Start the progress bar.
     gMainProgressBar = mel.eval('$tmp = $gMainProgressBar')
-    mc.progressBar(gMainProgressBar, e=True, bp=True, ii=True, st='Applying weights to %s' % model, max=VtxCounts)
+    mc.progressBar(gMainProgressBar, e=True, bp=True, ii=True, st='Applying weights to %s' % model, max=int(VtxCounts))
     
     for i in range(VtxCounts):
         #  Increase the progress bar.
