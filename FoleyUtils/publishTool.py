@@ -22,7 +22,7 @@ def conformFilePath(path, MSC='maya'):
 
 
 
-def getVersionsFiles(path, fextension=None):
+def getVersionsFiles(path, fextension=''):
     '''
     get files dictionary..
     '''
@@ -30,27 +30,16 @@ def getVersionsFiles(path, fextension=None):
     if not os.path.isdir(path):
         return fileDict
     
-    for f in os.listdir(path):
-        fname, fexten = os.path.splitext(f)
-        #-
-        if not isinstance(fextension, basestring):
-            pass
-        else:
-            if re.search('%s$'%fextension, fexten):
-                pass
-            else:
-                continue
-        #-     
-        version = re.search('(?<=v)\d+$', fname)
-        if not version:continue
-        fileDict[version.group()] = conformFilePath(os.path.join(path, f))
+    files = re.findall('([^\|]+((?<=v)\d+(?=\.%s))[^\|]+)'%fextension, string.join(os.listdir(path), '|'))
+    for f, v in files:
+        fileDict[v] = conformFilePath(os.path.join(path, f))
     
     return fileDict
 
 
 
 
-def getVersions(path, fextension=None):
+def getVersions(path, fextension=''):
     '''
     get all of versions..
     '''
@@ -62,7 +51,7 @@ def getVersions(path, fextension=None):
 
 
 
-def getLastVersion(path, fextension=None):
+def getLastVersion(path, fextension=''):
     '''
     get the last version..
     '''
@@ -76,7 +65,7 @@ def getLastVersion(path, fextension=None):
 
 
 
-def getNewVersion(path, fextension=None):
+def getNewVersion(path, fextension=''):
     '''
     get the new version..
     '''
@@ -87,7 +76,7 @@ def getNewVersion(path, fextension=None):
 
 
 
-def getVersiondFile(path, version, fextension=None):
+def getVersiondFile(path, version, fextension=''):
     '''
     get the last file fullpath by input version..
     '''
@@ -98,7 +87,7 @@ def getVersiondFile(path, version, fextension=None):
 
 
 
-def getLastFile(path, fextension=None):
+def getLastFile(path, fextension=''):
     '''
     get the last file fullpath..
     '''
@@ -109,7 +98,7 @@ def getLastFile(path, fextension=None):
 
 
 
-def getNewFile(path, fname_format='name_v*', fextension=None):
+def getNewFile(path, fname_format='name_v*', fextension=''):
     '''
     build a new version file...
     '''
