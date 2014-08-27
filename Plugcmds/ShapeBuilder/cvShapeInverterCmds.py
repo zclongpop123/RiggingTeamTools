@@ -43,7 +43,7 @@ def invert(base=None, corrective=None, progressBar=None, name=None):
     correctivePoints = getPoints(corrective)
 
     # Get the intermediate mesh
-    shapes = cmds.listRelatives(base, children=True, shapes=True)
+    shapes = cmds.listRelatives(base, children=True, shapes=True, path=True)
     for s in shapes:
         if cmds.getAttr('%s.intermediateObject' % s) and cmds.listConnections('%s.worldMesh' % s,
                 source=False):
@@ -151,7 +151,7 @@ def invert(base=None, corrective=None, progressBar=None, name=None):
 #
 def getShape(node):
     if cmds.nodeType(node) == 'transform':
-        shapes = cmds.listRelatives(node, shapes=True)
+        shapes = cmds.listRelatives(node, shapes=True, path=True)
         if not shapes:
             raise RuntimeError, '%s has no shape' % node
         # end if
