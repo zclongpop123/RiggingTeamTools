@@ -10,9 +10,10 @@ from PyQt4 import QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
-#===================================================================
-ASSET_PATH = '//bjserver3/Tank/blinky_bill_movie/sequences'       #=
-#===================================================================
+#=============================================================================================
+ASSET_PATH = {'blinky_bill_movie':'//bjserver3/Tank/blinky_bill_movie/sequences',           #=
+              'DEEP'             :'//bjserver3/DEEP/Sequences'                  }           #=
+#=============================================================================================
 
 def getNewVersionFile(path):
     lastVersion = publishTool.getLastVersion(path)
@@ -67,13 +68,14 @@ class AnimSceneReaderUI(windowClass, baseClass):
         #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     
     def __getValues(self):
+        self.project     = ASSET_PATH.get(str(self.CBX_Project.currentText()), '')
         self.V_type      = str(self.LET_type.text())
         self.V_sc        = str(self.LET_scene.text())
         self.V_cam       = str(self.LET_camera.text())
         self.V_progress  = str(self.LET_progress.currentText())
         self.workpublish = str(self.LET_workpublish.currentText())
         self.V_file      = str(self.CBX_files.currentText())
-        self.dir_path    = os.path.join(ASSET_PATH, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
+        self.dir_path    = os.path.join(self.project, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
     
     def __openCloseLight(self, args):
         self.btn_light.setEnabled(args)
@@ -92,7 +94,10 @@ class AnimSceneReaderUI(windowClass, baseClass):
         self.CBX_files.setCurrentIndex(self.CBX_files.count()-1)
         self.__openCloseLight(True)
     
-    
+    def on_CBX_Project_currentIndexChanged(self, index):
+        if isinstance(index, int):return
+        self.__refreshFiles()    
+
     def on_LET_type_editingFinished(self):
         self.__refreshFiles()
         
@@ -113,7 +118,7 @@ class AnimSceneReaderUI(windowClass, baseClass):
     def on_btn_SelectPath_clicked(self, args=None):
         if args==None:return
         
-        dirPath = mc.fileDialog2(fm=3, dir=ASSET_PATH, okc='Select')
+        dirPath = mc.fileDialog2(fm=3, dir=ASSET_PATH.get(str(self.CBX_Project.currentText()), ''), okc='Select')
         if not dirPath:return
         
         baseDirName = os.path.basename(dirPath[0])
