@@ -117,7 +117,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string/>
+              <string>test</string>
              </property>
             </widget>
            </item>
@@ -165,7 +165,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string/>
+              <string>01</string>
              </property>
             </widget>
            </item>
@@ -213,7 +213,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string/>
+              <string>010</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
