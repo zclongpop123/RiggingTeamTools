@@ -68,14 +68,18 @@ class AnimSceneReaderUI(windowClass, baseClass):
         #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     
     def __getValues(self):
-        self.project     = ASSET_PATH.get(str(self.CBX_Project.currentText()), '')
-        self.V_type      = str(self.LET_type.text())
-        self.V_sc        = str(self.LET_scene.text())
-        self.V_cam       = str(self.LET_camera.text())
-        self.V_progress  = str(self.LET_progress.currentText())
-        self.workpublish = str(self.LET_workpublish.currentText())
-        self.V_file      = str(self.CBX_files.currentText())
-        self.dir_path    = os.path.join(self.project, self.V_type, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
+        self.project      = ASSET_PATH.get(str(self.CBX_Project.currentText()), '')
+        self.V_type       = str(self.LET_type.text())
+        if self.V_type:
+            self.V_typeFolder = ([d for d in os.listdir(self.project) if d.endswith(re.search('\w+', self.V_type).group())] or [''])[0]
+        else:
+            self.V_typeFolder = ''
+        self.V_sc         = str(self.LET_scene.text())
+        self.V_cam        = str(self.LET_camera.text())
+        self.V_progress   = str(self.LET_progress.currentText())
+        self.workpublish  = str(self.LET_workpublish.currentText())
+        self.V_file       = str(self.CBX_files.currentText())
+        self.dir_path     = os.path.join(self.project, self.V_typeFolder, '%s%s_%s'%(self.V_type, self.V_sc, self.V_cam), self.V_progress, self.workpublish, 'maya')
     
     def __openCloseLight(self, args):
         self.btn_light.setEnabled(args)
