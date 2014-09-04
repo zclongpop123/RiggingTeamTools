@@ -9,7 +9,7 @@ from PyQt4 import QtCore, QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool, mathTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 ASSET_PATH   = '//bjserver3/Tank/blinky_bill_movie/assets'
-ASSET_FOLDER = ('character', 'prop', 'Setpiece')
+ASSET_FOLDER = ('character', 'prop', 'Setpiece', 'set')
 
 
 class ListModel(QtCore.QAbstractListModel):
