@@ -1,9 +1,13 @@
+#========================================
+# author: changlong.zang
+#   mail: zclongpop@163.com
+#   date: Mon, 15 Sep 2014 16:26:30
+#========================================
 import os, re, math
 from PyQt4 import QtCore, QtGui, uic
 import maya.cmds as mc
 from FoleyUtils import scriptTool, uiTool, mayaTool
-#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
+#--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 def getDrivenKeyInfo(obj):
     DrivenInfo = []
     attributes = mc.setDrivenKeyframe(obj, q=True, dn=True)
@@ -153,20 +157,20 @@ class MirrorDrivenKeysUI(windowClass, baseClass):
 
 
 
-    def on_LET_DriverInputA_textChanged(self, text=None):
-        self.changeData(self.__model_DstDriver, text, str(self.LET_DriverInputB.text()))
+    def on_LET_DriverInputA_editingFinished(self):
+        self.changeData(self.__model_DstDriver, str(self.LET_DriverInputA.text()), str(self.LET_DriverInputB.text()))
     
     
-    def on_LET_DriverInputB_textChanged(self, text=None):
-        self.changeData(self.__model_DstDriver, str(self.LET_DriverInputA.text()), text)
+    def on_LET_DriverInputB_editingFinished(self):
+        self.changeData(self.__model_DstDriver, str(self.LET_DriverInputA.text()), str(self.LET_DriverInputB.text()))
     
     
-    def on_LET_DrivenInputA_textChanged(self, text=None):
-        self.changeData(self.__model_DstDriven, text, str(self.LET_DrivenInputB.text()))
+    def on_LET_DrivenInputA_editingFinished(self):
+        self.changeData(self.__model_DstDriven, str(self.LET_DrivenInputA.text()), str(self.LET_DrivenInputB.text()))
     
     
-    def on_LET_DrivenInputB_textChanged(self, text=None):
-        self.changeData(self.__model_DstDriven, str(self.LET_DrivenInputA.text()), text)
+    def on_LET_DrivenInputB_editingFinished(self):
+        self.changeData(self.__model_DstDriven, str(self.LET_DrivenInputA.text()), str(self.LET_DrivenInputB.text()))
 
 
     def changeData(self, model, textA, textB):
@@ -179,19 +183,27 @@ class MirrorDrivenKeysUI(windowClass, baseClass):
     def on_btn_SetKeys_clicked(self, args=None):
         if args==None:return
         for src, dsr, dsn in zip(self.__model_SrcDriven.datas(), self.__model_DstDriver.datas(), self.__model_DstDriven.datas()):
+            if src == dsn:
+                continue
+            
             if self.rdn_Copy.isChecked():
                 copyDrivenKeys(src, dsr, dsn)
-            else:
+            elif self.rdn_Mirror.isChecked():
                 copyDrivenKeys(src, dsr, dsn, -1)
+            else:
+                if re.search('(translateX|rotateZ)$', dsr):
+                    copyDrivenKeys(src, dsr, dsn, -1)
+                else:
+                    copyDrivenKeys(src, dsr, dsn,  1)
 
 
 
 class ListModel(QtCore.QAbstractListModel):
     def __init__(self, L=[], parent=None):
         super(ListModel, self).__init__(parent)
-        self.__Base = L[:]
-        self.__List = L[:]
-        
+        self.__Base  = L[:]
+        self.__List  = L[:]
+        self.__color = []
     
     def rowCount(self, index):
         return len(self.__List)
@@ -200,7 +212,10 @@ class ListModel(QtCore.QAbstractListModel):
     def data(self, index, role):
         if role == QtCore.Qt.DisplayRole or role == QtCore.Qt.EditRole:
             return self.__List[index.row()]
-   
+        
+        if role == QtCore.Qt.TextColorRole:
+            if self.__List[index.row()] != self.__Base[index.row()]: 
+                return QtGui.QBrush(QtGui.QColor(222, 114, 122))    
    
     def datas(self):
         return self.__List

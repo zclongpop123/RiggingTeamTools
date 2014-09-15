@@ -277,9 +277,9 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QRadioButton" name="rdn_Copy">
+        <widget class="QRadioButton" name="rdn_Default">
          <property name="text">
-          <string>Copy</string>
+          <string>Default</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -287,9 +287,19 @@
         </widget>
        </item>
        <item>
+        <widget class="QRadioButton" name="rdn_Copy">
+         <property name="text">
+          <string>Copy</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QRadioButton" name="rdn_Mirror">
          <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
+          <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
           <string>Mirror</string>
@@ -347,17 +357,17 @@
   </widget>
   <action name="actionLoad_Src">
    <property name="text">
-    <string>Load Src</string>
+    <string>Load Src...</string>
    </property>
   </action>
   <action name="actionLoad_Dst">
    <property name="text">
-    <string>Load Dst</string>
+    <string>Load Dst...</string>
    </property>
   </action>
   <action name="actionDelete_Item">
    <property name="text">
-    <string>Delete Item</string>
+    <string>Delete Items</string>
    </property>
   </action>
  </widget>
