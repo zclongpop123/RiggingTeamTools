@@ -201,9 +201,9 @@ class MirrorDrivenKeysUI(windowClass, baseClass):
 class ListModel(QtCore.QAbstractListModel):
     def __init__(self, L=[], parent=None):
         super(ListModel, self).__init__(parent)
-        self.__Base  = L[:]
-        self.__List  = L[:]
-        self.__color = []
+        self.__Base = L[:]
+        self.__List = L[:]
+        
     
     def rowCount(self, index):
         return len(self.__List)
