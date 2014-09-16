@@ -300,3 +300,10 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.blendShapeWeightsTool.blendShapeWeights
         reload(Plugcmds.blendShapeWeightsTool.blendShapeWeights)
         Plugcmds.blendShapeWeightsTool.blendShapeWeights.BlendShapeWeightsUI(uiTool.getMayaWindow()) 
+    
+    
+    def on_btn_transWeights_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.TransWeights.TransWeights
+        reload(Plugcmds.TransWeights.TransWeights)
+        Plugcmds.TransWeights.TransWeights.TransWeightsUI()    
