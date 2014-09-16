@@ -31,7 +31,9 @@ def copyDrivenKeys(src, dsr, dsn, mirror=1):
         if not mc.attributeQuery(attribute, n=obj, ex=True):
             print 'Error -> attributes  %s  was not Exists...'%arg
             return
-        
+    
+    mc.delete(mc.keyframe(dsn, q=True, n=True))
+    
     driverValues = mc.keyframe(src, q=True, fc=True)
     drivenValues = mc.keyframe(src, q=True, vc=True)
     for drv, dnv in zip(driverValues, drivenValues):
