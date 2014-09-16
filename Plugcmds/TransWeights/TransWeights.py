@@ -48,18 +48,28 @@ class TransWeightsUI(windowClass, baseClass):
         
     def on_btn_LoadSkin_clicked(self, args=None):
         if args == None:return
-        self.lineEdit_Geometry.setText(mc.ls(sl=True, type='transform')[0])
+        sel = mc.ls(sl=True, type='transform')
+        if len(sel) < 1:
+            return
+        self.lineEdit_Geometry.setText(sel[0])
         
         
     def on_btn_LoadJoint_clicked(self, args=None):
         if args == None:return
-        self.lineEdit_Joint.setText(mc.ls(sl=True, type='joint')[0])
+        sel = mc.ls(sl=True, type='joint')
+        if len(sel) < 1:
+            return        
+        self.lineEdit_Joint.setText(sel[0])
         
         
     def on_btn_Export_clicked(self, args=None):
         if args == None:return
         geometry = str(self.lineEdit_Geometry.text())
         Joint = str(self.lineEdit_Joint.text())
+        if not mc.objExists(geometry):
+            return
+        if not mc.objExists(Joint):
+            return
         #- 
         self.__data = getSkinClusterByJoint(geometry, Joint)
         #-
