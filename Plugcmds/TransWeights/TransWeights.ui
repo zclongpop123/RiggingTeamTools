@@ -19,7 +19,7 @@
      <number>3</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,2">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="88,12">
       <property name="spacing">
        <number>3</number>
       </property>
@@ -58,12 +58,18 @@
         <property name="text">
          <string/>
         </property>
+        <property name="iconSize">
+         <size>
+          <width>13</width>
+          <height>13</height>
+         </size>
+        </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="8,2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="88,12">
       <property name="spacing">
        <number>3</number>
       </property>
@@ -101,6 +107,12 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>13</width>
+          <height>13</height>
+         </size>
         </property>
        </widget>
       </item>
