@@ -1068,7 +1068,10 @@ keys</string>
                     <string>Add  Groups</string>
                    </property>
                   </widget>
-                  <widget class="QPushButton" name="btn_transWeights">
+                  <widget class="QPushButton" name="pushButton">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="geometry">
                     <rect>
                      <x>276</x>
@@ -1099,7 +1102,7 @@ keys</string>
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Trans Weights</string>
+                    <string/>
                    </property>
                   </widget>
                  </widget>
@@ -1192,7 +1195,7 @@ SkinWeight</string>
               </property>
              </spacer>
             </item>
-            <item row="1" column="1">
+            <item row="2" column="1">
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -1297,6 +1300,35 @@ Weight</string>
 
 BlendShape
 
+Weights</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="btn_transWeights">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Trans
 Weights</string>
               </property>
              </widget>
