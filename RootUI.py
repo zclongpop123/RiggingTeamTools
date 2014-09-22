@@ -306,4 +306,10 @@ class PlugTool(Uiwnd, UiClass):
         if args == None:return
         import Plugcmds.TransWeights.TransWeights
         reload(Plugcmds.TransWeights.TransWeights)
-        Plugcmds.TransWeights.TransWeights.TransWeightsUI()    
+        Plugcmds.TransWeights.TransWeights.TransWeightsUI(uiTool.getMayaWindow())    
+    
+    def on_btn_convertSkin_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.transSkinWeightsToCluster.transWeights
+        reload(Plugcmds.transSkinWeightsToCluster.transWeights)
+        Plugcmds.transSkinWeightsToCluster.transWeights.transWeightsUI(uiTool.getMayaWindow())
