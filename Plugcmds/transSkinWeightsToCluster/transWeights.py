@@ -103,15 +103,17 @@ def transSkinWeightsToCluster(skinGeometry, clusterGeometry, joint, cluster, pro
     if progressLabel != None:
         progressLabel.setText('0/%d'%vtxCount)
     
+    weights = list()
     for i in range(vtxCount):
-        weights = mc.skinPercent(skinNode, '%s.vtx[%s]'%(skinGeometry, i), q=True, v=True)[jointIndex]
-        mc.percent(cluster, '%s.vtx[%s]'%(clusterGeometry, i), v=weights)
+        weights.append(mc.skinPercent(skinNode, '%s.vtx[%s]'%(skinGeometry, i), q=True, v=True)[jointIndex])
         #- progress
         if progressBar != None:
             progressBar.setValue(i)        
         if progressLabel != None:
             progressLabel.setText('%d/%d'%(i, vtxCount))
-            
+    
+    mc.setAttr('%s.wl[0].w[0:%d]'%(cluster, vtxCount-1), *weights)
+    
     #- progress
     if progressBar != None:
         progressBar.setValue(0) 
