@@ -365,7 +365,14 @@ proc string[] makeIkHair_makeCurvesDynamicHairs()
                 createNode -n "nucleus1" "nucleus";
                 connectAttr -f "time1.outTime" "nucleus1.currentTime";
             }
-            $hairsystemCount = size(`ls -type "hairSystem"`) - 1;
+            int $hairsystemCount = 0;
+	    while (1){
+		string $res = `connectionInfo -sfd ("nucleus1.inputActiveStart[" + $hairsystemCount + "]")`;
+		if($res == ""){
+			break;}
+		$hairsystemCount += 1;}
+
+
             connectAttr -f ("nucleus1.startFrame")                              ($hsys + ".startFrame");
             connectAttr -f ("nucleus1.outputObjects[" + $hairsystemCount + "]") ($hsys + ".nextState");
 
