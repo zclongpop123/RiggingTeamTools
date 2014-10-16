@@ -1364,6 +1364,38 @@ Cluster</string>
               </property>
              </widget>
             </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="btn_copyClusterWeights">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Copy
+
+Cluster
+
+Weights</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="page_7">

@@ -313,3 +313,9 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.transSkinWeightsToCluster.transWeights
         reload(Plugcmds.transSkinWeightsToCluster.transWeights)
         Plugcmds.transSkinWeightsToCluster.transWeights.transWeightsUI(uiTool.getMayaWindow())
+    
+    def on_btn_copyClusterWeights_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.MirrorClusterWeights.MirrorClusterWeights
+        reload(Plugcmds.MirrorClusterWeights.MirrorClusterWeights)
+        Plugcmds.MirrorClusterWeights.MirrorClusterWeights.ClusterWeightsUI(uiTool.getMayaWindow())
