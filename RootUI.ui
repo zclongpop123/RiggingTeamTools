@@ -383,8 +383,8 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>184</width>
+             <height>98</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -529,8 +529,8 @@ System</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>83</width>
+             <height>75</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1388,7 +1388,7 @@ Cluster</string>
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Copy
+               <string>Mirror
 
 Cluster
 
@@ -1403,8 +1403,8 @@ Weights</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>276</width>
+             <height>98</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1568,8 +1568,8 @@ Targents</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>184</width>
+             <height>98</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1692,8 +1692,8 @@ QPushButton:hover {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>368</width>
+             <height>190</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1931,8 +1931,8 @@ Twist Joints</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>92</width>
+             <height>98</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2028,8 +2028,8 @@ Scene Reader</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>444</width>
-             <height>386</height>
+             <width>368</width>
+             <height>190</height>
             </rect>
            </property>
            <property name="styleSheet">
