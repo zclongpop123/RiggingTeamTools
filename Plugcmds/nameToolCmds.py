@@ -175,6 +175,8 @@ class NameUI(windowClass, baseClass):
            
             #- defind format
             elif self.rdn_def.isChecked():
+                if not re.search('\*', searchText):
+                    continue
                 resultText  = nameTool.SerializationObjectNames(self.__listModel.result()[0], searchText, 1)[i]
            
             #- search replace
