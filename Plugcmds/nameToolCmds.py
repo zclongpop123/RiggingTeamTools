@@ -6,6 +6,7 @@ import os, re
 from PyQt4 import QtCore, QtGui
 import maya.cmds as mc
 import maya.mel as mel
+import pymel.core
 from FoleyUtils import scriptTool, uiTool, mayaTool, nameTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 class ListModel(QtCore.QAbstractListModel):
@@ -289,18 +290,9 @@ class NameUI(windowClass, baseClass):
     @mayaTool.undo_decorator
     def _mayaRename(self):
         baseNameList, resultNameList = self.__listModel.result()
-        counts = len(baseNameList)
-        if counts == 0:return
-        
-        mc.select(baseNameList)
-        for i in range(counts):
-            if baseNameList[i] == resultNameList[i]:
-                continue
-            
-            if mc.objExists(baseNameList[i]):
-                mc.rename(baseNameList[i], nameTool.compileMayaObjectName(resultNameList[i]))
-                
-            else:
-                mc.rename(mc.ls(sl=True)[i], nameTool.compileMayaObjectName(resultNameList[i]))
-                
+        baseNameList = [pymel.core.PyNode(x) for x in baseNameList]
+
+        for node, newName in zip(baseNameList, resultNameList):
+            mc.rename(node.name(), nameTool.compileMayaObjectName(newName))
+
     #=======================================================================================================================================
