@@ -69,7 +69,7 @@ class ListModel(QtCore.QAbstractListModel):
         '''
         clear model datas for empoty view...
         '''
-        self.beginRemoveColumns(QtCore.QModelIndex(), 0, self.rowCount())
+        self.beginRemoveRows(QtCore.QModelIndex(), 0, self.rowCount())
         del self.__baseList[:]
         del self.__fileList[:]
         self.endRemoveRows()
