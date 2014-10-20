@@ -62,12 +62,12 @@ class transWeightsUI(bodywndClass, bodybaseClass):
             #- copy weights
             res = transSkinWeightsToCluster(geometry, geometry, jnt, cluster[0], self.progressBar_B, self.progressLabel_B)
             
-            if res:
-                #- weight Node
-                mc.cluster(cluster[0], e=True, wn=(jnt, jnt))
+            #if res:
+                ##- weight Node
+                #mc.cluster(cluster[0], e=True, wn=(jnt, jnt))
             
-                #- delete handle
-                mc.delete(cluster[1])
+                ##- delete handle
+                #mc.delete(cluster[1])
             
             #- progerss
             self.progressBar_A.setValue(i+1)    
