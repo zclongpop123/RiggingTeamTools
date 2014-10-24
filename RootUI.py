@@ -122,9 +122,9 @@ class PlugTool(Uiwnd, UiClass):
         
     def on_btn_InspectScene_clicked(self, args=None):
         if args==None:return
-        import Plugcmds.inspectScene
-        reload(Plugcmds.inspectScene)
-        Plugcmds.inspectScene.InspectSceneUI(uiTool.getMayaWindow())
+        import Plugcmds.inspectScene.inspectScene
+        reload(Plugcmds.inspectScene.inspectScene)
+        Plugcmds.inspectScene.inspectScene.InspectSceneUI(uiTool.getMayaWindow())
         
       
     def on_btn_BlendIKFKOutput_clicked(self, args=None):

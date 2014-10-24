@@ -1,8 +1,12 @@
+#========================================
+# author: changlong.zang
+#   mail: zclongpop@163.com
+#   date: Fri, 24 Oct 2014 10:45:39
+#========================================
 import string, re, os.path
 import maya.cmds as mc
 from FoleyUtils import scriptTool, uiTool
-
-
+#--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 UIwndClass, baseClass = uiTool.loadUi(os.path.join(scriptTool.getScriptPath(), 'inspectScene.ui'))
 class InspectSceneUI(UIwndClass, baseClass):
@@ -85,7 +89,7 @@ class InspectScene(object):
 
     @classmethod
     def insepectDuplicatesShapes(self):
-        geometrys   = mc.listRelatives(mc.ls(type='mesh'), p=True, path=True)
+        geometrys   = mc.listRelatives(mc.ls(type=('mesh', 'nurbsSurface')), p=True, path=True)
         u_geometrys = []
         for geo in geometrys:
             if len(mc.listRelatives(geo, s=True)) > 1:
