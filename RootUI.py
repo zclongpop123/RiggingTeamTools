@@ -319,3 +319,10 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.MirrorClusterWeights.MirrorClusterWeights
         reload(Plugcmds.MirrorClusterWeights.MirrorClusterWeights)
         Plugcmds.MirrorClusterWeights.MirrorClusterWeights.ClusterWeightsUI(uiTool.getMayaWindow())
+
+    
+    def on_btn_WeightsTool_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.weightsTool.weightsTool
+        reload(Plugcmds.weightsTool.weightsTool)
+        Plugcmds.weightsTool.weightsTool.WeightsTool(uiTool.getMayaWindow())    

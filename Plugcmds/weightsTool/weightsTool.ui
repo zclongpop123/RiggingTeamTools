@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>392</width>
+    <height>543</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DragonDreams WeightsTool</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>3</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="LET_Source">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="LET_Target">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QListView" name="VIW_Source">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListView" name="VIW_Target">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_Copy">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Copy</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_Mirror">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Mirror</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <property name="spacing">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_Export">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Export</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_Import">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Import</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>10</height>
+       </size>
+      </property>
+      <property name="maximum">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="textVisible">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>392</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Source</string>
+    </property>
+    <addaction name="actionSourceSwitchToCluster"/>
+    <addaction name="actionSourceSwitchToBlendShape"/>
+    <addaction name="actionSourceSwitchToSkinCluster"/>
+   </widget>
+   <widget class="QMenu" name="menuTargent">
+    <property name="title">
+     <string>Target</string>
+    </property>
+    <addaction name="actionTargetSwitchToCluster"/>
+    <addaction name="actionTargetSwitchBlendShape"/>
+    <addaction name="actionTargetSwitchSkinCluster"/>
+   </widget>
+   <widget class="QMenu" name="menuLoad">
+    <property name="title">
+     <string>Load</string>
+    </property>
+    <addaction name="actionLoadSource"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoadTargent"/>
+   </widget>
+   <addaction name="menuLoad"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuTargent"/>
+  </widget>
+  <action name="actionSourceSwitchToSkinCluster">
+   <property name="text">
+    <string>SkinCluster...</string>
+   </property>
+  </action>
+  <action name="actionSourceSwitchToCluster">
+   <property name="text">
+    <string>Cluster...</string>
+   </property>
+  </action>
+  <action name="actionSourceSwitchToBlendShape">
+   <property name="text">
+    <string>BlendShape...</string>
+   </property>
+  </action>
+  <action name="actionTargetSwitchToCluster">
+   <property name="text">
+    <string>Cluster...</string>
+   </property>
+  </action>
+  <action name="actionTargetSwitchBlendShape">
+   <property name="text">
+    <string>BlendShape...</string>
+   </property>
+  </action>
+  <action name="actionTargetSwitchSkinCluster">
+   <property name="text">
+    <string>SkinCluster...</string>
+   </property>
+  </action>
+  <action name="actionLoadSource">
+   <property name="text">
+    <string>Load Source...</string>
+   </property>
+  </action>
+  <action name="actionLoadTargent">
+   <property name="text">
+    <string>Load Target...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -383,8 +383,8 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>184</width>
-             <height>98</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -529,8 +529,8 @@ System</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>83</width>
-             <height>75</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1396,6 +1396,36 @@ Weights</string>
               </property>
              </widget>
             </item>
+            <item row="1" column="3">
+             <widget class="QPushButton" name="btn_WeightsTool">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>90</width>
+                <height>90</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Weights
+
+Tool</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="page_7">
@@ -1403,8 +1433,8 @@ Weights</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>276</width>
-             <height>98</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1568,8 +1598,8 @@ Targents</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>184</width>
-             <height>98</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1692,8 +1722,8 @@ QPushButton:hover {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>368</width>
-             <height>190</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1931,8 +1961,8 @@ Twist Joints</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>92</width>
-             <height>98</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2028,8 +2058,8 @@ Scene Reader</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>368</width>
-             <height>190</height>
+             <width>444</width>
+             <height>386</height>
             </rect>
            </property>
            <property name="styleSheet">
