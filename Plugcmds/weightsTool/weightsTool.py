@@ -7,7 +7,7 @@ import os.path, re
 import maya.cmds as mc
 import maya.mel as mel
 from PyQt4 import QtCore, QtGui
-from FoleyUtils import scriptTool, uiTool, mayaTool
+from FoleyUtils import scriptTool, uiTool, mayaTool, ioTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 class ListModel(QtCore.QAbstractListModel):
@@ -72,15 +72,17 @@ class WeightsTool(windowClass, baseClass):
         if args==None:return
         weights = getWeights(self.SOURCE_GEOMETRY, self.SOURCE_MODEL.data(self.VIW_Source.selectedIndexes()[0]))
         setWeights(self.TARGET_GEOMETRY, self.TARGET_MODEL.data(self.VIW_Target.selectedIndexes()[0]), weights)
-        
+
     def on_btn_Mirror_clicked(self, args=None):
         if args==None:return
 
     def on_btn_Export_clicked(self, args=None):
         if args==None:return
-    
+        exportWeights(self.SOURCE_GEOMETRY, self.SOURCE_DEFORM_TYPE, self.SOURCE_MODEL.LIST_DATA)
+
     def on_btn_Import_clicked(self, args=None):
         if args==None:return
+        importWeights()
   
     def on_actionLoadSource_triggered(self, args=None):
         if args==None:return
@@ -271,3 +273,27 @@ def setSkinClusterWeights(geometry, args, weights):
     skinNode   = mel.eval('findRelatedSkinCluster("%s")'%geometry)
     jointIndex = mc.skinCluster(skinNode, q=True, inf=True).index(args)
     mc.setAttr('%s.wl[0:%d].w[%d]'%(skinNode, vtxCounts-1, jointIndex), *weights)
+
+
+
+def exportWeights(geometry, deformerType, args):
+    path = mc.fileDialog2(ff='JSON Files (*.json)', fm=0)
+    if not path:
+        return
+    path = path[0]
+    
+    weights = {'geometry':geometry, 'type':deformerType, 'deformers':args}
+    for arg in args:
+        weights.setdefault('weights', list()).append(getWeights(geometry, arg))
+    ioTool.writeData(path, weights)
+
+
+def importWeights():
+    path = mc.fileDialog2(ff='JSON Files (*.json)', fm=1)
+    if not path:
+        return
+    path = path[0]
+    
+    data = ioTool.readData(path)
+    for deformer, weights in zip(data['deformers'], data['weights']):
+        setWeights(data['geometry'], deformer, weights)
