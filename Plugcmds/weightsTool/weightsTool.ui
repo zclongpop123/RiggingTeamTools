@@ -19,7 +19,7 @@
      <number>3</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,5">
       <property name="spacing">
        <number>3</number>
       </property>
@@ -62,7 +62,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,5">
       <property name="spacing">
        <number>3</number>
       </property>
