@@ -5,7 +5,6 @@
 #========================================
 import os.path, re
 import maya.cmds as mc
-import maya.mel as mel
 from PyQt4 import QtCore, QtGui
 from FoleyUtils import scriptTool, uiTool, mayaTool, ioTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
@@ -220,7 +219,7 @@ def getBlendShapeWeights(geometry, args):
 
 def getSkinClusterWeights(geometry, args):
     vtxCounts  = getGeometryPointsCount(geometry)
-    skinNode   = mel.eval('findRelatedSkinCluster("%s")'%geometry)
+    skinNode   = mayaTool.findSkinCluster(geometry)
     jointIndex = mc.skinCluster(skinNode, q=True, inf=True).index(args)
     weights = mc.getAttr('%s.wl[0:%d].w[%d]'%(skinNode, vtxCounts-1, jointIndex))
     return weights
@@ -270,7 +269,7 @@ def setBlendShapeWeights(geometry, args, weights):
 
 def setSkinClusterWeights(geometry, args, weights):
     vtxCounts  = len(weights)
-    skinNode   = mel.eval('findRelatedSkinCluster("%s")'%geometry)
+    skinNode   = mayaTool.findSkinCluster(geometry)
     jointIndex = mc.skinCluster(skinNode, q=True, inf=True).index(args)
     mc.setAttr('%s.wl[0:%d].w[%d]'%(skinNode, vtxCounts-1, jointIndex), *weights)
 
