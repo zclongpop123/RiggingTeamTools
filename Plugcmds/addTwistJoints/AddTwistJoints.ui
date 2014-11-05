@@ -97,7 +97,7 @@
             <x>0</x>
             <y>0</y>
             <width>341</width>
-            <height>331</height>
+            <height>310</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="ComponentContainerLayout">
@@ -524,6 +524,23 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>614</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSet">
+    <property name="title">
+     <string>Set</string>
+    </property>
+    <addaction name="actionSetAssetPath"/>
+   </widget>
+   <addaction name="menuSet"/>
+  </widget>
   <action name="actionAddComponent">
    <property name="text">
     <string>addComponent</string>
@@ -577,6 +594,11 @@
   <action name="actionPublishGuide">
    <property name="text">
     <string>publishGuide</string>
+   </property>
+  </action>
+  <action name="actionSetAssetPath">
+   <property name="text">
+    <string>Set Asset Path...</string>
    </property>
   </action>
  </widget>

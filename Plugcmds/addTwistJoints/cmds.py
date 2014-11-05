@@ -220,6 +220,7 @@ def Rig(nameSpace):
         appLocators.append(mc.spaceLocator(p=(0,0,0))[0])
         mc.delete(mc.parentConstraint(controls[0], appLocators[-1]))
         mc.parentConstraint(appLocators[-1], controls[-2])
+        mc.scaleConstraint(appLocators[-1], controls[-2])
 
     #- add def
     mc.addAttr(appLocators[-1], sn='IKFKSwitch', min=0, max=1, dv=0, k=True)
@@ -281,7 +282,7 @@ def Rig(nameSpace):
     
 
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-ROOT_ASSET_PATH = '//bjserver3/Tank/blinky_bill_movie/assets/rigItem/asset/character'
+ROOT_ASSET_PATH = os.environ.get('TempAssetPath') or '//bjserver3/Tank/blinky_bill_movie/assets/rigItem/asset/character'
 
 def getCharacters():
     chracters = [d for d in os.listdir(ROOT_ASSET_PATH) if os.path.isdir(os.path.join(ROOT_ASSET_PATH, d))]

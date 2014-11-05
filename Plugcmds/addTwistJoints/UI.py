@@ -1,7 +1,8 @@
 import sys, os, inspect, cmds
+import maya.cmds as mc
 from PyQt4 import QtGui, QtCore, uic
 from FoleyUtils import scriptTool, uiTool
-
+reload(cmds)
 
 ScriptPath = scriptTool.getScriptPath()
 if ScriptPath not in sys.path:
@@ -224,3 +225,10 @@ class AddTwistJointsUI(Uiwnd, UiClass):
         keepGuide = self.keepGuideCBX.isChecked()
 
         cmds.buildeRig(keepGuide)
+
+
+    def on_actionSetAssetPath_triggered(self, args=None):
+        if args == None:return
+        path = mc.fileDialog2(fm=3, okc='Select')
+        if path:
+            os.environ['TempAssetPath'] = path[0]
