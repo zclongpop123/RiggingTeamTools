@@ -34,11 +34,11 @@ def findCoincidentGeometrys():
     maxY = maxY + yDis * 0.1
     maxZ = maxZ + zDis * 0.1
     
-    #      *      *      *
+    #      *A     *B     *C
     #        \    |    /
-    #      *  -   *  -   *
+    #      *D -   *   -  *E
     #        /    |    \
-    #      *      *      *
+    #      *F     *G     *H
     rayPointA = minX,  minY, minZ
     rayPointB = minX,  minY, maxZ
     rayPointC = minX,  maxY, minZ
@@ -56,23 +56,23 @@ def findCoincidentGeometrys():
 
     #- 3. find point on mesh from ray point
     geometryData = dict()
+    
+    outPoint = OpenMaya.MPoint()
+    utilA = OpenMaya.MScriptUtil()
+    utilB = OpenMaya.MScriptUtil()    
+    face = utilA.asIntPtr()
+    
     for geo in geometrys:
         mMesh = OpenMaya.MFnMesh(pymel.core.PyNode(geo).__apiobject__())
-        
-        util = OpenMaya.MScriptUtil()
-        face = util.asIntPtr()
-        util1 = OpenMaya.MScriptUtil()
-        
-        outPoint = OpenMaya.MPoint()
         
         md5 = hashlib.md5()
         for p in (rayPointA, rayPointB, rayPointC, rayPointD, rayPointE, rayPointF, rayPointG, rayPointH, rayPointI, rayPointJ, rayPointK, rayPointL, rayPointM, rayPointN):
             mMesh.getClosestPoint(OpenMaya.MPoint(p[0], p[1], p[2]), outPoint, OpenMaya.MSpace.kWorld, face)
-            
-            faceId = util1.getInt(face)
-            posi = mc.xform('%s.f[%d]'%(geo, faceId), q=True, ws=True, t=True)
-            
+
+            faceId = utilB.getInt(face)
             md5.update('%d'%faceId)
+            
+            posi = mc.xform('%s.f[%d]'%(geo, faceId), q=True, ws=True, t=True)
             for ps in posi:
                 md5.update('%f'%ps)
 
