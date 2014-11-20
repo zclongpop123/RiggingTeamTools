@@ -326,3 +326,10 @@ class PlugTool(Uiwnd, UiClass):
         import Plugcmds.weightsTool.weightsTool
         reload(Plugcmds.weightsTool.weightsTool)
         Plugcmds.weightsTool.weightsTool.WeightsTool(uiTool.getMayaWindow())    
+    
+    
+    def on_btn_findCoincidentGeometry_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI
+        reload(Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI)
+        Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI.findCoincidentGeometryUI(uiTool.getMayaWindow())        
