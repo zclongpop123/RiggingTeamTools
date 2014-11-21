@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
+    <width>472</width>
     <height>682</height>
    </rect>
   </property>
@@ -38,8 +38,8 @@ QPushButton {
 }
 QPushButton::hover {
 	border-radius: 4px;
-	color: rgb(30, 30, 30);
-	background-color: rgb(200,200,200);
+	color: rgb(250, 250, 250);
+	background-color: rgb(0, 157,245);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -390,7 +390,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -536,7 +536,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -578,7 +578,7 @@ QToolBox::tab:selected{
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>477</width>
+                 <width>468</width>
                  <height>385</height>
                 </rect>
                </property>
@@ -1251,7 +1251,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -1579,7 +1579,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -1746,7 +1746,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -1886,7 +1886,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -2192,7 +2192,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
@@ -2329,7 +2329,7 @@ QToolBox::tab:selected{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>477</width>
+             <width>468</width>
              <height>391</height>
             </rect>
            </property>
