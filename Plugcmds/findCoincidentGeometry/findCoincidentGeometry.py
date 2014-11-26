@@ -39,34 +39,34 @@ def findCoincidentGeometrys():
     #      *D -   *   -  *E
     #        /    |    \
     #      *F     *G     *H
-    rayPointA = minX,  minY, minZ
-    rayPointB = minX,  minY, maxZ
-    rayPointC = minX,  maxY, minZ
-    rayPointD = minX,  maxY, maxZ
-    rayPointE = maxX,  minY, minZ
-    rayPointF = maxX,  minY, maxZ
-    rayPointG = maxX,  maxY, minZ
-    rayPointH = maxX,  maxY, maxZ
-    rayPointI = minX, (maxY + minY) / 2.0, (maxZ + minZ) / 2.0
-    rayPointJ = maxX, (maxY + minY) / 2.0, (maxZ + minZ) / 2.0
-    rayPointK = (maxX + minX) / 2.0, minY, (maxZ + minZ) / 2.0
-    rayPointL = (maxX + minX) / 2.0, maxY, (maxZ + minZ) / 2.0
-    rayPointM = (maxX + minX) / 2.0, (maxY + minY) / 2.0, minZ
-    rayPointN = (maxX + minX) / 2.0, (maxY + minY) / 2.0, maxZ
+    pointA = minX,  minY, minZ
+    pointB = minX,  minY, maxZ
+    pointC = minX,  maxY, minZ
+    pointD = minX,  maxY, maxZ
+    pointE = maxX,  minY, minZ
+    pointF = maxX,  minY, maxZ
+    pointG = maxX,  maxY, minZ
+    pointH = maxX,  maxY, maxZ
+    pointI = minX, (maxY + minY) / 2.0, (maxZ + minZ) / 2.0
+    pointJ = maxX, (maxY + minY) / 2.0, (maxZ + minZ) / 2.0
+    pointK = (maxX + minX) / 2.0, minY, (maxZ + minZ) / 2.0
+    pointL = (maxX + minX) / 2.0, maxY, (maxZ + minZ) / 2.0
+    pointM = (maxX + minX) / 2.0, (maxY + minY) / 2.0, minZ
+    pointN = (maxX + minX) / 2.0, (maxY + minY) / 2.0, maxZ
 
     #- 3. find point on mesh from ray point
     geometryData = dict()
     
     outPoint = OpenMaya.MPoint()
     utilA = OpenMaya.MScriptUtil()
-    utilB = OpenMaya.MScriptUtil()    
+    utilB = OpenMaya.MScriptUtil()
     face = utilA.asIntPtr()
     
     for geo in geometrys:
         mMesh = OpenMaya.MFnMesh(pymel.core.PyNode(geo).__apiobject__())
         
         md5 = hashlib.md5()
-        for p in (rayPointA, rayPointB, rayPointC, rayPointD, rayPointE, rayPointF, rayPointG, rayPointH, rayPointI, rayPointJ, rayPointK, rayPointL, rayPointM, rayPointN):
+        for p in (pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH, pointI, pointJ, pointK, pointL, pointM, pointN):
             mMesh.getClosestPoint(OpenMaya.MPoint(p[0], p[1], p[2]), outPoint, OpenMaya.MSpace.kWorld, face)
 
             faceId = utilB.getInt(face)
