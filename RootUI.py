@@ -75,7 +75,7 @@ class PlugTool(Uiwnd, UiClass):
         if args==None:return
         import Plugcmds.ControlColor
         reload(Plugcmds.ControlColor)
-        Plugcmds.ControlColor.ControlColorUI(uiTool.getMayaWindow())
+        Plugcmds.ControlColor.ColorWindow(uiTool.getMayaWindow())
       
  
     def on_btn_NameTool_clicked(self, args=None):

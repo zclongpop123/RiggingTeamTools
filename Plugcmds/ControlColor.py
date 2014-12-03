@@ -1,68 +1,52 @@
-#=============================================
+#========================================
 # author: changlong.zang
 #   mail: zclongpop@163.com
-#   date: Thu, 03 Jul 2014 10:26:11
-#=============================================
+#   date: Wed, 03 Dec 2014 18:25:09
+#========================================
+import FoleyUtils.uiTool, PyQt4.QtGui, functools, maya.cmds
+#--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+BUTTON_COLOR_RGB_VALUE = ((68,68,68),(0,0,0),(64,64,64),(128,128,128),(155,0,40),(0,4,96),(0,0,255),(0,70,25),(38,0,67),(200,0,200),
+                          (138,72,51),(63,35,31),(153,38,0),(255,0,0),(0,255,0),(0,65,153),(255,255,255),(255,255,0),(100,220,255),
+                          (67,255,163),(255,176,176),(228,172,121),(255,255,99),(0,153,84),(161,105,48),(159,161,48),(104,161,48),
+                          (48,161,93),(48,161,161),(48,103,161),(111,48,161),(161,48,105))   
 
-import sys, os, functools
-from PyQt4 import QtCore, QtGui
-from FoleyUtils import mathTool, uiTool
-import maya.cmds as mc
-
-#--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-
-class ControlColorUI(QtGui.QMainWindow):
-    colorRGB = ((0.267, 0.267, 0.267),(0.000, 0.000, 0.000),(0.251, 0.251, 0.251),(0.500, 0.500, 0.500),(0.608, 0.000, 0.157),(0.000, 0.016, 0.376),
-                (0.000, 0.000, 1.000),(0.000, 0.275, 0.098),(0.149, 0.000, 0.263),(0.784, 0.000, 0.784),(0.541, 0.282, 0.200),(0.247, 0.137, 0.122),
-                (0.600, 0.149, 0.000),(1.000, 0.000, 0.000),(0.000, 1.000, 0.000),(0.000, 0.255, 0.600),(1.000, 1.000, 1.000),(1.000, 1.000, 0.000),
-                (0.392, 0.863, 1.000),(0.263, 1.000, 0.639),(1.000, 0.690, 0.690),(0.894, 0.675, 0.475),(1.000, 1.000, 0.388),(0.000, 0.600, 0.329),
-                (0.631, 0.412, 0.188),(0.624, 0.631, 0.188),(0.408, 0.631, 0.188),(0.188, 0.631, 0.365),(0.188, 0.631, 0.631),(0.188, 0.404, 0.631),
-                (0.435, 0.188, 0.631),(0.631, 0.188, 0.412))    
-
-
+class ColorWindow(PyQt4.QtGui.QMainWindow):
+    windowName = 'DragonDreamsControlColorToolWindow'
+    
     def __init__(self, parent=None):
-        if uiTool.windowExists(parent, 'ControlColorUI'):return
-            
-        super(ControlColorUI, self).__init__(parent)
-        self.resize(400, 50)
+        if FoleyUtils.uiTool.windowExists(parent, self.windowName):
+            return
         
-        self.setObjectName('ControlColorUI')
-        self.setWindowTitle('Control Color')
-        self.setMaximumSize(400, 50)
-        self.setMinimumSize(400, 50)        
+        #- setup window
+        super(ColorWindow, self).__init__(parent)
+        self.setObjectName(self.windowName)
+        self.setWindowTitle('Control Color Tool')
+        self.setMaximumSize (482, 62)
+        self.setMinimumSize (482, 62)
         
-        self.__createButton()
-        self.show()
-    
-    
-    def __createButton(self):
-        for i, rgb in enumerate(self.colorRGB):
-            btn = QtGui.QPushButton(self)
-            btn.resize(24, 24)
-            #-
-            x = i  % (len(self.colorRGB) / 2) * 25
-            y = i // (len(self.colorRGB) / 2) * 25
-            btn.move(x, y)
-            
-            #-
-            r = mathTool.setRange(0.0, 1.0, 0, 255, rgb[0])
-            g = mathTool.setRange(0.0, 1.0, 0, 255, rgb[1])
-            b = mathTool.setRange(0.0, 1.0, 0, 255, rgb[2])
-            btn.setStyleSheet('background-color: rgb(%f, %f, %f);'%(r, g, b))
+        #- add buttons
+        for i in range(32):
+            btn = PyQt4.QtGui.QPushButton(self)
+            px = i % 16  * 30 + 1
+            py = i // 16 * 30 + 1
+            sx = 30
+            sy = 30
+            btn.setGeometry(px, py, sx, sy)
             
             btn.clicked.connect(functools.partial(self.setColor, i))
-            if i != 0:continue
-            icon = QtGui.QIcon()
-            icon.addFile(os.path.join(os.path.dirname(sys.exec_prefix), 'icons', 'fpe_brokenPaths.png'), QtCore.QSize(25, 25))
-            btn.setIcon(icon)
+            btn.setStyleSheet('background-color: rgb(%d, %d, %d);'%BUTTON_COLOR_RGB_VALUE[i])
+            
+        self.show()
 
     
     def setColor(self, colorIndex):
-        selectOBJs = mc.ls(sl=True)
-        for OBJ in selectOBJs:
-            for shp in mc.listRelatives(OBJ, s=True, path=True) or []:
-                if colorIndex == 0:
-                    mc.setAttr(shp + '.ove', 0) 
-                else:
-                    mc.setAttr(shp + '.ove', 1)
-                mc.setAttr(shp + '.ovc', colorIndex)
+        selectObjects = maya.cmds.ls(sl=True)
+        if len(selectObjects) == 0:
+            return
+            
+        for shp in maya.cmds.listRelatives(selectObjects, s=True, path=True) or []:
+            if colorIndex == 0:
+                maya.cmds.setAttr(shp + '.ove', 0) 
+            else:
+                maya.cmds.setAttr(shp + '.ove', 1)
+                maya.cmds.setAttr(shp + '.ovc', colorIndex)
