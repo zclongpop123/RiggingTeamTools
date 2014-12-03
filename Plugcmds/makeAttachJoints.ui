@@ -83,6 +83,9 @@
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="placeholderText">
+            <string>load base curve...</string>
+           </property>
           </widget>
          </item>
          <item>
@@ -147,6 +150,9 @@
            </property>
            <property name="readOnly">
             <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>load up curve...</string>
            </property>
           </widget>
          </item>
