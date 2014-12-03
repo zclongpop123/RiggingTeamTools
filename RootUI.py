@@ -94,9 +94,9 @@ class PlugTool(Uiwnd, UiClass):
 
     def on_btn_MakeJointsOnCurve_clicked(self, args=None):
         if args==None:return
-        import Plugcmds.makeAttachJoints 
-        reload(Plugcmds.makeAttachJoints )
-        Plugcmds.makeAttachJoints .makeAttachJoints(uiTool.getMayaWindow())
+        import Plugcmds.makeAttachJoints.makeAttachJoints 
+        reload(Plugcmds.makeAttachJoints.makeAttachJoints)
+        Plugcmds.makeAttachJoints.makeAttachJoints.makeAttachJoints(uiTool.getMayaWindow())
         
 
     def on_btn_MirrorDrivenkey_clicked(self, args=None):
