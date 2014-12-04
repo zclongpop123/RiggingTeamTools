@@ -278,9 +278,9 @@ class PlugTool(Uiwnd, UiClass):
     
     def on_btn_addGroups_clicked(self, args=None):
         if args == None:return
-        import Plugcmds.addGroups
-        reload(Plugcmds.addGroups)
-        Plugcmds.addGroups.AddGroup(uiTool.getMayaWindow())
+        import Plugcmds.addGroups.addGroups
+        reload(Plugcmds.addGroups.addGroups)
+        Plugcmds.addGroups.addGroups.AddGroup(uiTool.getMayaWindow())
     
     
     def on_btn_fixShapeTool_clicked(self, args=None):
