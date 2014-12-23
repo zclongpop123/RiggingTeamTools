@@ -90,6 +90,8 @@ def mirrorControlShape(typ, source, targent, flipAxis):
         for shp in shapes:
             mc.setAttr('%s.ovc'%shp, mc.getAttr('%s.ovc'%originalShapes[0]))
         mc.parent(shapes, targentControl, s=True, r=True)
+        for shp in shapes:
+            mc.rename(shp, '%sShape'%targentControl)
                   
         #- delete temp
         mc.delete(tempx, Temp, grp, originalShapes)
