@@ -4,7 +4,7 @@
 #   date: Thu, 03 Jul 2014 16:35:02
 #=============================================
 import sip, re, os.path, scriptTool
-from maya.OpenMayaUI import MQtUtil
+import maya.OpenMayaUI as apiUI 
 from PyQt4 import QtCore, QtGui, uic
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
@@ -12,7 +12,7 @@ def getMayaWindow():
     '''
     return maya window by Qt object..
     '''
-    ptr = MQtUtil.mainWindow()
+    ptr = apiUI.MQtUtil_mainWindow()
     if ptr is not None:
         return sip.wrapinstance(long(ptr),QtCore.QObject)
 
