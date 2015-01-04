@@ -21,6 +21,7 @@ class PlugTool(Uiwnd, UiClass):
         self.tabWidget.setCurrentIndex(0)
         self.toolBox.setCurrentIndex(1)
         #============================================================================================================
+        self.setWindowIcon(QtGui.QIcon(os.path.join(scriptTool.getScriptPath(), 'icons', 'windowIcon.png')))
         self.btn_TitleA.setIcon(QtGui.QIcon(os.path.join(scriptTool.getScriptPath(), 'icons', 'pencil.png')))
         self.btn_TitleB.setIcon(QtGui.QIcon(os.path.join(scriptTool.getScriptPath(), 'icons', 'pencil.png')))
         self.btn_TitleC.setIcon(QtGui.QIcon(os.path.join(scriptTool.getScriptPath(), 'icons', 'pencil.png')))
