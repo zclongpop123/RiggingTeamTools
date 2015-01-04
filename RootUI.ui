@@ -383,7 +383,7 @@ QToolBox::tab:hover{
            <number>1</number>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>7</number>
           </property>
           <property name="tabSpacing">
            <number>2</number>
@@ -393,8 +393,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>243</width>
+             <height>44</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1254,8 +1254,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>442</width>
+             <height>104</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1582,8 +1582,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>267</width>
+             <height>44</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1749,8 +1749,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>130</width>
+             <height>44</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1889,8 +1889,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>351</width>
+             <height>104</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2195,8 +2195,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>468</width>
-             <height>387</height>
+             <width>154</width>
+             <height>44</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2523,6 +2523,9 @@ QToolBox::tab:hover{
                  </item>
                  <item>
                   <widget class="QPushButton" name="pushButton_13">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -2542,6 +2545,9 @@ QToolBox::tab:hover{
                  </item>
                  <item>
                   <widget class="QPushButton" name="pushButton_14">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -2624,6 +2630,96 @@ QToolBox::tab:hover{
                  </item>
                  <item>
                   <widget class="QPushButton" name="pushButton_15">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_21">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="btn_ProjectTool">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>8</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Project Tool</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_16">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_17">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="minimumSize">
                     <size>
                      <width>0</width>

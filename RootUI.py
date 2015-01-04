@@ -332,4 +332,11 @@ class PlugTool(Uiwnd, UiClass):
         if args == None:return
         import Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI
         reload(Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI)
-        Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI.findCoincidentGeometryUI(uiTool.getMayaWindow())        
+        Plugcmds.findCoincidentGeometry.findCoincidentGeometryUI.findCoincidentGeometryUI(uiTool.getMayaWindow())
+
+    def on_btn_ProjectTool_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.projectTool.ProjectTool
+        reload(Plugcmds.projectTool.ProjectTool)
+        Plugcmds.projectTool.ProjectTool.ProjectUI(uiTool.getMayaWindow())
+    
