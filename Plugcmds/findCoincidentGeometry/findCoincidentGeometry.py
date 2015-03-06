@@ -67,7 +67,7 @@ def findCoincidentGeometrys():
         
         md5 = hashlib.md5()
         for p in (pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH, pointI, pointJ, pointK, pointL, pointM, pointN):
-            mMesh.getClosestPoint(OpenMaya.MPoint(p[0], p[1], p[2]), outPoint, OpenMaya.MSpace.kWorld, face)
+            mMesh.getClosestPoint(OpenMaya.MPoint(*p), outPoint, OpenMaya.MSpace.kWorld, face)
 
             faceId = utilB.getInt(face)
             md5.update('%d'%faceId)
