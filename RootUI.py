@@ -341,3 +341,8 @@ class PlugTool(Uiwnd, UiClass):
         reload(Plugcmds.projectTool.ProjectTool)
         Plugcmds.projectTool.ProjectTool.ProjectUI(uiTool.getMayaWindow())
     
+    def on_btn_mirrorfacecontrolDrivenkeys_clicked(self, args=None):
+        if args == None:return
+        import Plugcmds.mirrorFaceControlDrivenkeys
+        reload(Plugcmds.mirrorFaceControlDrivenkeys)
+        Plugcmds.mirrorFaceControlDrivenkeys.mirrorDrivenkeyByControls()

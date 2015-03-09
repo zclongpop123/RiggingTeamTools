@@ -383,7 +383,7 @@ QToolBox::tab:hover{
            <number>1</number>
           </property>
           <property name="currentIndex">
-           <number>7</number>
+           <number>1</number>
           </property>
           <property name="tabSpacing">
            <number>2</number>
@@ -393,8 +393,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>243</width>
-             <height>44</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1003,9 +1003,9 @@ QToolBox::tab:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_3">
+                      <widget class="QPushButton" name="btn_mirrorfacecontrolDrivenkeys">
                        <property name="enabled">
-                        <bool>false</bool>
+                        <bool>true</bool>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -1019,8 +1019,14 @@ QToolBox::tab:hover{
                          <height>25</height>
                         </size>
                        </property>
+                       <property name="font">
+                        <font>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
                        <property name="text">
-                        <string/>
+                        <string>Mirror Face Controls'SDK</string>
                        </property>
                       </widget>
                      </item>
@@ -1254,8 +1260,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>442</width>
-             <height>104</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1582,8 +1588,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>267</width>
-             <height>44</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1749,8 +1755,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>130</width>
-             <height>44</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1889,8 +1895,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>351</width>
-             <height>104</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2195,8 +2201,8 @@ QToolBox::tab:hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>154</width>
-             <height>44</height>
+             <width>468</width>
+             <height>387</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -2790,15 +2796,15 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#aaff7f;&quot;&gt;jng&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	       &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#aaff7f;&quot;&gt;jnh&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	              &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#aaff7f;&quot;&gt;jnt&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;控制器命名规范：&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#ffff00;&quot;&gt;grp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#ffff00;&quot;&gt;ctg&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	       &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#ffff00;&quot;&gt;cth&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	              &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;C_Temp_&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#ffff00;&quot;&gt;ctl&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_0&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;控制器Set命名规范：&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;	Allctrls&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#828282;&quot;&gt;	|___&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;body_Ctrls&lt;/span&gt;&lt;/p&gt;
