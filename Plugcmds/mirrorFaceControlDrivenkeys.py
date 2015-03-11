@@ -41,6 +41,10 @@ def mirrorDrivenkeys(src, dst):
         driverValues = mc.keyframe(driven, q=True, fc=True)
         drivenValues = mc.keyframe(driven, q=True, vc=True)
         for drv, dnv in zip(driverValues, drivenValues):
+            if re.search('(translateX|eyeRotInner_ctl_0.rotateZ|mouthCorner_ctl_0\.translateY|mouth_ctl_0\.translateY)$', newDriver):
+                dnv = dnv * -1
+            if re.search('(mainCheek_ctl_0\.translateX)$', newDriver):
+                dnv = dnv * -1
             mc.setDrivenKeyframe(newDriven, cd=newDriver, dv=drv, v=dnv)
         
         print 'Copy Driven keys: %s : %s -> %s : %s'%(driver, driven, newDriver, newDriven)
@@ -51,11 +55,8 @@ def mirrorDrivenkeyByControls():
     if not uiTool.warning(message='Mirror face control\'s drivenKeys? ?'):
         return
     controls = mc.ls('L_*_ctl_*', type='transform')
-    result = list()
     for src in controls:
         dst = src.replace('L_', 'R_')
         if not mc.objExists(dst):
             continue
         mirrorDrivenkeys(src, dst)
-        result.extend([src, dst])
-    mc.select(result)
