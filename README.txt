@@ -1,6 +1,6 @@
 import sys
 
-Path = '//bjserver2/Temp Documents/Foley/RiggingTeamTools'
+Path = '//bjserver2/WScriptsTool/rig/RiggingTeamTools'
 if Path not in sys.path:
     sys.path.append(Path)
 
