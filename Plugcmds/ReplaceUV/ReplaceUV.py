@@ -8,7 +8,7 @@ import maya.cmds as mc
 from PyQt4 import QtCore, QtGui
 from FoleyUtils import scriptTool, uiTool, publishTool, mathTool
 #--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-ASSET_PATH   = '//bjserver3/Tank/blinky_bill_movie/assets'
+ASSET_PATH   = 'D:/assets'
 ASSET_FOLDER = ('character', 'prop', 'Setpiece', 'set')
 
 
